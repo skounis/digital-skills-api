@@ -1,0 +1,2463 @@
+<!DOCTYPE html><html><link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600|Source+Code+Pro"><style type="text/css">* {
+	outline: none;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+ul {
+	padding: 0;
+	list-style: none;
+}
+
+h2 {
+	font-size: 24px;
+    font-weight: 400;
+    padding: 10px 0px;
+}
+
+body {
+	-webkit-font-smoothing: antialiased;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    font-family: 'Open Sans', sans-serif;
+    cursor: default;
+    transition: linear left 0.1s;
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+    font-size: 14px;
+    color: #272b2d;
+}
+
+mark {
+    background: transparent;
+    border-radius: 3px;
+    color: yellow;
+}
+
+.top-element {
+	height: 0px;
+	width: 100%;
+	background: transparent;
+	margin-top: 1px;
+}
+
+.top-header {
+	position: absolute;
+    top: 0;
+    left: 270px;
+    right: 0;
+    z-index: 100;
+    height: 50px;
+    background: transparent;
+    overflow: hidden;
+}
+
+.part-header{
+	width: 50%;
+    display: inline-block;
+    vertical-align: top;
+    box-sizing: border-box;
+}
+
+.headers-available .documentation {
+	display: inline-block;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    top: 50px;
+}
+.headers-available .custom-header {
+	display: inline-block;
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    height: 50px;
+    z-index: 5000;
+    border-bottom: 1px solid #f6f6f6;
+}
+
+
+.lang-header {
+	padding: 10px 15px;
+    position: absolute;
+    left: 50%;
+    right: 0;
+	box-shadow: 0 0 1px 0;
+	background: #2D3134;
+}
+
+.lang-header .lan{
+	padding: 3px 12px;
+    margin-right: 8px;
+    border-radius: 3px;
+    cursor: pointer;
+    border: 1px solid #272b2d;
+    color: #dde4e8;
+}
+
+.lan.selected {
+	background: #272b2d;
+    color: #45f945;
+    font-weight: 600;
+}
+.sidebar {
+	font-family: 'Open Sans', sans-serif;
+	bottom: 0;
+	font-weight: 400;
+    left: 0;
+    position: absolute;
+    top: 0;
+    z-index: 75;
+    width: 230px;
+	padding: 20px;
+	padding-top: 45px;
+	background: #fafafa;
+}
+ 
+.sidebar .group-header {
+	color: rgb(82, 98, 105);
+	font-weight: 600;
+	font-size: 13px;
+	text-transform: uppercase;
+}
+
+
+.sidebar li.resource-header.expand .resource-nav-item {
+	font-weight: 600;
+}
+
+.sidebar a.child-nav-item.selected {
+	color: #0095dd;
+}
+
+.sidebar a.child-nav-item:hover {
+	color: #0095dd;
+}
+
+.sidebar li.transition {
+	padding-left: 20px;
+}
+
+.sidebar .resource-header > ul{
+	display: none;
+}
+
+.sidebar .resource-header.expand > ul{
+	display: block;
+}
+
+
+.container {
+	bottom: 0;
+    right: 0;
+    position: absolute;
+    top: 0;
+    left: 270px;
+    z-index: 50;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.doc-body {
+	box-sizing: border-box;
+    background-image: -webkit-linear-gradient(-90deg, #2D3134 50%, #ffffff 50%);
+    background-image: linear-gradient(-90deg, #2D3134 50%, #ffffff 50%);
+}
+
+.header-anchor {
+	visibility: hidden;
+}
+
+.col-12 {
+	width: 100%;
+}
+
+.col-6 {
+	width: 50%;
+}
+
+.row {
+	padding-bottom: 50px;
+}
+
+.row:after {
+	clear: both;
+    content: '';
+    display: table;
+}
+
+.lhs, .rhs {
+    float: left;
+    box-sizing: border-box;
+}
+
+.lhs {
+	padding: 0 20px;
+}
+
+.rhs {
+    padding-top: 40px;
+    color: #dde4e8;
+}
+
+code, .code {
+	font-family: Source Code Pro,Menlo,monospace;
+	font-size: 13px;
+}
+
+
+.doc-body .group-heading {
+	font-size: 24px;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 32px;
+    padding: 10px 0;
+    margin: 20px 0;
+}
+
+.doc-body .resource-heading {
+	padding: 10px 0px;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 32px;
+}
+
+.doc-body .transition-heading {
+    color: #292e31;
+    padding: 10px 0px;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 32px
+}
+
+ul.attrs, ul.params {
+	border-top: 1px solid #e1e8ed;
+}
+
+.params .left, .attrs .left, .params .right, .attrs .right {
+    display: inline-block;
+    width: 50%;
+    vertical-align: top;
+}
+
+.params .left, .attrs .left {
+	text-align: right;
+    padding-right: 20px;
+    box-sizing: border-box;
+    font-size: 13px;
+    line-height: 21px;
+    word-break: break-all;
+    white-space: normal;
+}
+
+.params .right, .attrs .right {
+	box-sizing: border-box;
+	padding-left: 10px;
+}
+
+li.param, li.attr {
+	padding: 17px 0;
+    border-bottom: 1px solid #f0f4f7;
+    line-height: 24px;
+}
+
+li.param:last-child, li.attr:last-child {
+	border-bottom: none;	
+}
+
+.left {
+	color: #aaa;
+}
+
+.left span {
+	padding-right: 10px;
+}
+
+.left .key {
+    color: #000;
+}
+
+.left span.key{
+	font-weight: 600;
+}
+
+.left .type {
+	font-style: italic;
+	font-size: 12px;
+}
+
+.left .example {
+	font-size: 11px;
+}
+
+.left .required, .left .optional {
+	color: #e66e33;
+	text-transform: uppercase;
+	font-size: 10px;
+    font-weight: 600;
+}
+.show-child-attr {
+	color: #0095dd;
+	padding: 6px 0;
+}
+
+.child-attr {
+	border-radius: 5px;
+}
+
+.child-attr > .attrs {
+	display: none;
+}
+
+.child-attr > .show-child-attr > .expand {
+	display: block;
+	cursor: pointer;
+}
+.child-attr > .show-child-attr > .close {
+	display: none;
+	cursor: pointer;
+}
+
+.child-attr.show {
+	box-shadow: 0 0 1px 0px rgba(128, 128, 128, 0.5);
+}
+
+.child-attr.show > .attrs{
+	display: block;
+}
+.child-attr.show > .show-child-attr > .expand {
+	display: none;
+}
+.child-attr.show > .show-child-attr > .close {
+	display: block;
+}
+
+.part-heading {
+	color: #939da3;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 18px;
+    text-transform: uppercase;
+    margin: 15px 0;
+}
+
+
+.api-definition-heading, .rhs-heading {
+	margin-bottom: 15px;
+    font-weight: 600;
+    padding: 6px 20px;
+    font-size: 13px;
+}
+
+.api-method {
+    padding: 2px 11px;
+    border-radius: 2px;
+    color: white;
+}
+
+.api-method.get {
+	color: #1fda9a;
+}
+
+.api-method.post {
+	color: #ee4b3e;
+}
+
+.api-method.put {
+	color: #E9BC1B;
+}
+
+.api-url {
+	word-break: break-all;
+    white-space: initial;
+    line-height: 1.9;
+}
+
+.rhs-highlight {
+    padding: 0 20px;
+    margin: 20px;
+    padding: 20px 20px;
+    background: #272b2d;
+    border-radius: 5px;
+    margin-top: 5px;
+    margin-bottom: 70px;
+}
+
+.headers-description {
+	margin-bottom: 50px;
+}
+
+.hljs {
+    border-radius: 2px;
+    margin: 0;
+    white-space: pre-wrap;
+}
+
+.hljs-keyword {
+	font-weight: 600;
+}
+
+.hljs-built_in {
+	color: #0095dd;
+}
+
+.hljs-attr {
+	color: #4aba09;
+}
+</style></html><body><div class="custom-header"></div><div class="documentation"><div class="top-header"><div class="lang-header part-header"><span class="lan selected" lang="curl">curl</span><span class="lan" lang="node">Node</span><span class="lan" lang="python">Python</span><span class="lan" lang="java">Java</span><span class="lan" lang="ruby">Ruby</span><span class="lan" lang="php">php</span><span class="lan" lang="go">Go</span></div></div><div class="sidebar"><nav class="sidebar-nav"><!--.group-header//a(href='#top', _href='#top') Overview--><ul><li class="resource-header"><a class="resource-nav-item" href="#group-dsi-wordpress-api" _href="#group-dsi-wordpress-api">DSI Wordpress API</a></li><li class="resource-header"><a class="resource-nav-item" href="#authentication" _href="#authentication">Authentication</a></li></ul><div class="group-header"><a href="#group-dsi-wordpress-api" _href="#group-dsi-wordpress-api"></a></div><ul><li class="resource-header"><a class="resource-nav-item" href="#resource-pages" _href="#resource-pages">Pages</a><ul><li class="transition"><a class="child-nav-item" href="#transition-get-pages-get" _href="#transition-get-pages-get"><span class="child-nav-text">Get Pages</span></a></li></ul></li><li class="resource-header"><a class="resource-nav-item" href="#resource-page" _href="#resource-page">Page</a><ul><li class="transition"><a class="child-nav-item" href="#transition-get-page-get" _href="#transition-get-page-get"><span class="child-nav-text">Get Page</span></a></li></ul></li><li class="resource-header"><a class="resource-nav-item" href="#resource-posts" _href="#resource-posts">Posts</a><ul><li class="transition"><a class="child-nav-item" href="#transition-get-posts-get" _href="#transition-get-posts-get"><span class="child-nav-text">Get Posts</span></a></li></ul></li><li class="resource-header"><a class="resource-nav-item" href="#resource-post" _href="#resource-post">Post</a><ul><li class="transition"><a class="child-nav-item" href="#transition-get-post-get" _href="#transition-get-post-get"><span class="child-nav-text">Get Post</span></a></li></ul></li><li class="resource-header"><a class="resource-nav-item" href="#resource-best-practices" _href="#resource-best-practices">Best Practices</a><ul><li class="transition"><a class="child-nav-item" href="#transition-get-best-practices-get" _href="#transition-get-best-practices-get"><span class="child-nav-text">Get Best Practices</span></a></li></ul></li><li class="resource-header"><a class="resource-nav-item" href="#resource-best-practice" _href="#resource-best-practice">Best Practice</a><ul><li class="transition"><a class="child-nav-item" href="#transition-get-best-practice-get" _href="#transition-get-best-practice-get"><span class="child-nav-text">Get Best Practice</span></a></li></ul></li><li class="resource-header"><a class="resource-nav-item" href="#resource-skill-assessment-tools" _href="#resource-skill-assessment-tools">Skill Assessment Tools</a><ul><li class="transition"><a class="child-nav-item" href="#transition-get-skill-assessment-tools-get" _href="#transition-get-skill-assessment-tools-get"><span class="child-nav-text">Get Skill Assessment Tools</span></a></li></ul></li><li class="resource-header"><a class="resource-nav-item" href="#resource-skill-assessment-tool" _href="#resource-skill-assessment-tool">Skill Assessment Tool</a><ul><li class="transition"><a class="child-nav-item" href="#transition-get-skill-assessment-tool-get" _href="#transition-get-skill-assessment-tool-get"><span class="child-nav-text">Get Skill Assessment Tool</span></a></li></ul></li><li class="resource-header"><a class="resource-nav-item" href="#resource-training-offers" _href="#resource-training-offers">Training offers</a><ul><li class="transition"><a class="child-nav-item" href="#transition-get-training-offers-get" _href="#transition-get-training-offers-get"><span class="child-nav-text">Get Training offers</span></a></li></ul></li><li class="resource-header"><a class="resource-nav-item" href="#resource-training-offer" _href="#resource-training-offer">Training offer</a><ul><li class="transition"><a class="child-nav-item" href="#transition-get-training-offer-get" _href="#transition-get-training-offer-get"><span class="child-nav-text">Get Training offer</span></a></li></ul></li><li class="resource-header"><a class="resource-nav-item" href="#resource-funding-opportunities" _href="#resource-funding-opportunities">Funding opportunities</a><ul><li class="transition"><a class="child-nav-item" href="#transition-get-funding-opportunities-get" _href="#transition-get-funding-opportunities-get"><span class="child-nav-text">Get Funding opportunities</span></a></li></ul></li><li class="resource-header"><a class="resource-nav-item" href="#resource-funding-opportunity" _href="#resource-funding-opportunity">Funding opportunity</a><ul><li class="transition"><a class="child-nav-item" href="#transition-get-funding-opportunity-get" _href="#transition-get-funding-opportunity-get"><span class="child-nav-text">Get Funding opportunity</span></a></li></ul></li><li class="resource-header"><a class="resource-nav-item" href="#resource-events" _href="#resource-events">Events</a><ul><li class="transition"><a class="child-nav-item" href="#transition-get-events-get" _href="#transition-get-events-get"><span class="child-nav-text">Get Events</span></a></li></ul></li><li class="resource-header"><a class="resource-nav-item" href="#resource-event" _href="#resource-event">Event</a><ul><li class="transition"><a class="child-nav-item" href="#transition-get-event-get" _href="#transition-get-event-get"><span class="child-nav-text">Get Event</span></a></li></ul></li></ul></nav></div><div class="container"><div class="doc-body col-12"><div class="row"><div class="col-6 lhs"><div class="group-heading top" id="group-dsi-wordpress-api">DSI Wordpress API</div><div class="description"><p>This document describes the Rest API of a Wordpress based implementation.</p>
+<p>For the extention of the post types the <a href="https://www.advancedcustomfields.com/">Advanced Custom Fields</a> and <a href="https://github.com/airesvsg/acf-to-rest-api">ACF to REST API</a> plugins were used.</p>
+<p>The base address of the API is the URL of the Wordpress website. For demonstration, the base address <code>http://demo.com/</code> is assumed.</p>
+<h2 id="authentication">Authentication <a class="header-anchor" href="#authentication" aria-hidden="true">¶</a></h2>
+<p>There is no need for authentication.</p>
+</div></div></div><div class="row"><div class="col-6 lhs"><div class="group-heading way-point" id="group-dsi-wordpress-api"></div></div><div class="col-6 rhs"></div></div><div class="row"><div class="col-6 lhs"><div class="resource-heading way-point" id="resource-pages">Pages</div></div><div class="col-6 rhs"></div></div><div class="row"><div class="col-6 lhs"><div class="transition-heading way-point" id="transition-get-pages-get">Get Pages</div></div><div class="col-6 rhs"><div class="api-definition"><div class="api-definition-heading rhs-heading">Definition</div><div class="api-definition-description rhs-highlight code"><span class="api-method get">GET</span><span class="api-url"> http://domain.com/wp-json/wp/v2/pages</span></div></div><div class="sample-request-heading rhs-heading">Request</div><div class="headers"><div class="headers-heading rhs-heading">Request Headers</div><div class="headers-description code rhs-highlight"><pre class="hljs"><code><div class="header-row"><span class="key hljs-attr">Content-Type: </span><span class="value">application/json</span></div></code></pre></div></div><div class="sample-request"><div class="sample-request-heading rhs-heading">Example Request</div><div class="sample-request-description rhs-highlight code"> <pre class="hljs"><code>curl --request GET \<br>  --url http:<span class="hljs-comment">//domain.com/wp-json/wp/v2/pages \</span>
+  --header <span class="hljs-string">'content-type: application/json'</span></code></pre></div></div><div class="sample-response"><div class="sample-response-heading rhs-heading"> <span>Response </span><span class="status-code">200</span></div><div class="headers"><div class="headers-heading rhs-heading">Response Headers</div><div class="headers-description code rhs-highlight"><pre class="hljs"><code><div class="header-row"><span class="key hljs-attr">Content-Type: </span><span class="value">application/json</span></div></code></pre></div></div><div class="sample-response-body rhs-heading">Response Body</div><div class="sample-response-body-description rhs-highlight code"><pre class="hljs"><code>[
+    {
+        <span class="hljs-attr">"id"</span>: <span class="hljs-number">2</span>,
+        <span class="hljs-attr">"date"</span>: <span class="hljs-string">"2019-06-21T09:43:30"</span>,
+        <span class="hljs-attr">"date_gmt"</span>: <span class="hljs-string">"2019-06-21T09:43:30"</span>,
+        <span class="hljs-attr">"guid"</span>: {
+            <span class="hljs-attr">"rendered"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/?page_id=2"</span>
+        },
+        <span class="hljs-attr">"modified"</span>: <span class="hljs-string">"2019-06-21T09:43:30"</span>,
+        <span class="hljs-attr">"modified_gmt"</span>: <span class="hljs-string">"2019-06-21T09:43:30"</span>,
+        <span class="hljs-attr">"slug"</span>: <span class="hljs-string">"sample-page"</span>,
+        <span class="hljs-attr">"status"</span>: <span class="hljs-string">"publish"</span>,
+        <span class="hljs-attr">"type"</span>: <span class="hljs-string">"page"</span>,
+        <span class="hljs-attr">"link"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/sample-page\/"</span>,
+        <span class="hljs-attr">"title"</span>: {
+            <span class="hljs-attr">"rendered"</span>: <span class="hljs-string">"Sample Page"</span>
+        },
+        <span class="hljs-attr">"content"</span>: {
+            <span class="hljs-attr">"rendered"</span>: <span class="hljs-string">"\n&lt;p&gt;This is an example page. It&amp;#8217;s different from a blog post because it will stay in one place and will show up in your site navigation (in most themes). Most people start with an About page that introduces them to potential site visitors. It might say something like this:&lt;\/p&gt;\n\n\n\n&lt;blockquote class=\"wp-block-quote\"&gt;&lt;p&gt;Hi there! I&amp;#8217;m a bike messenger by day, aspiring actor by night, and this is my website. I live in Los Angeles, have a great dog named Jack, and I like pi&amp;#241;a coladas. (And gettin&amp;#8217; caught in the rain.)&lt;\/p&gt;&lt;\/blockquote&gt;\n\n\n\n&lt;p&gt;&amp;#8230;or something like this:&lt;\/p&gt;\n\n\n\n&lt;blockquote class=\"wp-block-quote\"&gt;&lt;p&gt;The XYZ Doohickey Company was founded in 1971, and has been providing quality doohickeys to the public ever since. Located in Gotham City, XYZ employs over 2,000 people and does all kinds of awesome things for the Gotham community.&lt;\/p&gt;&lt;\/blockquote&gt;\n\n\n\n&lt;p&gt;As a new WordPress user, you should go to &lt;a href=\"http:\/\/domain.com\/wordpress\/wp-admin\/\"&gt;your dashboard&lt;\/a&gt; to delete this page and create new pages for your content. Have fun!&lt;\/p&gt;\n"</span>,
+            <span class="hljs-attr">"protected"</span>: <span class="hljs-literal">false</span>
+        },
+        <span class="hljs-attr">"excerpt"</span>: {
+            <span class="hljs-attr">"rendered"</span>: <span class="hljs-string">"&lt;p&gt;This is an example page. It&amp;#8217;s different from a blog post because it will stay in one place and will show up in your site navigation (in most themes). Most people start with an About page that introduces them to potential site visitors. It might say something like this: Hi there! I&amp;#8217;m a bike messenger [&amp;hellip;]&lt;\/p&gt;\n"</span>,
+            <span class="hljs-attr">"protected"</span>: <span class="hljs-literal">false</span>
+        },
+        <span class="hljs-attr">"author"</span>: <span class="hljs-number">1</span>,
+        <span class="hljs-attr">"featured_media"</span>: <span class="hljs-number">0</span>,
+        <span class="hljs-attr">"parent"</span>: <span class="hljs-number">0</span>,
+        <span class="hljs-attr">"menu_order"</span>: <span class="hljs-number">0</span>,
+        <span class="hljs-attr">"comment_status"</span>: <span class="hljs-string">"closed"</span>,
+        <span class="hljs-attr">"ping_status"</span>: <span class="hljs-string">"open"</span>,
+        <span class="hljs-attr">"template"</span>: <span class="hljs-string">""</span>,
+        <span class="hljs-attr">"meta"</span>: [],
+        <span class="hljs-attr">"acf"</span>: <span class="hljs-literal">false</span>,
+        <span class="hljs-attr">"_links"</span>: {
+            <span class="hljs-attr">"self"</span>: [
+                {
+                    <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/pages\/2"</span>
+                }
+            ],
+            <span class="hljs-attr">"collection"</span>: [
+                {
+                    <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/pages"</span>
+                }
+            ],
+            <span class="hljs-attr">"about"</span>: [
+                {
+                    <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/types\/page"</span>
+                }
+            ],
+            <span class="hljs-attr">"author"</span>: [
+                {
+                    <span class="hljs-attr">"embeddable"</span>: <span class="hljs-literal">true</span>,
+                    <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/users\/1"</span>
+                }
+            ],
+            <span class="hljs-attr">"replies"</span>: [
+                {
+                    <span class="hljs-attr">"embeddable"</span>: <span class="hljs-literal">true</span>,
+                    <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/comments?post=2"</span>
+                }
+            ],
+            <span class="hljs-attr">"version-history"</span>: [
+                {
+                    <span class="hljs-attr">"count"</span>: <span class="hljs-number">0</span>,
+                    <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/pages\/2\/revisions"</span>
+                }
+            ],
+            <span class="hljs-attr">"wp:attachment"</span>: [
+                {
+                    <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/media?parent=2"</span>
+                }
+            ],
+            <span class="hljs-attr">"curies"</span>: [
+                {
+                    <span class="hljs-attr">"name"</span>: <span class="hljs-string">"wp"</span>,
+                    <span class="hljs-attr">"href"</span>: <span class="hljs-string">"https:\/\/api.w.org\/{rel}"</span>,
+                    <span class="hljs-attr">"templated"</span>: <span class="hljs-literal">true</span>
+                }
+            ]
+        }
+    }
+]
+</code></pre></div></div></div></div><div class="row"><div class="col-6 lhs"><div class="resource-heading way-point" id="resource-page">Page</div></div><div class="col-6 rhs"></div></div><div class="row"><div class="col-6 lhs"><div class="transition-heading way-point" id="transition-get-page-get">Get Page</div><h5 class="part-heading">Url Parameters</h5><ul class="params"><li class="param"><div class="left"><div><span class="key">id</span></div><div><span class="type">string</span></div></div><div class="right"></div></li></ul></div><div class="col-6 rhs"><div class="api-definition"><div class="api-definition-heading rhs-heading">Definition</div><div class="api-definition-description rhs-highlight code"><span class="api-method get">GET</span><span class="api-url"> http://domain.com/wp-json/wp/v2/pages/<mark>{id}</mark></span></div></div><div class="sample-request-heading rhs-heading">Request</div><div class="sample-request-body rhs-heading">Request Body</div><div class="sample-request-body-description rhs-highlight code"><pre class="hljs"><code>    + Headers
+        Content-Type: application/json
+
+</code></pre></div><div class="sample-request"><div class="sample-request-heading rhs-heading">Example Request</div><div class="sample-request-description rhs-highlight code"> <pre class="hljs"><code>curl --request GET \<br>  --url http:<span class="hljs-comment">//domain.com/wp-json/wp/v2/pages/{id}</span></code></pre></div></div><div class="sample-response"><div class="sample-response-heading rhs-heading"> <span>Response </span><span class="status-code">200</span></div><div class="headers"><div class="headers-heading rhs-heading">Response Headers</div><div class="headers-description code rhs-highlight"><pre class="hljs"><code><div class="header-row"><span class="key hljs-attr">Content-Type: </span><span class="value">application/json</span></div></code></pre></div></div><div class="sample-response-body rhs-heading">Response Body</div><div class="sample-response-body-description rhs-highlight code"><pre class="hljs"><code>[
+    {
+        <span class="hljs-attr">"id"</span>: <span class="hljs-number">2</span>,
+        <span class="hljs-attr">"date"</span>: <span class="hljs-string">"2019-06-21T09:43:30"</span>,
+        <span class="hljs-attr">"date_gmt"</span>: <span class="hljs-string">"2019-06-21T09:43:30"</span>,
+        <span class="hljs-attr">"guid"</span>: {
+            <span class="hljs-attr">"rendered"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/?page_id=2"</span>
+        },
+        <span class="hljs-attr">"modified"</span>: <span class="hljs-string">"2019-06-21T09:43:30"</span>,
+        <span class="hljs-attr">"modified_gmt"</span>: <span class="hljs-string">"2019-06-21T09:43:30"</span>,
+        <span class="hljs-attr">"slug"</span>: <span class="hljs-string">"sample-page"</span>,
+        <span class="hljs-attr">"status"</span>: <span class="hljs-string">"publish"</span>,
+        <span class="hljs-attr">"type"</span>: <span class="hljs-string">"page"</span>,
+        <span class="hljs-attr">"link"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/sample-page\/"</span>,
+        <span class="hljs-attr">"title"</span>: {
+            <span class="hljs-attr">"rendered"</span>: <span class="hljs-string">"Sample Page"</span>
+        },
+        <span class="hljs-attr">"content"</span>: {
+            <span class="hljs-attr">"rendered"</span>: <span class="hljs-string">"\n&lt;p&gt;This is an example page. It&amp;#8217;s different from a blog post because it will stay in one place and will show up in your site navigation (in most themes). Most people start with an About page that introduces them to potential site visitors. It might say something like this:&lt;\/p&gt;\n\n\n\n&lt;blockquote class=\"wp-block-quote\"&gt;&lt;p&gt;Hi there! I&amp;#8217;m a bike messenger by day, aspiring actor by night, and this is my website. I live in Los Angeles, have a great dog named Jack, and I like pi&amp;#241;a coladas. (And gettin&amp;#8217; caught in the rain.)&lt;\/p&gt;&lt;\/blockquote&gt;\n\n\n\n&lt;p&gt;&amp;#8230;or something like this:&lt;\/p&gt;\n\n\n\n&lt;blockquote class=\"wp-block-quote\"&gt;&lt;p&gt;The XYZ Doohickey Company was founded in 1971, and has been providing quality doohickeys to the public ever since. Located in Gotham City, XYZ employs over 2,000 people and does all kinds of awesome things for the Gotham community.&lt;\/p&gt;&lt;\/blockquote&gt;\n\n\n\n&lt;p&gt;As a new WordPress user, you should go to &lt;a href=\"http:\/\/domain.com\/wordpress\/wp-admin\/\"&gt;your dashboard&lt;\/a&gt; to delete this page and create new pages for your content. Have fun!&lt;\/p&gt;\n"</span>,
+            <span class="hljs-attr">"protected"</span>: <span class="hljs-literal">false</span>
+        },
+        <span class="hljs-attr">"excerpt"</span>: {
+            <span class="hljs-attr">"rendered"</span>: <span class="hljs-string">"&lt;p&gt;This is an example page. It&amp;#8217;s different from a blog post because it will stay in one place and will show up in your site navigation (in most themes). Most people start with an About page that introduces them to potential site visitors. It might say something like this: Hi there! I&amp;#8217;m a bike messenger [&amp;hellip;]&lt;\/p&gt;\n"</span>,
+            <span class="hljs-attr">"protected"</span>: <span class="hljs-literal">false</span>
+        },
+        <span class="hljs-attr">"author"</span>: <span class="hljs-number">1</span>,
+        <span class="hljs-attr">"featured_media"</span>: <span class="hljs-number">0</span>,
+        <span class="hljs-attr">"parent"</span>: <span class="hljs-number">0</span>,
+        <span class="hljs-attr">"menu_order"</span>: <span class="hljs-number">0</span>,
+        <span class="hljs-attr">"comment_status"</span>: <span class="hljs-string">"closed"</span>,
+        <span class="hljs-attr">"ping_status"</span>: <span class="hljs-string">"open"</span>,
+        <span class="hljs-attr">"template"</span>: <span class="hljs-string">""</span>,
+        <span class="hljs-attr">"meta"</span>: [],
+        <span class="hljs-attr">"acf"</span>: <span class="hljs-literal">false</span>,
+        <span class="hljs-attr">"_links"</span>: {
+            <span class="hljs-attr">"self"</span>: [
+                {
+                    <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/pages\/2"</span>
+                }
+            ],
+            <span class="hljs-attr">"collection"</span>: [
+                {
+                    <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/pages"</span>
+                }
+            ],
+            <span class="hljs-attr">"about"</span>: [
+                {
+                    <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/types\/page"</span>
+                }
+            ],
+            <span class="hljs-attr">"author"</span>: [
+                {
+                    <span class="hljs-attr">"embeddable"</span>: <span class="hljs-literal">true</span>,
+                    <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/users\/1"</span>
+                }
+            ],
+            <span class="hljs-attr">"replies"</span>: [
+                {
+                    <span class="hljs-attr">"embeddable"</span>: <span class="hljs-literal">true</span>,
+                    <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/comments?post=2"</span>
+                }
+            ],
+            <span class="hljs-attr">"version-history"</span>: [
+                {
+                    <span class="hljs-attr">"count"</span>: <span class="hljs-number">0</span>,
+                    <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/pages\/2\/revisions"</span>
+                }
+            ],
+            <span class="hljs-attr">"wp:attachment"</span>: [
+                {
+                    <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/media?parent=2"</span>
+                }
+            ],
+            <span class="hljs-attr">"curies"</span>: [
+                {
+                    <span class="hljs-attr">"name"</span>: <span class="hljs-string">"wp"</span>,
+                    <span class="hljs-attr">"href"</span>: <span class="hljs-string">"https:\/\/api.w.org\/{rel}"</span>,
+                    <span class="hljs-attr">"templated"</span>: <span class="hljs-literal">true</span>
+                }
+            ]
+        }
+    }
+]
+</code></pre></div></div></div></div><div class="row"><div class="col-6 lhs"><div class="resource-heading way-point" id="resource-posts">Posts</div></div><div class="col-6 rhs"></div></div><div class="row"><div class="col-6 lhs"><div class="transition-heading way-point" id="transition-get-posts-get">Get Posts</div></div><div class="col-6 rhs"><div class="api-definition"><div class="api-definition-heading rhs-heading">Definition</div><div class="api-definition-description rhs-highlight code"><span class="api-method get">GET</span><span class="api-url"> http://domain.com/wp-json/wp/v2/posts</span></div></div><div class="sample-request-heading rhs-heading">Request</div><div class="headers"><div class="headers-heading rhs-heading">Request Headers</div><div class="headers-description code rhs-highlight"><pre class="hljs"><code><div class="header-row"><span class="key hljs-attr">Content-Type: </span><span class="value">application/json</span></div></code></pre></div></div><div class="sample-request"><div class="sample-request-heading rhs-heading">Example Request</div><div class="sample-request-description rhs-highlight code"> <pre class="hljs"><code>curl --request GET \<br>  --url http:<span class="hljs-comment">//domain.com/wp-json/wp/v2/posts \</span>
+  --header <span class="hljs-string">'content-type: application/json'</span></code></pre></div></div><div class="sample-response"><div class="sample-response-heading rhs-heading"> <span>Response </span><span class="status-code">200</span></div><div class="headers"><div class="headers-heading rhs-heading">Response Headers</div><div class="headers-description code rhs-highlight"><pre class="hljs"><code><div class="header-row"><span class="key hljs-attr">Content-Type: </span><span class="value">application/json</span></div></code></pre></div></div><div class="sample-response-body rhs-heading">Response Body</div><div class="sample-response-body-description rhs-highlight code"><pre class="hljs"><code>[
+    {
+        <span class="hljs-attr">"id"</span>: <span class="hljs-number">1</span>,
+        <span class="hljs-attr">"date"</span>: <span class="hljs-string">"2019-06-21T09:43:30"</span>,
+        <span class="hljs-attr">"date_gmt"</span>: <span class="hljs-string">"2019-06-21T09:43:30"</span>,
+        <span class="hljs-attr">"guid"</span>: {
+            <span class="hljs-attr">"rendered"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/?p=1"</span>
+        },
+        <span class="hljs-attr">"modified"</span>: <span class="hljs-string">"2019-06-21T10:04:50"</span>,
+        <span class="hljs-attr">"modified_gmt"</span>: <span class="hljs-string">"2019-06-21T10:04:50"</span>,
+        <span class="hljs-attr">"slug"</span>: <span class="hljs-string">"hello-world"</span>,
+        <span class="hljs-attr">"status"</span>: <span class="hljs-string">"publish"</span>,
+        <span class="hljs-attr">"type"</span>: <span class="hljs-string">"post"</span>,
+        <span class="hljs-attr">"link"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/hello-world\/"</span>,
+        <span class="hljs-attr">"title"</span>: {
+            <span class="hljs-attr">"rendered"</span>: <span class="hljs-string">"Hello world!"</span>
+        },
+        <span class="hljs-attr">"content"</span>: {
+            <span class="hljs-attr">"rendered"</span>: <span class="hljs-string">"\n&lt;p&gt;Welcome to WordPress. This is your first post. Edit or delete it, then start writing!&lt;\/p&gt;\n"</span>,
+            <span class="hljs-attr">"protected"</span>: <span class="hljs-literal">false</span>
+        },
+        <span class="hljs-attr">"excerpt"</span>: {
+            <span class="hljs-attr">"rendered"</span>: <span class="hljs-string">"&lt;p&gt;Welcome to WordPress. This is your first post. Edit or delete it, then start writing!&lt;\/p&gt;\n"</span>,
+            <span class="hljs-attr">"protected"</span>: <span class="hljs-literal">false</span>
+        },
+        <span class="hljs-attr">"author"</span>: <span class="hljs-number">1</span>,
+        <span class="hljs-attr">"featured_media"</span>: <span class="hljs-number">0</span>,
+        <span class="hljs-attr">"comment_status"</span>: <span class="hljs-string">"open"</span>,
+        <span class="hljs-attr">"ping_status"</span>: <span class="hljs-string">"open"</span>,
+        <span class="hljs-attr">"sticky"</span>: <span class="hljs-literal">false</span>,
+        <span class="hljs-attr">"template"</span>: <span class="hljs-string">""</span>,
+        <span class="hljs-attr">"format"</span>: <span class="hljs-string">"standard"</span>,
+        <span class="hljs-attr">"meta"</span>: [],
+        <span class="hljs-attr">"categories"</span>: [
+            <span class="hljs-number">1</span>
+        ],
+        <span class="hljs-attr">"tags"</span>: [],
+        <span class="hljs-attr">"_links"</span>: {
+            <span class="hljs-attr">"self"</span>: [
+                {
+                    <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/posts\/1"</span>
+                }
+            ],
+            <span class="hljs-attr">"collection"</span>: [
+                {
+                    <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/posts"</span>
+                }
+            ],
+            <span class="hljs-attr">"about"</span>: [
+                {
+                    <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/types\/post"</span>
+                }
+            ],
+            <span class="hljs-attr">"author"</span>: [
+                {
+                    <span class="hljs-attr">"embeddable"</span>: <span class="hljs-literal">true</span>,
+                    <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/users\/1"</span>
+                }
+            ],
+            <span class="hljs-attr">"replies"</span>: [
+                {
+                    <span class="hljs-attr">"embeddable"</span>: <span class="hljs-literal">true</span>,
+                    <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/comments?post=1"</span>
+                }
+            ],
+            <span class="hljs-attr">"version-history"</span>: [
+                {
+                    <span class="hljs-attr">"count"</span>: <span class="hljs-number">3</span>,
+                    <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/posts\/1\/revisions"</span>
+                }
+            ],
+            <span class="hljs-attr">"predecessor-version"</span>: [
+                {
+                    <span class="hljs-attr">"id"</span>: <span class="hljs-number">11</span>,
+                    <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/posts\/1\/revisions\/11"</span>
+                }
+            ],
+            <span class="hljs-attr">"wp:attachment"</span>: [
+                {
+                    <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/media?parent=1"</span>
+                }
+            ],
+            <span class="hljs-attr">"wp:term"</span>: [
+                {
+                    <span class="hljs-attr">"taxonomy"</span>: <span class="hljs-string">"category"</span>,
+                    <span class="hljs-attr">"embeddable"</span>: <span class="hljs-literal">true</span>,
+                    <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/categories?post=1"</span>
+                },
+                {
+                    <span class="hljs-attr">"taxonomy"</span>: <span class="hljs-string">"post_tag"</span>,
+                    <span class="hljs-attr">"embeddable"</span>: <span class="hljs-literal">true</span>,
+                    <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/tags?post=1"</span>
+                }
+            ],
+            <span class="hljs-attr">"curies"</span>: [
+                {
+                    <span class="hljs-attr">"name"</span>: <span class="hljs-string">"wp"</span>,
+                    <span class="hljs-attr">"href"</span>: <span class="hljs-string">"https:\/\/api.w.org\/{rel}"</span>,
+                    <span class="hljs-attr">"templated"</span>: <span class="hljs-literal">true</span>
+                }
+            ]
+        }
+    }
+]
+</code></pre></div></div></div></div><div class="row"><div class="col-6 lhs"><div class="resource-heading way-point" id="resource-post">Post</div></div><div class="col-6 rhs"></div></div><div class="row"><div class="col-6 lhs"><div class="transition-heading way-point" id="transition-get-post-get">Get Post</div><h5 class="part-heading">Url Parameters</h5><ul class="params"><li class="param"><div class="left"><div><span class="key">id</span></div><div><span class="type">string</span></div></div><div class="right"></div></li></ul></div><div class="col-6 rhs"><div class="api-definition"><div class="api-definition-heading rhs-heading">Definition</div><div class="api-definition-description rhs-highlight code"><span class="api-method get">GET</span><span class="api-url"> http://domain.com/wp-json/wp/v2/posts/<mark>{id}</mark></span></div></div><div class="sample-request-heading rhs-heading">Request</div><div class="headers"><div class="headers-heading rhs-heading">Request Headers</div><div class="headers-description code rhs-highlight"><pre class="hljs"><code><div class="header-row"><span class="key hljs-attr">Content-Type: </span><span class="value">application/json</span></div></code></pre></div></div><div class="sample-request"><div class="sample-request-heading rhs-heading">Example Request</div><div class="sample-request-description rhs-highlight code"> <pre class="hljs"><code>curl --request GET \<br>  --url http:<span class="hljs-comment">//domain.com/wp-json/wp/v2/posts/{id} \</span>
+  --header <span class="hljs-string">'content-type: application/json'</span></code></pre></div></div><div class="sample-response"><div class="sample-response-heading rhs-heading"> <span>Response </span><span class="status-code">200</span></div><div class="headers"><div class="headers-heading rhs-heading">Response Headers</div><div class="headers-description code rhs-highlight"><pre class="hljs"><code><div class="header-row"><span class="key hljs-attr">Content-Type: </span><span class="value">application/json</span></div></code></pre></div></div><div class="sample-response-body rhs-heading">Response Body</div><div class="sample-response-body-description rhs-highlight code"><pre class="hljs"><code>{
+    <span class="hljs-attr">"id"</span>: <span class="hljs-number">1</span>,
+    <span class="hljs-attr">"date"</span>: <span class="hljs-string">"2019-06-21T09:43:30"</span>,
+    <span class="hljs-attr">"date_gmt"</span>: <span class="hljs-string">"2019-06-21T09:43:30"</span>,
+    <span class="hljs-attr">"guid"</span>: {
+        <span class="hljs-attr">"rendered"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/?p=1"</span>
+    },
+    <span class="hljs-attr">"modified"</span>: <span class="hljs-string">"2019-06-21T10:04:50"</span>,
+    <span class="hljs-attr">"modified_gmt"</span>: <span class="hljs-string">"2019-06-21T10:04:50"</span>,
+    <span class="hljs-attr">"slug"</span>: <span class="hljs-string">"hello-world"</span>,
+    <span class="hljs-attr">"status"</span>: <span class="hljs-string">"publish"</span>,
+    <span class="hljs-attr">"type"</span>: <span class="hljs-string">"post"</span>,
+    <span class="hljs-attr">"link"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/hello-world\/"</span>,
+    <span class="hljs-attr">"title"</span>: {
+        <span class="hljs-attr">"rendered"</span>: <span class="hljs-string">"Hello world!"</span>
+    },
+    <span class="hljs-attr">"content"</span>: {
+        <span class="hljs-attr">"rendered"</span>: <span class="hljs-string">"\n&lt;p&gt;Welcome to WordPress. This is your first post. Edit or delete it, then start writing!&lt;\/p&gt;\n"</span>,
+        <span class="hljs-attr">"protected"</span>: <span class="hljs-literal">false</span>
+    },
+    <span class="hljs-attr">"excerpt"</span>: {
+        <span class="hljs-attr">"rendered"</span>: <span class="hljs-string">"&lt;p&gt;Welcome to WordPress. This is your first post. Edit or delete it, then start writing!&lt;\/p&gt;\n"</span>,
+        <span class="hljs-attr">"protected"</span>: <span class="hljs-literal">false</span>
+    },
+    <span class="hljs-attr">"author"</span>: <span class="hljs-number">1</span>,
+    <span class="hljs-attr">"featured_media"</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">"comment_status"</span>: <span class="hljs-string">"open"</span>,
+    <span class="hljs-attr">"ping_status"</span>: <span class="hljs-string">"open"</span>,
+    <span class="hljs-attr">"sticky"</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">"template"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-attr">"format"</span>: <span class="hljs-string">"standard"</span>,
+    <span class="hljs-attr">"meta"</span>: [],
+    <span class="hljs-attr">"categories"</span>: [
+        <span class="hljs-number">1</span>
+    ],
+    <span class="hljs-attr">"tags"</span>: [],
+    <span class="hljs-attr">"_links"</span>: {
+        <span class="hljs-attr">"self"</span>: [
+            {
+                <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/posts\/1"</span>
+            }
+        ],
+        <span class="hljs-attr">"collection"</span>: [
+            {
+                <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/posts"</span>
+            }
+        ],
+        <span class="hljs-attr">"about"</span>: [
+            {
+                <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/types\/post"</span>
+            }
+        ],
+        <span class="hljs-attr">"author"</span>: [
+            {
+                <span class="hljs-attr">"embeddable"</span>: <span class="hljs-literal">true</span>,
+                <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/users\/1"</span>
+            }
+        ],
+        <span class="hljs-attr">"replies"</span>: [
+            {
+                <span class="hljs-attr">"embeddable"</span>: <span class="hljs-literal">true</span>,
+                <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/comments?post=1"</span>
+            }
+        ],
+        <span class="hljs-attr">"version-history"</span>: [
+            {
+                <span class="hljs-attr">"count"</span>: <span class="hljs-number">3</span>,
+                <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/posts\/1\/revisions"</span>
+            }
+        ],
+        <span class="hljs-attr">"predecessor-version"</span>: [
+            {
+                <span class="hljs-attr">"id"</span>: <span class="hljs-number">11</span>,
+                <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/posts\/1\/revisions\/11"</span>
+            }
+        ],
+        <span class="hljs-attr">"wp:attachment"</span>: [
+            {
+                <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/media?parent=1"</span>
+            }
+        ],
+        <span class="hljs-attr">"wp:term"</span>: [
+            {
+                <span class="hljs-attr">"taxonomy"</span>: <span class="hljs-string">"category"</span>,
+                <span class="hljs-attr">"embeddable"</span>: <span class="hljs-literal">true</span>,
+                <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/categories?post=1"</span>
+            },
+            {
+                <span class="hljs-attr">"taxonomy"</span>: <span class="hljs-string">"post_tag"</span>,
+                <span class="hljs-attr">"embeddable"</span>: <span class="hljs-literal">true</span>,
+                <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/tags?post=1"</span>
+            }
+        ],
+        <span class="hljs-attr">"curies"</span>: [
+            {
+                <span class="hljs-attr">"name"</span>: <span class="hljs-string">"wp"</span>,
+                <span class="hljs-attr">"href"</span>: <span class="hljs-string">"https:\/\/api.w.org\/{rel}"</span>,
+                <span class="hljs-attr">"templated"</span>: <span class="hljs-literal">true</span>
+            }
+        ]
+    }
+}
+</code></pre></div></div></div></div><div class="row"><div class="col-6 lhs"><div class="resource-heading way-point" id="resource-best-practices">Best Practices</div></div><div class="col-6 rhs"></div></div><div class="row"><div class="col-6 lhs"><div class="transition-heading way-point" id="transition-get-best-practices-get">Get Best Practices</div></div><div class="col-6 rhs"><div class="api-definition"><div class="api-definition-heading rhs-heading">Definition</div><div class="api-definition-description rhs-highlight code"><span class="api-method get">GET</span><span class="api-url"> http://domain.com/wp-json/wp/v2/best-practices</span></div></div><div class="sample-request-heading rhs-heading">Request</div><div class="headers"><div class="headers-heading rhs-heading">Request Headers</div><div class="headers-description code rhs-highlight"><pre class="hljs"><code><div class="header-row"><span class="key hljs-attr">Content-Type: </span><span class="value">application/json</span></div></code></pre></div></div><div class="sample-request"><div class="sample-request-heading rhs-heading">Example Request</div><div class="sample-request-description rhs-highlight code"> <pre class="hljs"><code>curl --request GET \<br>  --url http:<span class="hljs-comment">//domain.com/wp-json/wp/v2/best-practices \</span>
+  --header <span class="hljs-string">'content-type: application/json'</span></code></pre></div></div><div class="sample-response"><div class="sample-response-heading rhs-heading"> <span>Response </span><span class="status-code">200</span></div><div class="headers"><div class="headers-heading rhs-heading">Response Headers</div><div class="headers-description code rhs-highlight"><pre class="hljs"><code><div class="header-row"><span class="key hljs-attr">Content-Type: </span><span class="value">application/json</span></div></code></pre></div></div><div class="sample-response-body rhs-heading">Response Body</div><div class="sample-response-body-description rhs-highlight code"><pre class="hljs"><code>[
+{
+    <span class="hljs-attr">"id"</span>: <span class="hljs-number">34</span>,
+    <span class="hljs-attr">"date"</span>: <span class="hljs-string">"2019-06-24T11:25:09"</span>,
+    <span class="hljs-attr">"date_gmt"</span>: <span class="hljs-string">"2019-06-24T11:25:09"</span>,
+    <span class="hljs-attr">"guid"</span>: {
+        <span class="hljs-attr">"rendered"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/?post_type=best-practices&amp;#038;p=34"</span>
+    },
+    <span class="hljs-attr">"modified"</span>: <span class="hljs-string">"2019-06-24T11:30:59"</span>,
+    <span class="hljs-attr">"modified_gmt"</span>: <span class="hljs-string">"2019-06-24T11:30:59"</span>,
+    <span class="hljs-attr">"slug"</span>: <span class="hljs-string">"women-in-digital-initiatives-luxembourg"</span>,
+    <span class="hljs-attr">"status"</span>: <span class="hljs-string">"publish"</span>,
+    <span class="hljs-attr">"type"</span>: <span class="hljs-string">"best-practices"</span>,
+    <span class="hljs-attr">"link"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/best-practices\/women-in-digital-initiatives-luxembourg\/"</span>,
+    <span class="hljs-attr">"title"</span>: {
+        <span class="hljs-attr">"rendered"</span>: <span class="hljs-string">"Women in Digital Initiatives Luxembourg"</span>
+    },
+    <span class="hljs-attr">"content"</span>: {
+        <span class="hljs-attr">"rendered"</span>: <span class="hljs-string">"\n&lt;p&gt;Launched as a grassroots initiative by women volunteers, WIDE has now become the leading and national reference organisation to champion inclusion of girls &amp;amp; women in the new technologies and the digital field.&lt;br&gt;&lt;\/p&gt;\n\n\n\n&lt;p&gt;WIDE has created strong links with industry, government and educators at the national and European level to provide concrete &amp;amp; practical actions on the field. Our organisation organizes activities, workshops &amp;amp; training for both women and men, with the aim of introducing more diversity in new technologies, start-ups and the ICT industry.&lt;\/p&gt;\n"</span>,
+        <span class="hljs-attr">"protected"</span>: <span class="hljs-literal">false</span>
+    },
+    <span class="hljs-attr">"excerpt"</span>: {
+        <span class="hljs-attr">"rendered"</span>: <span class="hljs-string">"&lt;p&gt;Launched as a grassroots initiative by women volunteers, WIDE has now become the leading and national reference organisation to champion inclusion of girls &amp;amp; women in the new technologies and the digital field. WIDE has created strong links with industry, government and educators at the national and European level to provide concrete &amp;amp; practical actions [&amp;hellip;]&lt;\/p&gt;\n"</span>,
+        <span class="hljs-attr">"protected"</span>: <span class="hljs-literal">false</span>
+    },
+    <span class="hljs-attr">"author"</span>: <span class="hljs-number">1</span>,
+    <span class="hljs-attr">"featured_media"</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">"menu_order"</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">"comment_status"</span>: <span class="hljs-string">"open"</span>,
+    <span class="hljs-attr">"ping_status"</span>: <span class="hljs-string">"open"</span>,
+    <span class="hljs-attr">"template"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-attr">"meta"</span>: [],
+    <span class="hljs-attr">"acf"</span>: {
+        <span class="hljs-attr">"geographical_scope"</span>: [
+            {
+                <span class="hljs-attr">"term_id"</span>: <span class="hljs-number">3</span>,
+                <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Belgium"</span>,
+                <span class="hljs-attr">"slug"</span>: <span class="hljs-string">"belgium"</span>,
+                <span class="hljs-attr">"term_group"</span>: <span class="hljs-number">0</span>,
+                <span class="hljs-attr">"term_taxonomy_id"</span>: <span class="hljs-number">3</span>,
+                <span class="hljs-attr">"taxonomy"</span>: <span class="hljs-string">"category"</span>,
+                <span class="hljs-attr">"description"</span>: <span class="hljs-string">""</span>,
+                <span class="hljs-attr">"parent"</span>: <span class="hljs-number">0</span>,
+                <span class="hljs-attr">"count"</span>: <span class="hljs-number">0</span>,
+                <span class="hljs-attr">"filter"</span>: <span class="hljs-string">"raw"</span>
+            },
+            {
+                <span class="hljs-attr">"term_id"</span>: <span class="hljs-number">8</span>,
+                <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Luxembourg"</span>,
+                <span class="hljs-attr">"slug"</span>: <span class="hljs-string">"luxembourg"</span>,
+                <span class="hljs-attr">"term_group"</span>: <span class="hljs-number">0</span>,
+                <span class="hljs-attr">"term_taxonomy_id"</span>: <span class="hljs-number">8</span>,
+                <span class="hljs-attr">"taxonomy"</span>: <span class="hljs-string">"category"</span>,
+                <span class="hljs-attr">"description"</span>: <span class="hljs-string">""</span>,
+                <span class="hljs-attr">"parent"</span>: <span class="hljs-number">0</span>,
+                <span class="hljs-attr">"count"</span>: <span class="hljs-number">0</span>,
+                <span class="hljs-attr">"filter"</span>: <span class="hljs-string">"raw"</span>
+            }
+        ],
+        <span class="hljs-attr">"type_of_iniative"</span>: <span class="hljs-string">"Digital Skills Award Participant"</span>,
+        <span class="hljs-attr">"target_group"</span>: <span class="hljs-string">"Digital skills for women and girls"</span>,
+        <span class="hljs-attr">"type_of_funding"</span>: <span class="hljs-string">"Public and Private"</span>,
+        <span class="hljs-attr">"website"</span>: <span class="hljs-string">"http:\/\/wide.lu"</span>,
+        <span class="hljs-attr">"start_date"</span>: <span class="hljs-string">"04\/07\/2018"</span>,
+        <span class="hljs-attr">"end_date"</span>: <span class="hljs-string">"04\/09\/2018"</span>,
+        <span class="hljs-attr">"organisation"</span>: <span class="hljs-string">"Work Wide Women"</span>,
+        <span class="hljs-attr">"topics"</span>: [
+            {
+                <span class="hljs-attr">"term_id"</span>: <span class="hljs-number">6</span>,
+                <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Commerce"</span>,
+                <span class="hljs-attr">"slug"</span>: <span class="hljs-string">"commerce"</span>,
+                <span class="hljs-attr">"term_group"</span>: <span class="hljs-number">0</span>,
+                <span class="hljs-attr">"term_taxonomy_id"</span>: <span class="hljs-number">6</span>,
+                <span class="hljs-attr">"taxonomy"</span>: <span class="hljs-string">"post_tag"</span>,
+                <span class="hljs-attr">"description"</span>: <span class="hljs-string">""</span>,
+                <span class="hljs-attr">"parent"</span>: <span class="hljs-number">0</span>,
+                <span class="hljs-attr">"count"</span>: <span class="hljs-number">0</span>,
+                <span class="hljs-attr">"filter"</span>: <span class="hljs-string">"raw"</span>
+            },
+            {
+                <span class="hljs-attr">"term_id"</span>: <span class="hljs-number">4</span>,
+                <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Machine Learning"</span>,
+                <span class="hljs-attr">"slug"</span>: <span class="hljs-string">"machine-learning"</span>,
+                <span class="hljs-attr">"term_group"</span>: <span class="hljs-number">0</span>,
+                <span class="hljs-attr">"term_taxonomy_id"</span>: <span class="hljs-number">4</span>,
+                <span class="hljs-attr">"taxonomy"</span>: <span class="hljs-string">"post_tag"</span>,
+                <span class="hljs-attr">"description"</span>: <span class="hljs-string">""</span>,
+                <span class="hljs-attr">"parent"</span>: <span class="hljs-number">0</span>,
+                <span class="hljs-attr">"count"</span>: <span class="hljs-number">0</span>,
+                <span class="hljs-attr">"filter"</span>: <span class="hljs-string">"raw"</span>
+            }
+        ]
+    },
+    <span class="hljs-attr">"_links"</span>: {
+        <span class="hljs-attr">"self"</span>: [
+            {
+                <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/best-practices\/34"</span>
+            }
+        ],
+        <span class="hljs-attr">"collection"</span>: [
+            {
+                <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/best-practices"</span>
+            }
+        ],
+        <span class="hljs-attr">"about"</span>: [
+            {
+                <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/types\/best-practices"</span>
+            }
+        ],
+        <span class="hljs-attr">"author"</span>: [
+            {
+                <span class="hljs-attr">"embeddable"</span>: <span class="hljs-literal">true</span>,
+                <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/users\/1"</span>
+            }
+        ],
+        <span class="hljs-attr">"replies"</span>: [
+            {
+                <span class="hljs-attr">"embeddable"</span>: <span class="hljs-literal">true</span>,
+                <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/comments?post=34"</span>
+            }
+        ],
+        <span class="hljs-attr">"version-history"</span>: [
+            {
+                <span class="hljs-attr">"count"</span>: <span class="hljs-number">5</span>,
+                <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/best-practices\/34\/revisions"</span>
+            }
+        ],
+        <span class="hljs-attr">"predecessor-version"</span>: [
+            {
+                <span class="hljs-attr">"id"</span>: <span class="hljs-number">41</span>,
+                <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/best-practices\/34\/revisions\/41"</span>
+            }
+        ],
+        <span class="hljs-attr">"wp:attachment"</span>: [
+            {
+                <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/media?parent=34"</span>
+            }
+        ],
+        <span class="hljs-attr">"curies"</span>: [
+            {
+                <span class="hljs-attr">"name"</span>: <span class="hljs-string">"wp"</span>,
+                <span class="hljs-attr">"href"</span>: <span class="hljs-string">"https:\/\/api.w.org\/{rel}"</span>,
+                <span class="hljs-attr">"templated"</span>: <span class="hljs-literal">true</span>
+            }
+        ]
+    }
+},
+{
+    <span class="hljs-attr">"id"</span>: <span class="hljs-number">29</span>,
+    <span class="hljs-attr">"date"</span>: <span class="hljs-string">"2019-06-24T11:20:27"</span>,
+    <span class="hljs-attr">"date_gmt"</span>: <span class="hljs-string">"2019-06-24T11:20:27"</span>,
+    <span class="hljs-attr">"guid"</span>: {
+        <span class="hljs-attr">"rendered"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/?post_type=best-practices&amp;#038;p=29"</span>
+    },
+    <span class="hljs-attr">"modified"</span>: <span class="hljs-string">"2019-06-24T11:27:32"</span>,
+    <span class="hljs-attr">"modified_gmt"</span>: <span class="hljs-string">"2019-06-24T11:27:32"</span>,
+    <span class="hljs-attr">"slug"</span>: <span class="hljs-string">"work-wide-women"</span>,
+    <span class="hljs-attr">"status"</span>: <span class="hljs-string">"publish"</span>,
+    <span class="hljs-attr">"type"</span>: <span class="hljs-string">"best-practices"</span>,
+    <span class="hljs-attr">"link"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/best-practices\/work-wide-women\/"</span>,
+    <span class="hljs-attr">"title"</span>: {
+        <span class="hljs-attr">"rendered"</span>: <span class="hljs-string">"WORK WIDE WOMEN"</span>
+    },
+    <span class="hljs-attr">"content"</span>: {
+        <span class="hljs-attr">"rendered"</span>: <span class="hljs-string">"\n&lt;p&gt;The project offers to different types of benefit. On one side, it provides trainings to women to develop new skills and a better understanding about newly created professions. On the other side, it fosters companies to increase the presence of women within their employees. Training is the main driver: we strongly believe that education is the key to open all doors.&lt;br&gt;&lt;\/p&gt;\n\n\n\n&lt;p&gt;The company was founded in Bologna in 2014, thanks to the support of TIM #WCAP: a Telecom Italia program that rewards and supports innovative business projects. Over the years, around these issues, we have built a national and international network that has given us the opportunity to achieve numerous awards and work alongside large companies that operate in the digital and technological innovation.&lt;\/p&gt;\n\n\n\n&lt;p&gt;We do online trainings through our platform, and vis-a-vis, addressed to women, and to companies&amp;#8217; employees and management.&lt;\/p&gt;\n\n\n\n&lt;p&gt;We also carry out digital literacy program for women refugees and foreign women in order to offer them a different option to enter our job market and a different point of view about the job opportunities in the country.&lt;\/p&gt;\n\n\n\n&lt;p&gt;Thanks to projects such as this, we gained the WELCOME Logo issued by the UNHCR; we have been during 2017 one of the companies who facilitated the refugees integration in the job market in Italy.&lt;\/p&gt;\n\n\n\n&lt;p&gt;We care about diversity to convert it in equality: our aim is to create an equal environment, where men and women can work together to improve our lives, to increase our economy and improving our society.&lt;\/p&gt;\n"</span>,
+        <span class="hljs-attr">"protected"</span>: <span class="hljs-literal">false</span>
+    },
+    <span class="hljs-attr">"excerpt"</span>: {
+        <span class="hljs-attr">"rendered"</span>: <span class="hljs-string">"&lt;p&gt;The project offers to different types of benefit. On one side, it provides trainings to women to develop new skills and a better understanding about newly created professions. On the other side, it fosters companies to increase the presence of women within their employees. Training is the main driver: we strongly believe that education is [&amp;hellip;]&lt;\/p&gt;\n"</span>,
+        <span class="hljs-attr">"protected"</span>: <span class="hljs-literal">false</span>
+    },
+    <span class="hljs-attr">"author"</span>: <span class="hljs-number">1</span>,
+    <span class="hljs-attr">"featured_media"</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">"menu_order"</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">"comment_status"</span>: <span class="hljs-string">"open"</span>,
+    <span class="hljs-attr">"ping_status"</span>: <span class="hljs-string">"open"</span>,
+    <span class="hljs-attr">"template"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-attr">"meta"</span>: [],
+    <span class="hljs-attr">"acf"</span>: {
+        <span class="hljs-attr">"geographical_scope"</span>: [
+            {
+                <span class="hljs-attr">"term_id"</span>: <span class="hljs-number">2</span>,
+                <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Greece"</span>,
+                <span class="hljs-attr">"slug"</span>: <span class="hljs-string">"greece"</span>,
+                <span class="hljs-attr">"term_group"</span>: <span class="hljs-number">0</span>,
+                <span class="hljs-attr">"term_taxonomy_id"</span>: <span class="hljs-number">2</span>,
+                <span class="hljs-attr">"taxonomy"</span>: <span class="hljs-string">"category"</span>,
+                <span class="hljs-attr">"description"</span>: <span class="hljs-string">""</span>,
+                <span class="hljs-attr">"parent"</span>: <span class="hljs-number">0</span>,
+                <span class="hljs-attr">"count"</span>: <span class="hljs-number">0</span>,
+                <span class="hljs-attr">"filter"</span>: <span class="hljs-string">"raw"</span>
+            },
+            {
+                <span class="hljs-attr">"term_id"</span>: <span class="hljs-number">7</span>,
+                <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Italy"</span>,
+                <span class="hljs-attr">"slug"</span>: <span class="hljs-string">"italy"</span>,
+                <span class="hljs-attr">"term_group"</span>: <span class="hljs-number">0</span>,
+                <span class="hljs-attr">"term_taxonomy_id"</span>: <span class="hljs-number">7</span>,
+                <span class="hljs-attr">"taxonomy"</span>: <span class="hljs-string">"category"</span>,
+                <span class="hljs-attr">"description"</span>: <span class="hljs-string">""</span>,
+                <span class="hljs-attr">"parent"</span>: <span class="hljs-number">0</span>,
+                <span class="hljs-attr">"count"</span>: <span class="hljs-number">0</span>,
+                <span class="hljs-attr">"filter"</span>: <span class="hljs-string">"raw"</span>
+            },
+            {
+                <span class="hljs-attr">"term_id"</span>: <span class="hljs-number">8</span>,
+                <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Luxembourg"</span>,
+                <span class="hljs-attr">"slug"</span>: <span class="hljs-string">"luxembourg"</span>,
+                <span class="hljs-attr">"term_group"</span>: <span class="hljs-number">0</span>,
+                <span class="hljs-attr">"term_taxonomy_id"</span>: <span class="hljs-number">8</span>,
+                <span class="hljs-attr">"taxonomy"</span>: <span class="hljs-string">"category"</span>,
+                <span class="hljs-attr">"description"</span>: <span class="hljs-string">""</span>,
+                <span class="hljs-attr">"parent"</span>: <span class="hljs-number">0</span>,
+                <span class="hljs-attr">"count"</span>: <span class="hljs-number">0</span>,
+                <span class="hljs-attr">"filter"</span>: <span class="hljs-string">"raw"</span>
+            }
+        ],
+        <span class="hljs-attr">"type_of_iniative"</span>: <span class="hljs-string">"Digital Skills Award Participant"</span>,
+        <span class="hljs-attr">"target_group"</span>: <span class="hljs-string">"Digital skills for women and girls"</span>,
+        <span class="hljs-attr">"type_of_funding"</span>: <span class="hljs-string">"Public and Private"</span>,
+        <span class="hljs-attr">"website"</span>: <span class="hljs-string">"http:\/\/wide.lu"</span>,
+        <span class="hljs-attr">"start_date"</span>: <span class="hljs-string">"12\/06\/2019"</span>,
+        <span class="hljs-attr">"end_date"</span>: <span class="hljs-string">"25\/06\/2019"</span>,
+        <span class="hljs-attr">"organisation"</span>: <span class="hljs-string">"Work Wide Women"</span>,
+        <span class="hljs-attr">"topics"</span>: [
+            {
+                <span class="hljs-attr">"term_id"</span>: <span class="hljs-number">5</span>,
+                <span class="hljs-attr">"name"</span>: <span class="hljs-string">"AI"</span>,
+                <span class="hljs-attr">"slug"</span>: <span class="hljs-string">"ai"</span>,
+                <span class="hljs-attr">"term_group"</span>: <span class="hljs-number">0</span>,
+                <span class="hljs-attr">"term_taxonomy_id"</span>: <span class="hljs-number">5</span>,
+                <span class="hljs-attr">"taxonomy"</span>: <span class="hljs-string">"post_tag"</span>,
+                <span class="hljs-attr">"description"</span>: <span class="hljs-string">""</span>,
+                <span class="hljs-attr">"parent"</span>: <span class="hljs-number">0</span>,
+                <span class="hljs-attr">"count"</span>: <span class="hljs-number">0</span>,
+                <span class="hljs-attr">"filter"</span>: <span class="hljs-string">"raw"</span>
+            },
+            {
+                <span class="hljs-attr">"term_id"</span>: <span class="hljs-number">6</span>,
+                <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Commerce"</span>,
+                <span class="hljs-attr">"slug"</span>: <span class="hljs-string">"commerce"</span>,
+                <span class="hljs-attr">"term_group"</span>: <span class="hljs-number">0</span>,
+                <span class="hljs-attr">"term_taxonomy_id"</span>: <span class="hljs-number">6</span>,
+                <span class="hljs-attr">"taxonomy"</span>: <span class="hljs-string">"post_tag"</span>,
+                <span class="hljs-attr">"description"</span>: <span class="hljs-string">""</span>,
+                <span class="hljs-attr">"parent"</span>: <span class="hljs-number">0</span>,
+                <span class="hljs-attr">"count"</span>: <span class="hljs-number">0</span>,
+                <span class="hljs-attr">"filter"</span>: <span class="hljs-string">"raw"</span>
+            },
+            {
+                <span class="hljs-attr">"term_id"</span>: <span class="hljs-number">4</span>,
+                <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Machine Learning"</span>,
+                <span class="hljs-attr">"slug"</span>: <span class="hljs-string">"machine-learning"</span>,
+                <span class="hljs-attr">"term_group"</span>: <span class="hljs-number">0</span>,
+                <span class="hljs-attr">"term_taxonomy_id"</span>: <span class="hljs-number">4</span>,
+                <span class="hljs-attr">"taxonomy"</span>: <span class="hljs-string">"post_tag"</span>,
+                <span class="hljs-attr">"description"</span>: <span class="hljs-string">""</span>,
+                <span class="hljs-attr">"parent"</span>: <span class="hljs-number">0</span>,
+                <span class="hljs-attr">"count"</span>: <span class="hljs-number">0</span>,
+                <span class="hljs-attr">"filter"</span>: <span class="hljs-string">"raw"</span>
+            }
+        ]
+    },
+    <span class="hljs-attr">"_links"</span>: {
+        <span class="hljs-attr">"self"</span>: [
+            {
+                <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/best-practices\/29"</span>
+            }
+        ],
+        <span class="hljs-attr">"collection"</span>: [
+            {
+                <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/best-practices"</span>
+            }
+        ],
+        <span class="hljs-attr">"about"</span>: [
+            {
+                <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/types\/best-practices"</span>
+            }
+        ],
+        <span class="hljs-attr">"author"</span>: [
+            {
+                <span class="hljs-attr">"embeddable"</span>: <span class="hljs-literal">true</span>,
+                <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/users\/1"</span>
+            }
+        ],
+        <span class="hljs-attr">"replies"</span>: [
+            {
+                <span class="hljs-attr">"embeddable"</span>: <span class="hljs-literal">true</span>,
+                <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/comments?post=29"</span>
+            }
+        ],
+        <span class="hljs-attr">"version-history"</span>: [
+            {
+                <span class="hljs-attr">"count"</span>: <span class="hljs-number">6</span>,
+                <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/best-practices\/29\/revisions"</span>
+            }
+        ],
+        <span class="hljs-attr">"predecessor-version"</span>: [
+            {
+                <span class="hljs-attr">"id"</span>: <span class="hljs-number">38</span>,
+                <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/best-practices\/29\/revisions\/38"</span>
+            }
+        ],
+        <span class="hljs-attr">"wp:attachment"</span>: [
+            {
+                <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/media?parent=29"</span>
+            }
+        ],
+        <span class="hljs-attr">"curies"</span>: [
+            {
+                <span class="hljs-attr">"name"</span>: <span class="hljs-string">"wp"</span>,
+                <span class="hljs-attr">"href"</span>: <span class="hljs-string">"https:\/\/api.w.org\/{rel}"</span>,
+                <span class="hljs-attr">"templated"</span>: <span class="hljs-literal">true</span>
+            }
+        ]
+    }
+}
+]
+
+</code></pre></div></div></div></div><div class="row"><div class="col-6 lhs"><div class="resource-heading way-point" id="resource-best-practice">Best Practice</div></div><div class="col-6 rhs"></div></div><div class="row"><div class="col-6 lhs"><div class="transition-heading way-point" id="transition-get-best-practice-get">Get Best Practice</div><h5 class="part-heading">Url Parameters</h5><ul class="params"><li class="param"><div class="left"><div><span class="key">id</span></div><div><span class="type">string</span></div></div><div class="right"></div></li></ul></div><div class="col-6 rhs"><div class="api-definition"><div class="api-definition-heading rhs-heading">Definition</div><div class="api-definition-description rhs-highlight code"><span class="api-method get">GET</span><span class="api-url"> http://domain.com/wp-json/wp/v2/best-practices/<mark>{id}</mark></span></div></div><div class="sample-request-heading rhs-heading">Request</div><div class="headers"><div class="headers-heading rhs-heading">Request Headers</div><div class="headers-description code rhs-highlight"><pre class="hljs"><code><div class="header-row"><span class="key hljs-attr">Content-Type: </span><span class="value">application/json</span></div></code></pre></div></div><div class="sample-request"><div class="sample-request-heading rhs-heading">Example Request</div><div class="sample-request-description rhs-highlight code"> <pre class="hljs"><code>curl --request GET \<br>  --url http:<span class="hljs-comment">//domain.com/wp-json/wp/v2/best-practices/{id} \</span>
+  --header <span class="hljs-string">'content-type: application/json'</span></code></pre></div></div><div class="sample-response"><div class="sample-response-heading rhs-heading"> <span>Response </span><span class="status-code">200</span></div><div class="headers"><div class="headers-heading rhs-heading">Response Headers</div><div class="headers-description code rhs-highlight"><pre class="hljs"><code><div class="header-row"><span class="key hljs-attr">Content-Type: </span><span class="value">application/json</span></div></code></pre></div></div><div class="sample-response-body rhs-heading">Response Body</div><div class="sample-response-body-description rhs-highlight code"><pre class="hljs"><code>    {
+        <span class="hljs-attr">"id"</span>: <span class="hljs-number">34</span>,
+        <span class="hljs-attr">"date"</span>: <span class="hljs-string">"2019-06-24T11:25:09"</span>,
+        <span class="hljs-attr">"date_gmt"</span>: <span class="hljs-string">"2019-06-24T11:25:09"</span>,
+        <span class="hljs-attr">"guid"</span>: {
+            <span class="hljs-attr">"rendered"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/?post_type=best-practices&amp;#038;p=34"</span>
+        },
+        <span class="hljs-attr">"modified"</span>: <span class="hljs-string">"2019-06-24T11:30:59"</span>,
+        <span class="hljs-attr">"modified_gmt"</span>: <span class="hljs-string">"2019-06-24T11:30:59"</span>,
+        <span class="hljs-attr">"slug"</span>: <span class="hljs-string">"women-in-digital-initiatives-luxembourg"</span>,
+        <span class="hljs-attr">"status"</span>: <span class="hljs-string">"publish"</span>,
+        <span class="hljs-attr">"type"</span>: <span class="hljs-string">"best-practices"</span>,
+        <span class="hljs-attr">"link"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/best-practices\/women-in-digital-initiatives-luxembourg\/"</span>,
+        <span class="hljs-attr">"title"</span>: {
+            <span class="hljs-attr">"rendered"</span>: <span class="hljs-string">"Women in Digital Initiatives Luxembourg"</span>
+        },
+        <span class="hljs-attr">"content"</span>: {
+            <span class="hljs-attr">"rendered"</span>: <span class="hljs-string">"\n&lt;p&gt;Launched as a grassroots initiative by women volunteers, WIDE has now become the leading and national reference organisation to champion inclusion of girls &amp;amp; women in the new technologies and the digital field.&lt;br&gt;&lt;\/p&gt;\n\n\n\n&lt;p&gt;WIDE has created strong links with industry, government and educators at the national and European level to provide concrete &amp;amp; practical actions on the field. Our organisation organizes activities, workshops &amp;amp; training for both women and men, with the aim of introducing more diversity in new technologies, start-ups and the ICT industry.&lt;\/p&gt;\n"</span>,
+            <span class="hljs-attr">"protected"</span>: <span class="hljs-literal">false</span>
+        },
+        <span class="hljs-attr">"excerpt"</span>: {
+            <span class="hljs-attr">"rendered"</span>: <span class="hljs-string">"&lt;p&gt;Launched as a grassroots initiative by women volunteers, WIDE has now become the leading and national reference organisation to champion inclusion of girls &amp;amp; women in the new technologies and the digital field. WIDE has created strong links with industry, government and educators at the national and European level to provide concrete &amp;amp; practical actions [&amp;hellip;]&lt;\/p&gt;\n"</span>,
+            <span class="hljs-attr">"protected"</span>: <span class="hljs-literal">false</span>
+        },
+        <span class="hljs-attr">"author"</span>: <span class="hljs-number">1</span>,
+        <span class="hljs-attr">"featured_media"</span>: <span class="hljs-number">0</span>,
+        <span class="hljs-attr">"menu_order"</span>: <span class="hljs-number">0</span>,
+        <span class="hljs-attr">"comment_status"</span>: <span class="hljs-string">"open"</span>,
+        <span class="hljs-attr">"ping_status"</span>: <span class="hljs-string">"open"</span>,
+        <span class="hljs-attr">"template"</span>: <span class="hljs-string">""</span>,
+        <span class="hljs-attr">"meta"</span>: [],
+        <span class="hljs-attr">"acf"</span>: {
+            <span class="hljs-attr">"geographical_scope"</span>: [
+                {
+                    <span class="hljs-attr">"term_id"</span>: <span class="hljs-number">3</span>,
+                    <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Belgium"</span>,
+                    <span class="hljs-attr">"slug"</span>: <span class="hljs-string">"belgium"</span>,
+                    <span class="hljs-attr">"term_group"</span>: <span class="hljs-number">0</span>,
+                    <span class="hljs-attr">"term_taxonomy_id"</span>: <span class="hljs-number">3</span>,
+                    <span class="hljs-attr">"taxonomy"</span>: <span class="hljs-string">"category"</span>,
+                    <span class="hljs-attr">"description"</span>: <span class="hljs-string">""</span>,
+                    <span class="hljs-attr">"parent"</span>: <span class="hljs-number">0</span>,
+                    <span class="hljs-attr">"count"</span>: <span class="hljs-number">0</span>,
+                    <span class="hljs-attr">"filter"</span>: <span class="hljs-string">"raw"</span>
+                },
+                {
+                    <span class="hljs-attr">"term_id"</span>: <span class="hljs-number">8</span>,
+                    <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Luxembourg"</span>,
+                    <span class="hljs-attr">"slug"</span>: <span class="hljs-string">"luxembourg"</span>,
+                    <span class="hljs-attr">"term_group"</span>: <span class="hljs-number">0</span>,
+                    <span class="hljs-attr">"term_taxonomy_id"</span>: <span class="hljs-number">8</span>,
+                    <span class="hljs-attr">"taxonomy"</span>: <span class="hljs-string">"category"</span>,
+                    <span class="hljs-attr">"description"</span>: <span class="hljs-string">""</span>,
+                    <span class="hljs-attr">"parent"</span>: <span class="hljs-number">0</span>,
+                    <span class="hljs-attr">"count"</span>: <span class="hljs-number">0</span>,
+                    <span class="hljs-attr">"filter"</span>: <span class="hljs-string">"raw"</span>
+                }
+            ],
+            <span class="hljs-attr">"type_of_iniative"</span>: <span class="hljs-string">"Digital Skills Award Participant"</span>,
+            <span class="hljs-attr">"target_group"</span>: <span class="hljs-string">"Digital skills for women and girls"</span>,
+            <span class="hljs-attr">"type_of_funding"</span>: <span class="hljs-string">"Public and Private"</span>,
+            <span class="hljs-attr">"website"</span>: <span class="hljs-string">"http:\/\/wide.lu"</span>,
+            <span class="hljs-attr">"start_date"</span>: <span class="hljs-string">"04\/07\/2018"</span>,
+            <span class="hljs-attr">"end_date"</span>: <span class="hljs-string">"04\/09\/2018"</span>,
+            <span class="hljs-attr">"organisation"</span>: <span class="hljs-string">"Work Wide Women"</span>,
+            <span class="hljs-attr">"topics"</span>: [
+                {
+                    <span class="hljs-attr">"term_id"</span>: <span class="hljs-number">6</span>,
+                    <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Commerce"</span>,
+                    <span class="hljs-attr">"slug"</span>: <span class="hljs-string">"commerce"</span>,
+                    <span class="hljs-attr">"term_group"</span>: <span class="hljs-number">0</span>,
+                    <span class="hljs-attr">"term_taxonomy_id"</span>: <span class="hljs-number">6</span>,
+                    <span class="hljs-attr">"taxonomy"</span>: <span class="hljs-string">"post_tag"</span>,
+                    <span class="hljs-attr">"description"</span>: <span class="hljs-string">""</span>,
+                    <span class="hljs-attr">"parent"</span>: <span class="hljs-number">0</span>,
+                    <span class="hljs-attr">"count"</span>: <span class="hljs-number">0</span>,
+                    <span class="hljs-attr">"filter"</span>: <span class="hljs-string">"raw"</span>
+                },
+                {
+                    <span class="hljs-attr">"term_id"</span>: <span class="hljs-number">4</span>,
+                    <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Machine Learning"</span>,
+                    <span class="hljs-attr">"slug"</span>: <span class="hljs-string">"machine-learning"</span>,
+                    <span class="hljs-attr">"term_group"</span>: <span class="hljs-number">0</span>,
+                    <span class="hljs-attr">"term_taxonomy_id"</span>: <span class="hljs-number">4</span>,
+                    <span class="hljs-attr">"taxonomy"</span>: <span class="hljs-string">"post_tag"</span>,
+                    <span class="hljs-attr">"description"</span>: <span class="hljs-string">""</span>,
+                    <span class="hljs-attr">"parent"</span>: <span class="hljs-number">0</span>,
+                    <span class="hljs-attr">"count"</span>: <span class="hljs-number">0</span>,
+                    <span class="hljs-attr">"filter"</span>: <span class="hljs-string">"raw"</span>
+                }
+            ]
+        },
+        <span class="hljs-attr">"_links"</span>: {
+            <span class="hljs-attr">"self"</span>: [
+                {
+                    <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/best-practices\/34"</span>
+                }
+            ],
+            <span class="hljs-attr">"collection"</span>: [
+                {
+                    <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/best-practices"</span>
+                }
+            ],
+            <span class="hljs-attr">"about"</span>: [
+                {
+                    <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/types\/best-practices"</span>
+                }
+            ],
+            <span class="hljs-attr">"author"</span>: [
+                {
+                    <span class="hljs-attr">"embeddable"</span>: <span class="hljs-literal">true</span>,
+                    <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/users\/1"</span>
+                }
+            ],
+            <span class="hljs-attr">"replies"</span>: [
+                {
+                    <span class="hljs-attr">"embeddable"</span>: <span class="hljs-literal">true</span>,
+                    <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/comments?post=34"</span>
+                }
+            ],
+            <span class="hljs-attr">"version-history"</span>: [
+                {
+                    <span class="hljs-attr">"count"</span>: <span class="hljs-number">5</span>,
+                    <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/best-practices\/34\/revisions"</span>
+                }
+            ],
+            <span class="hljs-attr">"predecessor-version"</span>: [
+                {
+                    <span class="hljs-attr">"id"</span>: <span class="hljs-number">41</span>,
+                    <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/best-practices\/34\/revisions\/41"</span>
+                }
+            ],
+            <span class="hljs-attr">"wp:attachment"</span>: [
+                {
+                    <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/media?parent=34"</span>
+                }
+            ],
+            <span class="hljs-attr">"curies"</span>: [
+                {
+                    <span class="hljs-attr">"name"</span>: <span class="hljs-string">"wp"</span>,
+                    <span class="hljs-attr">"href"</span>: <span class="hljs-string">"https:\/\/api.w.org\/{rel}"</span>,
+                    <span class="hljs-attr">"templated"</span>: <span class="hljs-literal">true</span>
+                }
+            ]
+        }
+    }
+
+</code></pre></div></div></div></div><div class="row"><div class="col-6 lhs"><div class="resource-heading way-point" id="resource-skill-assessment-tools">Skill Assessment Tools</div></div><div class="col-6 rhs"></div></div><div class="row"><div class="col-6 lhs"><div class="transition-heading way-point" id="transition-get-skill-assessment-tools-get">Get Skill Assessment Tools</div></div><div class="col-6 rhs"><div class="api-definition"><div class="api-definition-heading rhs-heading">Definition</div><div class="api-definition-description rhs-highlight code"><span class="api-method get">GET</span><span class="api-url"> http://domain.com/wp-json/wp/v2/skill-assessment</span></div></div><div class="sample-request-heading rhs-heading">Request</div><div class="headers"><div class="headers-heading rhs-heading">Request Headers</div><div class="headers-description code rhs-highlight"><pre class="hljs"><code><div class="header-row"><span class="key hljs-attr">Content-Type: </span><span class="value">application/json</span></div></code></pre></div></div><div class="sample-request"><div class="sample-request-heading rhs-heading">Example Request</div><div class="sample-request-description rhs-highlight code"> <pre class="hljs"><code>curl --request GET \<br>  --url http:<span class="hljs-comment">//domain.com/wp-json/wp/v2/skill-assessment \</span>
+  --header <span class="hljs-string">'content-type: application/json'</span></code></pre></div></div><div class="sample-response"><div class="sample-response-heading rhs-heading"> <span>Response </span><span class="status-code">200</span></div><div class="headers"><div class="headers-heading rhs-heading">Response Headers</div><div class="headers-description code rhs-highlight"><pre class="hljs"><code><div class="header-row"><span class="key hljs-attr">Content-Type: </span><span class="value">application/json</span></div></code></pre></div></div><div class="sample-response-body rhs-heading">Response Body</div><div class="sample-response-body-description rhs-highlight code"><pre class="hljs"><code>    [
+        {
+            <span class="hljs-attr">"id"</span>: <span class="hljs-number">56</span>,
+            <span class="hljs-attr">"date"</span>: <span class="hljs-string">"2019-06-24T11:59:59"</span>,
+            <span class="hljs-attr">"date_gmt"</span>: <span class="hljs-string">"2019-06-24T11:59:59"</span>,
+            <span class="hljs-attr">"guid"</span>: {
+                <span class="hljs-attr">"rendered"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/?post_type=skill-assessment&amp;#038;p=56"</span>
+            },
+            <span class="hljs-attr">"modified"</span>: <span class="hljs-string">"2019-06-24T11:59:59"</span>,
+            <span class="hljs-attr">"modified_gmt"</span>: <span class="hljs-string">"2019-06-24T11:59:59"</span>,
+            <span class="hljs-attr">"slug"</span>: <span class="hljs-string">"maecenas-sed-interdum-sapien"</span>,
+            <span class="hljs-attr">"status"</span>: <span class="hljs-string">"publish"</span>,
+            <span class="hljs-attr">"type"</span>: <span class="hljs-string">"skill-assessment"</span>,
+            <span class="hljs-attr">"link"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/skill-assessment\/maecenas-sed-interdum-sapien\/"</span>,
+            <span class="hljs-attr">"title"</span>: {
+                <span class="hljs-attr">"rendered"</span>: <span class="hljs-string">"Maecenas sed interdum sapien"</span>
+            },
+            <span class="hljs-attr">"content"</span>: {
+                <span class="hljs-attr">"rendered"</span>: <span class="hljs-string">"\n&lt;p&gt;\nCras diam risus, porta a luctus gravida, ultricies eget nibh. \nSuspendisse potenti. Nullam vel ultrices tortor. Duis ultricies arcu \ndolor, at convallis nibh venenatis vel. Curabitur vehicula, est nec \nmattis pulvinar, nisl dolor condimentum tortor, quis aliquam orci tellus\n sed elit. Suspendisse in faucibus nulla, at vestibulum est. Vivamus ac \ndictum turpis. Maecenas sed interdum sapien. Etiam sagittis lacus nec \nlorem maximus tincidunt. Etiam vel risus pharetra, egestas sem quis, \npretium velit. Suspendisse non interdum ante. Nunc vulputate tortor \nnunc, vel blandit quam bibendum vitae.\n\n\n&lt;\/p&gt;\n"</span>,
+                <span class="hljs-attr">"protected"</span>: <span class="hljs-literal">false</span>
+            },
+            <span class="hljs-attr">"excerpt"</span>: {
+                <span class="hljs-attr">"rendered"</span>: <span class="hljs-string">"&lt;p&gt;Cras diam risus, porta a luctus gravida, ultricies eget nibh. Suspendisse potenti. Nullam vel ultrices tortor. Duis ultricies arcu dolor, at convallis nibh venenatis vel. Curabitur vehicula, est nec mattis pulvinar, nisl dolor condimentum tortor, quis aliquam orci tellus sed elit. Suspendisse in faucibus nulla, at vestibulum est. Vivamus ac dictum turpis. Maecenas sed interdum [&amp;hellip;]&lt;\/p&gt;\n"</span>,
+                <span class="hljs-attr">"protected"</span>: <span class="hljs-literal">false</span>
+            },
+            <span class="hljs-attr">"author"</span>: <span class="hljs-number">1</span>,
+            <span class="hljs-attr">"featured_media"</span>: <span class="hljs-number">0</span>,
+            <span class="hljs-attr">"menu_order"</span>: <span class="hljs-number">0</span>,
+            <span class="hljs-attr">"comment_status"</span>: <span class="hljs-string">"open"</span>,
+            <span class="hljs-attr">"ping_status"</span>: <span class="hljs-string">"open"</span>,
+            <span class="hljs-attr">"template"</span>: <span class="hljs-string">""</span>,
+            <span class="hljs-attr">"meta"</span>: [],
+            <span class="hljs-attr">"acf"</span>: <span class="hljs-literal">false</span>,
+            <span class="hljs-attr">"_links"</span>: {
+                <span class="hljs-attr">"self"</span>: [
+                    {
+                        <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/skill-assessment\/56"</span>
+                    }
+                ],
+                <span class="hljs-attr">"collection"</span>: [
+                    {
+                        <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/skill-assessment"</span>
+                    }
+                ],
+                <span class="hljs-attr">"about"</span>: [
+                    {
+                        <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/types\/skill-assessment"</span>
+                    }
+                ],
+                <span class="hljs-attr">"author"</span>: [
+                    {
+                        <span class="hljs-attr">"embeddable"</span>: <span class="hljs-literal">true</span>,
+                        <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/users\/1"</span>
+                    }
+                ],
+                <span class="hljs-attr">"replies"</span>: [
+                    {
+                        <span class="hljs-attr">"embeddable"</span>: <span class="hljs-literal">true</span>,
+                        <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/comments?post=56"</span>
+                    }
+                ],
+                <span class="hljs-attr">"version-history"</span>: [
+                    {
+                        <span class="hljs-attr">"count"</span>: <span class="hljs-number">1</span>,
+                        <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/skill-assessment\/56\/revisions"</span>
+                    }
+                ],
+                <span class="hljs-attr">"predecessor-version"</span>: [
+                    {
+                        <span class="hljs-attr">"id"</span>: <span class="hljs-number">57</span>,
+                        <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/skill-assessment\/56\/revisions\/57"</span>
+                    }
+                ],
+                <span class="hljs-attr">"wp:attachment"</span>: [
+                    {
+                        <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/media?parent=56"</span>
+                    }
+                ],
+                <span class="hljs-attr">"curies"</span>: [
+                    {
+                        <span class="hljs-attr">"name"</span>: <span class="hljs-string">"wp"</span>,
+                        <span class="hljs-attr">"href"</span>: <span class="hljs-string">"https:\/\/api.w.org\/{rel}"</span>,
+                        <span class="hljs-attr">"templated"</span>: <span class="hljs-literal">true</span>
+                    }
+                ]
+            }
+        },
+        {
+            <span class="hljs-attr">"id"</span>: <span class="hljs-number">54</span>,
+            <span class="hljs-attr">"date"</span>: <span class="hljs-string">"2019-06-24T11:59:38"</span>,
+            <span class="hljs-attr">"date_gmt"</span>: <span class="hljs-string">"2019-06-24T11:59:38"</span>,
+            <span class="hljs-attr">"guid"</span>: {
+                <span class="hljs-attr">"rendered"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/?post_type=skill-assessment&amp;#038;p=54"</span>
+            },
+            <span class="hljs-attr">"modified"</span>: <span class="hljs-string">"2019-06-24T11:59:38"</span>,
+            <span class="hljs-attr">"modified_gmt"</span>: <span class="hljs-string">"2019-06-24T11:59:38"</span>,
+            <span class="hljs-attr">"slug"</span>: <span class="hljs-string">"praesent-feugiat-lectus-dui"</span>,
+            <span class="hljs-attr">"status"</span>: <span class="hljs-string">"publish"</span>,
+            <span class="hljs-attr">"type"</span>: <span class="hljs-string">"skill-assessment"</span>,
+            <span class="hljs-attr">"link"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/skill-assessment\/praesent-feugiat-lectus-dui\/"</span>,
+            <span class="hljs-attr">"title"</span>: {
+                <span class="hljs-attr">"rendered"</span>: <span class="hljs-string">"Praesent feugiat lectus dui"</span>
+            },
+            <span class="hljs-attr">"content"</span>: {
+                <span class="hljs-attr">"rendered"</span>: <span class="hljs-string">"\n&lt;p&gt;\nUt in elit in ipsum pharetra efficitur placerat sed tortor. Nulla \nfacilisis congue felis, eget iaculis lectus molestie nec. Sed sed ipsum \nvitae felis auctor suscipit. Vestibulum sit amet fermentum tellus, ut \nefficitur sapien. Donec sed malesuada urna, sollicitudin tincidunt \npurus. Aenean posuere, tortor vel rhoncus interdum, metus nisl ultricies\n leo, non viverra ante risus nec sem. Proin vestibulum, dolor ut \npharetra lacinia, risus massa dapibus leo, sit amet scelerisque ante \nsapien non orci. Duis interdum pulvinar elit sit amet ornare. Vestibulum\n ac arcu vitae odio ullamcorper sagittis nec sit amet sem. Etiam mattis,\n velit nec rhoncus consectetur, odio augue venenatis tellus, non sodales\n tortor purus et tortor. Phasellus posuere tellus eget dolor rhoncus \nvehicula. Praesent feugiat lectus dui, ac porta diam semper quis. \nCurabitur iaculis, risus eu iaculis sollicitudin, nisl justo rhoncus \nlibero, quis gravida nulla tortor ut augue.\n\n&lt;\/p&gt;\n"</span>,
+                <span class="hljs-attr">"protected"</span>: <span class="hljs-literal">false</span>
+            },
+            <span class="hljs-attr">"excerpt"</span>: {
+                <span class="hljs-attr">"rendered"</span>: <span class="hljs-string">"&lt;p&gt;Ut in elit in ipsum pharetra efficitur placerat sed tortor. Nulla facilisis congue felis, eget iaculis lectus molestie nec. Sed sed ipsum vitae felis auctor suscipit. Vestibulum sit amet fermentum tellus, ut efficitur sapien. Donec sed malesuada urna, sollicitudin tincidunt purus. Aenean posuere, tortor vel rhoncus interdum, metus nisl ultricies leo, non viverra ante risus [&amp;hellip;]&lt;\/p&gt;\n"</span>,
+                <span class="hljs-attr">"protected"</span>: <span class="hljs-literal">false</span>
+            },
+            <span class="hljs-attr">"author"</span>: <span class="hljs-number">1</span>,
+            <span class="hljs-attr">"featured_media"</span>: <span class="hljs-number">0</span>,
+            <span class="hljs-attr">"menu_order"</span>: <span class="hljs-number">0</span>,
+            <span class="hljs-attr">"comment_status"</span>: <span class="hljs-string">"open"</span>,
+            <span class="hljs-attr">"ping_status"</span>: <span class="hljs-string">"open"</span>,
+            <span class="hljs-attr">"template"</span>: <span class="hljs-string">""</span>,
+            <span class="hljs-attr">"meta"</span>: [],
+            <span class="hljs-attr">"acf"</span>: <span class="hljs-literal">false</span>,
+            <span class="hljs-attr">"_links"</span>: {
+                <span class="hljs-attr">"self"</span>: [
+                    {
+                        <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/skill-assessment\/54"</span>
+                    }
+                ],
+                <span class="hljs-attr">"collection"</span>: [
+                    {
+                        <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/skill-assessment"</span>
+                    }
+                ],
+                <span class="hljs-attr">"about"</span>: [
+                    {
+                        <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/types\/skill-assessment"</span>
+                    }
+                ],
+                <span class="hljs-attr">"author"</span>: [
+                    {
+                        <span class="hljs-attr">"embeddable"</span>: <span class="hljs-literal">true</span>,
+                        <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/users\/1"</span>
+                    }
+                ],
+                <span class="hljs-attr">"replies"</span>: [
+                    {
+                        <span class="hljs-attr">"embeddable"</span>: <span class="hljs-literal">true</span>,
+                        <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/comments?post=54"</span>
+                    }
+                ],
+                <span class="hljs-attr">"version-history"</span>: [
+                    {
+                        <span class="hljs-attr">"count"</span>: <span class="hljs-number">1</span>,
+                        <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/skill-assessment\/54\/revisions"</span>
+                    }
+                ],
+                <span class="hljs-attr">"predecessor-version"</span>: [
+                    {
+                        <span class="hljs-attr">"id"</span>: <span class="hljs-number">55</span>,
+                        <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/skill-assessment\/54\/revisions\/55"</span>
+                    }
+                ],
+                <span class="hljs-attr">"wp:attachment"</span>: [
+                    {
+                        <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/media?parent=54"</span>
+                    }
+                ],
+                <span class="hljs-attr">"curies"</span>: [
+                    {
+                        <span class="hljs-attr">"name"</span>: <span class="hljs-string">"wp"</span>,
+                        <span class="hljs-attr">"href"</span>: <span class="hljs-string">"https:\/\/api.w.org\/{rel}"</span>,
+                        <span class="hljs-attr">"templated"</span>: <span class="hljs-literal">true</span>
+                    }
+                ]
+            }
+        }
+    ]
+
+</code></pre></div></div></div></div><div class="row"><div class="col-6 lhs"><div class="resource-heading way-point" id="resource-skill-assessment-tool">Skill Assessment Tool</div></div><div class="col-6 rhs"></div></div><div class="row"><div class="col-6 lhs"><div class="transition-heading way-point" id="transition-get-skill-assessment-tool-get">Get Skill Assessment Tool</div><h5 class="part-heading">Url Parameters</h5><ul class="params"><li class="param"><div class="left"><div><span class="key">id</span></div><div><span class="type">string</span></div></div><div class="right"></div></li></ul></div><div class="col-6 rhs"><div class="api-definition"><div class="api-definition-heading rhs-heading">Definition</div><div class="api-definition-description rhs-highlight code"><span class="api-method get">GET</span><span class="api-url"> http://domain.com/wp-json/wp/v2/skill-assessment/<mark>{id}</mark></span></div></div><div class="sample-request-heading rhs-heading">Request</div><div class="headers"><div class="headers-heading rhs-heading">Request Headers</div><div class="headers-description code rhs-highlight"><pre class="hljs"><code><div class="header-row"><span class="key hljs-attr">Content-Type: </span><span class="value">application/json</span></div></code></pre></div></div><div class="sample-request"><div class="sample-request-heading rhs-heading">Example Request</div><div class="sample-request-description rhs-highlight code"> <pre class="hljs"><code>curl --request GET \<br>  --url http:<span class="hljs-comment">//domain.com/wp-json/wp/v2/skill-assessment/{id} \</span>
+  --header <span class="hljs-string">'content-type: application/json'</span></code></pre></div></div><div class="sample-response"><div class="sample-response-heading rhs-heading"> <span>Response </span><span class="status-code">200</span></div><div class="headers"><div class="headers-heading rhs-heading">Response Headers</div><div class="headers-description code rhs-highlight"><pre class="hljs"><code><div class="header-row"><span class="key hljs-attr">Content-Type: </span><span class="value">application/json</span></div></code></pre></div></div><div class="sample-response-body rhs-heading">Response Body</div><div class="sample-response-body-description rhs-highlight code"><pre class="hljs"><code>    {
+        <span class="hljs-attr">"id"</span>: <span class="hljs-number">56</span>,
+        <span class="hljs-attr">"date"</span>: <span class="hljs-string">"2019-06-24T11:59:59"</span>,
+        <span class="hljs-attr">"date_gmt"</span>: <span class="hljs-string">"2019-06-24T11:59:59"</span>,
+        <span class="hljs-attr">"guid"</span>: {
+            <span class="hljs-attr">"rendered"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/?post_type=skill-assessment&amp;#038;p=56"</span>
+        },
+        <span class="hljs-attr">"modified"</span>: <span class="hljs-string">"2019-06-24T11:59:59"</span>,
+        <span class="hljs-attr">"modified_gmt"</span>: <span class="hljs-string">"2019-06-24T11:59:59"</span>,
+        <span class="hljs-attr">"slug"</span>: <span class="hljs-string">"maecenas-sed-interdum-sapien"</span>,
+        <span class="hljs-attr">"status"</span>: <span class="hljs-string">"publish"</span>,
+        <span class="hljs-attr">"type"</span>: <span class="hljs-string">"skill-assessment"</span>,
+        <span class="hljs-attr">"link"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/skill-assessment\/maecenas-sed-interdum-sapien\/"</span>,
+        <span class="hljs-attr">"title"</span>: {
+            <span class="hljs-attr">"rendered"</span>: <span class="hljs-string">"Maecenas sed interdum sapien"</span>
+        },
+        <span class="hljs-attr">"content"</span>: {
+            <span class="hljs-attr">"rendered"</span>: <span class="hljs-string">"\n&lt;p&gt;\nCras diam risus, porta a luctus gravida, ultricies eget nibh. \nSuspendisse potenti. Nullam vel ultrices tortor. Duis ultricies arcu \ndolor, at convallis nibh venenatis vel. Curabitur vehicula, est nec \nmattis pulvinar, nisl dolor condimentum tortor, quis aliquam orci tellus\n sed elit. Suspendisse in faucibus nulla, at vestibulum est. Vivamus ac \ndictum turpis. Maecenas sed interdum sapien. Etiam sagittis lacus nec \nlorem maximus tincidunt. Etiam vel risus pharetra, egestas sem quis, \npretium velit. Suspendisse non interdum ante. Nunc vulputate tortor \nnunc, vel blandit quam bibendum vitae.\n\n\n&lt;\/p&gt;\n"</span>,
+            <span class="hljs-attr">"protected"</span>: <span class="hljs-literal">false</span>
+        },
+        <span class="hljs-attr">"excerpt"</span>: {
+            <span class="hljs-attr">"rendered"</span>: <span class="hljs-string">"&lt;p&gt;Cras diam risus, porta a luctus gravida, ultricies eget nibh. Suspendisse potenti. Nullam vel ultrices tortor. Duis ultricies arcu dolor, at convallis nibh venenatis vel. Curabitur vehicula, est nec mattis pulvinar, nisl dolor condimentum tortor, quis aliquam orci tellus sed elit. Suspendisse in faucibus nulla, at vestibulum est. Vivamus ac dictum turpis. Maecenas sed interdum [&amp;hellip;]&lt;\/p&gt;\n"</span>,
+            <span class="hljs-attr">"protected"</span>: <span class="hljs-literal">false</span>
+        },
+        <span class="hljs-attr">"author"</span>: <span class="hljs-number">1</span>,
+        <span class="hljs-attr">"featured_media"</span>: <span class="hljs-number">0</span>,
+        <span class="hljs-attr">"menu_order"</span>: <span class="hljs-number">0</span>,
+        <span class="hljs-attr">"comment_status"</span>: <span class="hljs-string">"open"</span>,
+        <span class="hljs-attr">"ping_status"</span>: <span class="hljs-string">"open"</span>,
+        <span class="hljs-attr">"template"</span>: <span class="hljs-string">""</span>,
+        <span class="hljs-attr">"meta"</span>: [],
+        <span class="hljs-attr">"acf"</span>: <span class="hljs-literal">false</span>,
+        <span class="hljs-attr">"_links"</span>: {
+            <span class="hljs-attr">"self"</span>: [
+                {
+                    <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/skill-assessment\/56"</span>
+                }
+            ],
+            <span class="hljs-attr">"collection"</span>: [
+                {
+                    <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/skill-assessment"</span>
+                }
+            ],
+            <span class="hljs-attr">"about"</span>: [
+                {
+                    <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/types\/skill-assessment"</span>
+                }
+            ],
+            <span class="hljs-attr">"author"</span>: [
+                {
+                    <span class="hljs-attr">"embeddable"</span>: <span class="hljs-literal">true</span>,
+                    <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/users\/1"</span>
+                }
+            ],
+            <span class="hljs-attr">"replies"</span>: [
+                {
+                    <span class="hljs-attr">"embeddable"</span>: <span class="hljs-literal">true</span>,
+                    <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/comments?post=56"</span>
+                }
+            ],
+            <span class="hljs-attr">"version-history"</span>: [
+                {
+                    <span class="hljs-attr">"count"</span>: <span class="hljs-number">1</span>,
+                    <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/skill-assessment\/56\/revisions"</span>
+                }
+            ],
+            <span class="hljs-attr">"predecessor-version"</span>: [
+                {
+                    <span class="hljs-attr">"id"</span>: <span class="hljs-number">57</span>,
+                    <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/skill-assessment\/56\/revisions\/57"</span>
+                }
+            ],
+            <span class="hljs-attr">"wp:attachment"</span>: [
+                {
+                    <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/media?parent=56"</span>
+                }
+            ],
+            <span class="hljs-attr">"curies"</span>: [
+                {
+                    <span class="hljs-attr">"name"</span>: <span class="hljs-string">"wp"</span>,
+                    <span class="hljs-attr">"href"</span>: <span class="hljs-string">"https:\/\/api.w.org\/{rel}"</span>,
+                    <span class="hljs-attr">"templated"</span>: <span class="hljs-literal">true</span>
+                }
+            ]
+        }
+    }
+
+</code></pre></div></div></div></div><div class="row"><div class="col-6 lhs"><div class="resource-heading way-point" id="resource-training-offers">Training offers</div></div><div class="col-6 rhs"></div></div><div class="row"><div class="col-6 lhs"><div class="transition-heading way-point" id="transition-get-training-offers-get">Get Training offers</div></div><div class="col-6 rhs"><div class="api-definition"><div class="api-definition-heading rhs-heading">Definition</div><div class="api-definition-description rhs-highlight code"><span class="api-method get">GET</span><span class="api-url"> http://domain.com/wp-json/wp/v2/training-offer</span></div></div><div class="sample-request-heading rhs-heading">Request</div><div class="headers"><div class="headers-heading rhs-heading">Request Headers</div><div class="headers-description code rhs-highlight"><pre class="hljs"><code><div class="header-row"><span class="key hljs-attr">Content-Type: </span><span class="value">application/json</span></div></code></pre></div></div><div class="sample-request"><div class="sample-request-heading rhs-heading">Example Request</div><div class="sample-request-description rhs-highlight code"> <pre class="hljs"><code>curl --request GET \<br>  --url http:<span class="hljs-comment">//domain.com/wp-json/wp/v2/training-offer \</span>
+  --header <span class="hljs-string">'content-type: application/json'</span></code></pre></div></div><div class="sample-response"><div class="sample-response-heading rhs-heading"> <span>Response </span><span class="status-code">200</span></div><div class="headers"><div class="headers-heading rhs-heading">Response Headers</div><div class="headers-description code rhs-highlight"><pre class="hljs"><code><div class="header-row"><span class="key hljs-attr">Content-Type: </span><span class="value">application/json</span></div></code></pre></div></div><div class="sample-response-body rhs-heading">Response Body</div><div class="sample-response-body-description rhs-highlight code"><pre class="hljs"><code>    [
+        {
+            <span class="hljs-attr">"id"</span>: <span class="hljs-number">44</span>,
+            <span class="hljs-attr">"date"</span>: <span class="hljs-string">"2019-06-24T11:56:13"</span>,
+            <span class="hljs-attr">"date_gmt"</span>: <span class="hljs-string">"2019-06-24T11:56:13"</span>,
+            <span class="hljs-attr">"guid"</span>: {
+                <span class="hljs-attr">"rendered"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/?post_type=training-offer&amp;#038;p=44"</span>
+            },
+            <span class="hljs-attr">"modified"</span>: <span class="hljs-string">"2019-06-24T11:56:13"</span>,
+            <span class="hljs-attr">"modified_gmt"</span>: <span class="hljs-string">"2019-06-24T11:56:13"</span>,
+            <span class="hljs-attr">"slug"</span>: <span class="hljs-string">"integer-sit-amet-arcu-turpis"</span>,
+            <span class="hljs-attr">"status"</span>: <span class="hljs-string">"publish"</span>,
+            <span class="hljs-attr">"type"</span>: <span class="hljs-string">"training-offer"</span>,
+            <span class="hljs-attr">"link"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/training-offer\/integer-sit-amet-arcu-turpis\/"</span>,
+            <span class="hljs-attr">"title"</span>: {
+                <span class="hljs-attr">"rendered"</span>: <span class="hljs-string">"Integer sit amet arcu turpis"</span>
+            },
+            <span class="hljs-attr">"content"</span>: {
+                <span class="hljs-attr">"rendered"</span>: <span class="hljs-string">"\n&lt;p&gt;\nPraesent tincidunt leo eget magna sollicitudin scelerisque. Nullam sem \nenim, dignissim nec odio et, euismod facilisis nunc. Proin consequat \nporttitor purus non varius. Phasellus blandit vestibulum hendrerit. Ut \niaculis dignissim leo, vitae molestie nibh dapibus ut. Integer sit amet \narcu turpis. Cras nec varius orci. Proin ex enim, ornare ac eros id, \npretium luctus mi. Duis mollis, leo in facilisis eleifend, nulla magna \nporttitor sapien, et venenatis odio nibh non orci. Etiam interdum nibh a\n diam tempus pulvinar.\n\n&lt;\/p&gt;\n"</span>,
+                <span class="hljs-attr">"protected"</span>: <span class="hljs-literal">false</span>
+            },
+            <span class="hljs-attr">"excerpt"</span>: {
+                <span class="hljs-attr">"rendered"</span>: <span class="hljs-string">"&lt;p&gt;Praesent tincidunt leo eget magna sollicitudin scelerisque. Nullam sem enim, dignissim nec odio et, euismod facilisis nunc. Proin consequat porttitor purus non varius. Phasellus blandit vestibulum hendrerit. Ut iaculis dignissim leo, vitae molestie nibh dapibus ut. Integer sit amet arcu turpis. Cras nec varius orci. Proin ex enim, ornare ac eros id, pretium luctus mi. [&amp;hellip;]&lt;\/p&gt;\n"</span>,
+                <span class="hljs-attr">"protected"</span>: <span class="hljs-literal">false</span>
+            },
+            <span class="hljs-attr">"author"</span>: <span class="hljs-number">1</span>,
+            <span class="hljs-attr">"featured_media"</span>: <span class="hljs-number">0</span>,
+            <span class="hljs-attr">"menu_order"</span>: <span class="hljs-number">0</span>,
+            <span class="hljs-attr">"comment_status"</span>: <span class="hljs-string">"open"</span>,
+            <span class="hljs-attr">"ping_status"</span>: <span class="hljs-string">"open"</span>,
+            <span class="hljs-attr">"template"</span>: <span class="hljs-string">""</span>,
+            <span class="hljs-attr">"meta"</span>: [],
+            <span class="hljs-attr">"acf"</span>: <span class="hljs-literal">false</span>,
+            <span class="hljs-attr">"_links"</span>: {
+                <span class="hljs-attr">"self"</span>: [
+                    {
+                        <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/training-offer\/44"</span>
+                    }
+                ],
+                <span class="hljs-attr">"collection"</span>: [
+                    {
+                        <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/training-offer"</span>
+                    }
+                ],
+                <span class="hljs-attr">"about"</span>: [
+                    {
+                        <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/types\/training-offer"</span>
+                    }
+                ],
+                <span class="hljs-attr">"author"</span>: [
+                    {
+                        <span class="hljs-attr">"embeddable"</span>: <span class="hljs-literal">true</span>,
+                        <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/users\/1"</span>
+                    }
+                ],
+                <span class="hljs-attr">"replies"</span>: [
+                    {
+                        <span class="hljs-attr">"embeddable"</span>: <span class="hljs-literal">true</span>,
+                        <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/comments?post=44"</span>
+                    }
+                ],
+                <span class="hljs-attr">"version-history"</span>: [
+                    {
+                        <span class="hljs-attr">"count"</span>: <span class="hljs-number">1</span>,
+                        <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/training-offer\/44\/revisions"</span>
+                    }
+                ],
+                <span class="hljs-attr">"predecessor-version"</span>: [
+                    {
+                        <span class="hljs-attr">"id"</span>: <span class="hljs-number">45</span>,
+                        <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/training-offer\/44\/revisions\/45"</span>
+                    }
+                ],
+                <span class="hljs-attr">"wp:attachment"</span>: [
+                    {
+                        <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/media?parent=44"</span>
+                    }
+                ],
+                <span class="hljs-attr">"curies"</span>: [
+                    {
+                        <span class="hljs-attr">"name"</span>: <span class="hljs-string">"wp"</span>,
+                        <span class="hljs-attr">"href"</span>: <span class="hljs-string">"https:\/\/api.w.org\/{rel}"</span>,
+                        <span class="hljs-attr">"templated"</span>: <span class="hljs-literal">true</span>
+                    }
+                ]
+            }
+        },
+        {
+            <span class="hljs-attr">"id"</span>: <span class="hljs-number">42</span>,
+            <span class="hljs-attr">"date"</span>: <span class="hljs-string">"2019-06-24T11:55:53"</span>,
+            <span class="hljs-attr">"date_gmt"</span>: <span class="hljs-string">"2019-06-24T11:55:53"</span>,
+            <span class="hljs-attr">"guid"</span>: {
+                <span class="hljs-attr">"rendered"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/?post_type=training-offer&amp;#038;p=42"</span>
+            },
+            <span class="hljs-attr">"modified"</span>: <span class="hljs-string">"2019-06-24T11:55:53"</span>,
+            <span class="hljs-attr">"modified_gmt"</span>: <span class="hljs-string">"2019-06-24T11:55:53"</span>,
+            <span class="hljs-attr">"slug"</span>: <span class="hljs-string">"cras-et-elit-vehicula"</span>,
+            <span class="hljs-attr">"status"</span>: <span class="hljs-string">"publish"</span>,
+            <span class="hljs-attr">"type"</span>: <span class="hljs-string">"training-offer"</span>,
+            <span class="hljs-attr">"link"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/training-offer\/cras-et-elit-vehicula\/"</span>,
+            <span class="hljs-attr">"title"</span>: {
+                <span class="hljs-attr">"rendered"</span>: <span class="hljs-string">"Cras et elit vehicula"</span>
+            },
+            <span class="hljs-attr">"content"</span>: {
+                <span class="hljs-attr">"rendered"</span>: <span class="hljs-string">"\n&lt;p&gt;\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sed \nligula molestie tellus luctus pulvinar in sollicitudin mi. Curabitur non\n metus vitae nunc interdum aliquam sed sit amet nibh. Fusce tristique \nquam sit amet lacus vulputate, in sollicitudin diam tincidunt. Maecenas \naliquam tristique arcu, quis sagittis urna aliquet quis. Proin id \ncondimentum mi. Donec ornare nulla accumsan tristique consectetur. Cras \net elit vehicula, gravida sem eget, vehicula massa. Suspendisse a tortor\n arcu. Vestibulum convallis mollis lacus, vitae auctor ex auctor sed. \nEtiam pellentesque ultricies diam ut tincidunt. Nullam tristique id \ntortor et viverra. Nam augue justo, dapibus et maximus ac, aliquet vitae\n ligula. Cras felis metus, consectetur at elit non, suscipit lacinia \nodio.\n\n\n&lt;\/p&gt;\n"</span>,
+                <span class="hljs-attr">"protected"</span>: <span class="hljs-literal">false</span>
+            },
+            <span class="hljs-attr">"excerpt"</span>: {
+                <span class="hljs-attr">"rendered"</span>: <span class="hljs-string">"&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sed ligula molestie tellus luctus pulvinar in sollicitudin mi. Curabitur non metus vitae nunc interdum aliquam sed sit amet nibh. Fusce tristique quam sit amet lacus vulputate, in sollicitudin diam tincidunt. Maecenas aliquam tristique arcu, quis sagittis urna aliquet quis. Proin id condimentum mi. Donec ornare [&amp;hellip;]&lt;\/p&gt;\n"</span>,
+                <span class="hljs-attr">"protected"</span>: <span class="hljs-literal">false</span>
+            },
+            <span class="hljs-attr">"author"</span>: <span class="hljs-number">1</span>,
+            <span class="hljs-attr">"featured_media"</span>: <span class="hljs-number">0</span>,
+            <span class="hljs-attr">"menu_order"</span>: <span class="hljs-number">0</span>,
+            <span class="hljs-attr">"comment_status"</span>: <span class="hljs-string">"open"</span>,
+            <span class="hljs-attr">"ping_status"</span>: <span class="hljs-string">"open"</span>,
+            <span class="hljs-attr">"template"</span>: <span class="hljs-string">""</span>,
+            <span class="hljs-attr">"meta"</span>: [],
+            <span class="hljs-attr">"acf"</span>: <span class="hljs-literal">false</span>,
+            <span class="hljs-attr">"_links"</span>: {
+                <span class="hljs-attr">"self"</span>: [
+                    {
+                        <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/training-offer\/42"</span>
+                    }
+                ],
+                <span class="hljs-attr">"collection"</span>: [
+                    {
+                        <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/training-offer"</span>
+                    }
+                ],
+                <span class="hljs-attr">"about"</span>: [
+                    {
+                        <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/types\/training-offer"</span>
+                    }
+                ],
+                <span class="hljs-attr">"author"</span>: [
+                    {
+                        <span class="hljs-attr">"embeddable"</span>: <span class="hljs-literal">true</span>,
+                        <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/users\/1"</span>
+                    }
+                ],
+                <span class="hljs-attr">"replies"</span>: [
+                    {
+                        <span class="hljs-attr">"embeddable"</span>: <span class="hljs-literal">true</span>,
+                        <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/comments?post=42"</span>
+                    }
+                ],
+                <span class="hljs-attr">"version-history"</span>: [
+                    {
+                        <span class="hljs-attr">"count"</span>: <span class="hljs-number">1</span>,
+                        <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/training-offer\/42\/revisions"</span>
+                    }
+                ],
+                <span class="hljs-attr">"predecessor-version"</span>: [
+                    {
+                        <span class="hljs-attr">"id"</span>: <span class="hljs-number">43</span>,
+                        <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/training-offer\/42\/revisions\/43"</span>
+                    }
+                ],
+                <span class="hljs-attr">"wp:attachment"</span>: [
+                    {
+                        <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/media?parent=42"</span>
+                    }
+                ],
+                <span class="hljs-attr">"curies"</span>: [
+                    {
+                        <span class="hljs-attr">"name"</span>: <span class="hljs-string">"wp"</span>,
+                        <span class="hljs-attr">"href"</span>: <span class="hljs-string">"https:\/\/api.w.org\/{rel}"</span>,
+                        <span class="hljs-attr">"templated"</span>: <span class="hljs-literal">true</span>
+                    }
+                ]
+            }
+        }
+    ]
+
+</code></pre></div></div></div></div><div class="row"><div class="col-6 lhs"><div class="resource-heading way-point" id="resource-training-offer">Training offer</div></div><div class="col-6 rhs"></div></div><div class="row"><div class="col-6 lhs"><div class="transition-heading way-point" id="transition-get-training-offer-get">Get Training offer</div><h5 class="part-heading">Url Parameters</h5><ul class="params"><li class="param"><div class="left"><div><span class="key">id</span></div><div><span class="type">string</span></div></div><div class="right"></div></li></ul></div><div class="col-6 rhs"><div class="api-definition"><div class="api-definition-heading rhs-heading">Definition</div><div class="api-definition-description rhs-highlight code"><span class="api-method get">GET</span><span class="api-url"> http://domain.com/wp-json/wp/v2/training-offer/<mark>{id}</mark></span></div></div><div class="sample-request-heading rhs-heading">Request</div><div class="headers"><div class="headers-heading rhs-heading">Request Headers</div><div class="headers-description code rhs-highlight"><pre class="hljs"><code><div class="header-row"><span class="key hljs-attr">Content-Type: </span><span class="value">application/json</span></div></code></pre></div></div><div class="sample-request"><div class="sample-request-heading rhs-heading">Example Request</div><div class="sample-request-description rhs-highlight code"> <pre class="hljs"><code>curl --request GET \<br>  --url http:<span class="hljs-comment">//domain.com/wp-json/wp/v2/training-offer/{id} \</span>
+  --header <span class="hljs-string">'content-type: application/json'</span></code></pre></div></div><div class="sample-response"><div class="sample-response-heading rhs-heading"> <span>Response </span><span class="status-code">200</span></div><div class="headers"><div class="headers-heading rhs-heading">Response Headers</div><div class="headers-description code rhs-highlight"><pre class="hljs"><code><div class="header-row"><span class="key hljs-attr">Content-Type: </span><span class="value">application/json</span></div></code></pre></div></div><div class="sample-response-body rhs-heading">Response Body</div><div class="sample-response-body-description rhs-highlight code"><pre class="hljs"><code>    {
+        <span class="hljs-attr">"id"</span>: <span class="hljs-number">44</span>,
+        <span class="hljs-attr">"date"</span>: <span class="hljs-string">"2019-06-24T11:56:13"</span>,
+        <span class="hljs-attr">"date_gmt"</span>: <span class="hljs-string">"2019-06-24T11:56:13"</span>,
+        <span class="hljs-attr">"guid"</span>: {
+            <span class="hljs-attr">"rendered"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/?post_type=training-offer&amp;#038;p=44"</span>
+        },
+        <span class="hljs-attr">"modified"</span>: <span class="hljs-string">"2019-06-24T11:56:13"</span>,
+        <span class="hljs-attr">"modified_gmt"</span>: <span class="hljs-string">"2019-06-24T11:56:13"</span>,
+        <span class="hljs-attr">"slug"</span>: <span class="hljs-string">"integer-sit-amet-arcu-turpis"</span>,
+        <span class="hljs-attr">"status"</span>: <span class="hljs-string">"publish"</span>,
+        <span class="hljs-attr">"type"</span>: <span class="hljs-string">"training-offer"</span>,
+        <span class="hljs-attr">"link"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/training-offer\/integer-sit-amet-arcu-turpis\/"</span>,
+        <span class="hljs-attr">"title"</span>: {
+            <span class="hljs-attr">"rendered"</span>: <span class="hljs-string">"Integer sit amet arcu turpis"</span>
+        },
+        <span class="hljs-attr">"content"</span>: {
+            <span class="hljs-attr">"rendered"</span>: <span class="hljs-string">"\n&lt;p&gt;\nPraesent tincidunt leo eget magna sollicitudin scelerisque. Nullam sem \nenim, dignissim nec odio et, euismod facilisis nunc. Proin consequat \nporttitor purus non varius. Phasellus blandit vestibulum hendrerit. Ut \niaculis dignissim leo, vitae molestie nibh dapibus ut. Integer sit amet \narcu turpis. Cras nec varius orci. Proin ex enim, ornare ac eros id, \npretium luctus mi. Duis mollis, leo in facilisis eleifend, nulla magna \nporttitor sapien, et venenatis odio nibh non orci. Etiam interdum nibh a\n diam tempus pulvinar.\n\n&lt;\/p&gt;\n"</span>,
+            <span class="hljs-attr">"protected"</span>: <span class="hljs-literal">false</span>
+        },
+        <span class="hljs-attr">"excerpt"</span>: {
+            <span class="hljs-attr">"rendered"</span>: <span class="hljs-string">"&lt;p&gt;Praesent tincidunt leo eget magna sollicitudin scelerisque. Nullam sem enim, dignissim nec odio et, euismod facilisis nunc. Proin consequat porttitor purus non varius. Phasellus blandit vestibulum hendrerit. Ut iaculis dignissim leo, vitae molestie nibh dapibus ut. Integer sit amet arcu turpis. Cras nec varius orci. Proin ex enim, ornare ac eros id, pretium luctus mi. [&amp;hellip;]&lt;\/p&gt;\n"</span>,
+            <span class="hljs-attr">"protected"</span>: <span class="hljs-literal">false</span>
+        },
+        <span class="hljs-attr">"author"</span>: <span class="hljs-number">1</span>,
+        <span class="hljs-attr">"featured_media"</span>: <span class="hljs-number">0</span>,
+        <span class="hljs-attr">"menu_order"</span>: <span class="hljs-number">0</span>,
+        <span class="hljs-attr">"comment_status"</span>: <span class="hljs-string">"open"</span>,
+        <span class="hljs-attr">"ping_status"</span>: <span class="hljs-string">"open"</span>,
+        <span class="hljs-attr">"template"</span>: <span class="hljs-string">""</span>,
+        <span class="hljs-attr">"meta"</span>: [],
+        <span class="hljs-attr">"acf"</span>: <span class="hljs-literal">false</span>,
+        <span class="hljs-attr">"_links"</span>: {
+            <span class="hljs-attr">"self"</span>: [
+                {
+                    <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/training-offer\/44"</span>
+                }
+            ],
+            <span class="hljs-attr">"collection"</span>: [
+                {
+                    <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/training-offer"</span>
+                }
+            ],
+            <span class="hljs-attr">"about"</span>: [
+                {
+                    <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/types\/training-offer"</span>
+                }
+            ],
+            <span class="hljs-attr">"author"</span>: [
+                {
+                    <span class="hljs-attr">"embeddable"</span>: <span class="hljs-literal">true</span>,
+                    <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/users\/1"</span>
+                }
+            ],
+            <span class="hljs-attr">"replies"</span>: [
+                {
+                    <span class="hljs-attr">"embeddable"</span>: <span class="hljs-literal">true</span>,
+                    <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/comments?post=44"</span>
+                }
+            ],
+            <span class="hljs-attr">"version-history"</span>: [
+                {
+                    <span class="hljs-attr">"count"</span>: <span class="hljs-number">1</span>,
+                    <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/training-offer\/44\/revisions"</span>
+                }
+            ],
+            <span class="hljs-attr">"predecessor-version"</span>: [
+                {
+                    <span class="hljs-attr">"id"</span>: <span class="hljs-number">45</span>,
+                    <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/training-offer\/44\/revisions\/45"</span>
+                }
+            ],
+            <span class="hljs-attr">"wp:attachment"</span>: [
+                {
+                    <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/media?parent=44"</span>
+                }
+            ],
+            <span class="hljs-attr">"curies"</span>: [
+                {
+                    <span class="hljs-attr">"name"</span>: <span class="hljs-string">"wp"</span>,
+                    <span class="hljs-attr">"href"</span>: <span class="hljs-string">"https:\/\/api.w.org\/{rel}"</span>,
+                    <span class="hljs-attr">"templated"</span>: <span class="hljs-literal">true</span>
+                }
+            ]
+        }
+    }
+
+</code></pre></div></div></div></div><div class="row"><div class="col-6 lhs"><div class="resource-heading way-point" id="resource-funding-opportunities">Funding opportunities</div></div><div class="col-6 rhs"></div></div><div class="row"><div class="col-6 lhs"><div class="transition-heading way-point" id="transition-get-funding-opportunities-get">Get Funding opportunities</div></div><div class="col-6 rhs"><div class="api-definition"><div class="api-definition-heading rhs-heading">Definition</div><div class="api-definition-description rhs-highlight code"><span class="api-method get">GET</span><span class="api-url"> http://domain.com/wp-json/wp/v2/funding-opportunity</span></div></div><div class="sample-request-heading rhs-heading">Request</div><div class="headers"><div class="headers-heading rhs-heading">Request Headers</div><div class="headers-description code rhs-highlight"><pre class="hljs"><code><div class="header-row"><span class="key hljs-attr">Content-Type: </span><span class="value">application/json</span></div></code></pre></div></div><div class="sample-request"><div class="sample-request-heading rhs-heading">Example Request</div><div class="sample-request-description rhs-highlight code"> <pre class="hljs"><code>curl --request GET \<br>  --url http:<span class="hljs-comment">//domain.com/wp-json/wp/v2/funding-opportunity \</span>
+  --header <span class="hljs-string">'content-type: application/json'</span></code></pre></div></div><div class="sample-response"><div class="sample-response-heading rhs-heading"> <span>Response </span><span class="status-code">200</span></div><div class="headers"><div class="headers-heading rhs-heading">Response Headers</div><div class="headers-description code rhs-highlight"><pre class="hljs"><code><div class="header-row"><span class="key hljs-attr">Content-Type: </span><span class="value">application/json</span></div></code></pre></div></div><div class="sample-response-body rhs-heading">Response Body</div><div class="sample-response-body-description rhs-highlight code"><pre class="hljs"><code>    [
+        {
+            <span class="hljs-attr">"id"</span>: <span class="hljs-number">48</span>,
+            <span class="hljs-attr">"date"</span>: <span class="hljs-string">"2019-06-24T11:57:05"</span>,
+            <span class="hljs-attr">"date_gmt"</span>: <span class="hljs-string">"2019-06-24T11:57:05"</span>,
+            <span class="hljs-attr">"guid"</span>: {
+                <span class="hljs-attr">"rendered"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/?post_type=funding-opportunity&amp;#038;p=48"</span>
+            },
+            <span class="hljs-attr">"modified"</span>: <span class="hljs-string">"2019-06-24T11:57:05"</span>,
+            <span class="hljs-attr">"modified_gmt"</span>: <span class="hljs-string">"2019-06-24T11:57:05"</span>,
+            <span class="hljs-attr">"slug"</span>: <span class="hljs-string">"quisque-ullamcorper-eu-eros-sed-dignissim"</span>,
+            <span class="hljs-attr">"status"</span>: <span class="hljs-string">"publish"</span>,
+            <span class="hljs-attr">"type"</span>: <span class="hljs-string">"funding-opportunity"</span>,
+            <span class="hljs-attr">"link"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/funding-opportunity\/quisque-ullamcorper-eu-eros-sed-dignissim\/"</span>,
+            <span class="hljs-attr">"title"</span>: {
+                <span class="hljs-attr">"rendered"</span>: <span class="hljs-string">"Quisque ullamcorper eu eros sed dignissim"</span>
+            },
+            <span class="hljs-attr">"content"</span>: {
+                <span class="hljs-attr">"rendered"</span>: <span class="hljs-string">"\n&lt;p&gt;\nAliquam placerat arcu ut lorem viverra, a sollicitudin leo auctor. Etiam\n eleifend tristique faucibus. Phasellus eu nibh tempus, egestas nisi at,\n facilisis quam. Phasellus tempor tellus vel augue vestibulum iaculis. \nNullam sed ullamcorper nibh. Sed consequat enim tortor, sit amet aliquam\n quam dignissim vehicula. Proin ornare et purus vitae consequat. Quisque\n ullamcorper eu eros sed dignissim. Aenean bibendum risus vel magna \npharetra dapibus. Morbi eleifend ultricies placerat. Vestibulum eu velit\n odio. Etiam scelerisque auctor consectetur.\n\n\n&lt;\/p&gt;\n"</span>,
+                <span class="hljs-attr">"protected"</span>: <span class="hljs-literal">false</span>
+            },
+            <span class="hljs-attr">"excerpt"</span>: {
+                <span class="hljs-attr">"rendered"</span>: <span class="hljs-string">"&lt;p&gt;Aliquam placerat arcu ut lorem viverra, a sollicitudin leo auctor. Etiam eleifend tristique faucibus. Phasellus eu nibh tempus, egestas nisi at, facilisis quam. Phasellus tempor tellus vel augue vestibulum iaculis. Nullam sed ullamcorper nibh. Sed consequat enim tortor, sit amet aliquam quam dignissim vehicula. Proin ornare et purus vitae consequat. Quisque ullamcorper eu eros sed [&amp;hellip;]&lt;\/p&gt;\n"</span>,
+                <span class="hljs-attr">"protected"</span>: <span class="hljs-literal">false</span>
+            },
+            <span class="hljs-attr">"author"</span>: <span class="hljs-number">1</span>,
+            <span class="hljs-attr">"featured_media"</span>: <span class="hljs-number">0</span>,
+            <span class="hljs-attr">"menu_order"</span>: <span class="hljs-number">0</span>,
+            <span class="hljs-attr">"comment_status"</span>: <span class="hljs-string">"open"</span>,
+            <span class="hljs-attr">"ping_status"</span>: <span class="hljs-string">"open"</span>,
+            <span class="hljs-attr">"template"</span>: <span class="hljs-string">""</span>,
+            <span class="hljs-attr">"meta"</span>: [],
+            <span class="hljs-attr">"acf"</span>: <span class="hljs-literal">false</span>,
+            <span class="hljs-attr">"_links"</span>: {
+                <span class="hljs-attr">"self"</span>: [
+                    {
+                        <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/funding-opportunity\/48"</span>
+                    }
+                ],
+                <span class="hljs-attr">"collection"</span>: [
+                    {
+                        <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/funding-opportunity"</span>
+                    }
+                ],
+                <span class="hljs-attr">"about"</span>: [
+                    {
+                        <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/types\/funding-opportunity"</span>
+                    }
+                ],
+                <span class="hljs-attr">"author"</span>: [
+                    {
+                        <span class="hljs-attr">"embeddable"</span>: <span class="hljs-literal">true</span>,
+                        <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/users\/1"</span>
+                    }
+                ],
+                <span class="hljs-attr">"replies"</span>: [
+                    {
+                        <span class="hljs-attr">"embeddable"</span>: <span class="hljs-literal">true</span>,
+                        <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/comments?post=48"</span>
+                    }
+                ],
+                <span class="hljs-attr">"version-history"</span>: [
+                    {
+                        <span class="hljs-attr">"count"</span>: <span class="hljs-number">1</span>,
+                        <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/funding-opportunity\/48\/revisions"</span>
+                    }
+                ],
+                <span class="hljs-attr">"predecessor-version"</span>: [
+                    {
+                        <span class="hljs-attr">"id"</span>: <span class="hljs-number">49</span>,
+                        <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/funding-opportunity\/48\/revisions\/49"</span>
+                    }
+                ],
+                <span class="hljs-attr">"wp:attachment"</span>: [
+                    {
+                        <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/media?parent=48"</span>
+                    }
+                ],
+                <span class="hljs-attr">"curies"</span>: [
+                    {
+                        <span class="hljs-attr">"name"</span>: <span class="hljs-string">"wp"</span>,
+                        <span class="hljs-attr">"href"</span>: <span class="hljs-string">"https:\/\/api.w.org\/{rel}"</span>,
+                        <span class="hljs-attr">"templated"</span>: <span class="hljs-literal">true</span>
+                    }
+                ]
+            }
+        },
+        {
+            <span class="hljs-attr">"id"</span>: <span class="hljs-number">46</span>,
+            <span class="hljs-attr">"date"</span>: <span class="hljs-string">"2019-06-24T11:56:46"</span>,
+            <span class="hljs-attr">"date_gmt"</span>: <span class="hljs-string">"2019-06-24T11:56:46"</span>,
+            <span class="hljs-attr">"guid"</span>: {
+                <span class="hljs-attr">"rendered"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/?post_type=funding-opportunity&amp;#038;p=46"</span>
+            },
+            <span class="hljs-attr">"modified"</span>: <span class="hljs-string">"2019-06-24T11:56:46"</span>,
+            <span class="hljs-attr">"modified_gmt"</span>: <span class="hljs-string">"2019-06-24T11:56:46"</span>,
+            <span class="hljs-attr">"slug"</span>: <span class="hljs-string">"proin-fringilla-auctor-magna"</span>,
+            <span class="hljs-attr">"status"</span>: <span class="hljs-string">"publish"</span>,
+            <span class="hljs-attr">"type"</span>: <span class="hljs-string">"funding-opportunity"</span>,
+            <span class="hljs-attr">"link"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/funding-opportunity\/proin-fringilla-auctor-magna\/"</span>,
+            <span class="hljs-attr">"title"</span>: {
+                <span class="hljs-attr">"rendered"</span>: <span class="hljs-string">"Proin fringilla auctor magna"</span>
+            },
+            <span class="hljs-attr">"content"</span>: {
+                <span class="hljs-attr">"rendered"</span>: <span class="hljs-string">"\n&lt;p&gt;\nAenean pharetra sem ut tincidunt vestibulum. Vestibulum tempus nisi \nnisl, non dignissim turpis lobortis accumsan. Mauris posuere quis metus a\n blandit. Donec laoreet nec ex eget varius. Sed pellentesque lacus ut \nmolestie iaculis. Donec a dolor gravida, tristique metus vitae, euismod \nfelis. Proin fringilla auctor magna, sed vehicula mauris fringilla sit \namet.\n\n\n&lt;\/p&gt;\n"</span>,
+                <span class="hljs-attr">"protected"</span>: <span class="hljs-literal">false</span>
+            },
+            <span class="hljs-attr">"excerpt"</span>: {
+                <span class="hljs-attr">"rendered"</span>: <span class="hljs-string">"&lt;p&gt;Aenean pharetra sem ut tincidunt vestibulum. Vestibulum tempus nisi nisl, non dignissim turpis lobortis accumsan. Mauris posuere quis metus a blandit. Donec laoreet nec ex eget varius. Sed pellentesque lacus ut molestie iaculis. Donec a dolor gravida, tristique metus vitae, euismod felis. Proin fringilla auctor magna, sed vehicula mauris fringilla sit amet.&lt;\/p&gt;\n"</span>,
+                <span class="hljs-attr">"protected"</span>: <span class="hljs-literal">false</span>
+            },
+            <span class="hljs-attr">"author"</span>: <span class="hljs-number">1</span>,
+            <span class="hljs-attr">"featured_media"</span>: <span class="hljs-number">0</span>,
+            <span class="hljs-attr">"menu_order"</span>: <span class="hljs-number">0</span>,
+            <span class="hljs-attr">"comment_status"</span>: <span class="hljs-string">"open"</span>,
+            <span class="hljs-attr">"ping_status"</span>: <span class="hljs-string">"open"</span>,
+            <span class="hljs-attr">"template"</span>: <span class="hljs-string">""</span>,
+            <span class="hljs-attr">"meta"</span>: [],
+            <span class="hljs-attr">"acf"</span>: <span class="hljs-literal">false</span>,
+            <span class="hljs-attr">"_links"</span>: {
+                <span class="hljs-attr">"self"</span>: [
+                    {
+                        <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/funding-opportunity\/46"</span>
+                    }
+                ],
+                <span class="hljs-attr">"collection"</span>: [
+                    {
+                        <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/funding-opportunity"</span>
+                    }
+                ],
+                <span class="hljs-attr">"about"</span>: [
+                    {
+                        <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/types\/funding-opportunity"</span>
+                    }
+                ],
+                <span class="hljs-attr">"author"</span>: [
+                    {
+                        <span class="hljs-attr">"embeddable"</span>: <span class="hljs-literal">true</span>,
+                        <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/users\/1"</span>
+                    }
+                ],
+                <span class="hljs-attr">"replies"</span>: [
+                    {
+                        <span class="hljs-attr">"embeddable"</span>: <span class="hljs-literal">true</span>,
+                        <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/comments?post=46"</span>
+                    }
+                ],
+                <span class="hljs-attr">"version-history"</span>: [
+                    {
+                        <span class="hljs-attr">"count"</span>: <span class="hljs-number">1</span>,
+                        <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/funding-opportunity\/46\/revisions"</span>
+                    }
+                ],
+                <span class="hljs-attr">"predecessor-version"</span>: [
+                    {
+                        <span class="hljs-attr">"id"</span>: <span class="hljs-number">47</span>,
+                        <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/funding-opportunity\/46\/revisions\/47"</span>
+                    }
+                ],
+                <span class="hljs-attr">"wp:attachment"</span>: [
+                    {
+                        <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/media?parent=46"</span>
+                    }
+                ],
+                <span class="hljs-attr">"curies"</span>: [
+                    {
+                        <span class="hljs-attr">"name"</span>: <span class="hljs-string">"wp"</span>,
+                        <span class="hljs-attr">"href"</span>: <span class="hljs-string">"https:\/\/api.w.org\/{rel}"</span>,
+                        <span class="hljs-attr">"templated"</span>: <span class="hljs-literal">true</span>
+                    }
+                ]
+            }
+        }
+    ]
+
+</code></pre></div></div></div></div><div class="row"><div class="col-6 lhs"><div class="resource-heading way-point" id="resource-funding-opportunity">Funding opportunity</div></div><div class="col-6 rhs"></div></div><div class="row"><div class="col-6 lhs"><div class="transition-heading way-point" id="transition-get-funding-opportunity-get">Get Funding opportunity</div><h5 class="part-heading">Url Parameters</h5><ul class="params"><li class="param"><div class="left"><div><span class="key">id</span></div><div><span class="type">string</span></div></div><div class="right"></div></li></ul></div><div class="col-6 rhs"><div class="api-definition"><div class="api-definition-heading rhs-heading">Definition</div><div class="api-definition-description rhs-highlight code"><span class="api-method get">GET</span><span class="api-url"> http://domain.com/wp-json/wp/v2/funding-opportunities/<mark>{id}</mark></span></div></div><div class="sample-request-heading rhs-heading">Request</div><div class="headers"><div class="headers-heading rhs-heading">Request Headers</div><div class="headers-description code rhs-highlight"><pre class="hljs"><code><div class="header-row"><span class="key hljs-attr">Content-Type: </span><span class="value">application/json</span></div></code></pre></div></div><div class="sample-request"><div class="sample-request-heading rhs-heading">Example Request</div><div class="sample-request-description rhs-highlight code"> <pre class="hljs"><code>curl --request GET \<br>  --url http:<span class="hljs-comment">//domain.com/wp-json/wp/v2/funding-opportunities/{id} \</span>
+  --header <span class="hljs-string">'content-type: application/json'</span></code></pre></div></div><div class="sample-response"><div class="sample-response-heading rhs-heading"> <span>Response </span><span class="status-code">200</span></div><div class="headers"><div class="headers-heading rhs-heading">Response Headers</div><div class="headers-description code rhs-highlight"><pre class="hljs"><code><div class="header-row"><span class="key hljs-attr">Content-Type: </span><span class="value">application/json</span></div></code></pre></div></div><div class="sample-response-body rhs-heading">Response Body</div><div class="sample-response-body-description rhs-highlight code"><pre class="hljs"><code>    {
+        <span class="hljs-attr">"id"</span>: <span class="hljs-number">48</span>,
+        <span class="hljs-attr">"date"</span>: <span class="hljs-string">"2019-06-24T11:57:05"</span>,
+        <span class="hljs-attr">"date_gmt"</span>: <span class="hljs-string">"2019-06-24T11:57:05"</span>,
+        <span class="hljs-attr">"guid"</span>: {
+            <span class="hljs-attr">"rendered"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/?post_type=funding-opportunity&amp;#038;p=48"</span>
+        },
+        <span class="hljs-attr">"modified"</span>: <span class="hljs-string">"2019-06-24T11:57:05"</span>,
+        <span class="hljs-attr">"modified_gmt"</span>: <span class="hljs-string">"2019-06-24T11:57:05"</span>,
+        <span class="hljs-attr">"slug"</span>: <span class="hljs-string">"quisque-ullamcorper-eu-eros-sed-dignissim"</span>,
+        <span class="hljs-attr">"status"</span>: <span class="hljs-string">"publish"</span>,
+        <span class="hljs-attr">"type"</span>: <span class="hljs-string">"funding-opportunity"</span>,
+        <span class="hljs-attr">"link"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/funding-opportunity\/quisque-ullamcorper-eu-eros-sed-dignissim\/"</span>,
+        <span class="hljs-attr">"title"</span>: {
+            <span class="hljs-attr">"rendered"</span>: <span class="hljs-string">"Quisque ullamcorper eu eros sed dignissim"</span>
+        },
+        <span class="hljs-attr">"content"</span>: {
+            <span class="hljs-attr">"rendered"</span>: <span class="hljs-string">"\n&lt;p&gt;\nAliquam placerat arcu ut lorem viverra, a sollicitudin leo auctor. Etiam\n eleifend tristique faucibus. Phasellus eu nibh tempus, egestas nisi at,\n facilisis quam. Phasellus tempor tellus vel augue vestibulum iaculis. \nNullam sed ullamcorper nibh. Sed consequat enim tortor, sit amet aliquam\n quam dignissim vehicula. Proin ornare et purus vitae consequat. Quisque\n ullamcorper eu eros sed dignissim. Aenean bibendum risus vel magna \npharetra dapibus. Morbi eleifend ultricies placerat. Vestibulum eu velit\n odio. Etiam scelerisque auctor consectetur.\n\n\n&lt;\/p&gt;\n"</span>,
+            <span class="hljs-attr">"protected"</span>: <span class="hljs-literal">false</span>
+        },
+        <span class="hljs-attr">"excerpt"</span>: {
+            <span class="hljs-attr">"rendered"</span>: <span class="hljs-string">"&lt;p&gt;Aliquam placerat arcu ut lorem viverra, a sollicitudin leo auctor. Etiam eleifend tristique faucibus. Phasellus eu nibh tempus, egestas nisi at, facilisis quam. Phasellus tempor tellus vel augue vestibulum iaculis. Nullam sed ullamcorper nibh. Sed consequat enim tortor, sit amet aliquam quam dignissim vehicula. Proin ornare et purus vitae consequat. Quisque ullamcorper eu eros sed [&amp;hellip;]&lt;\/p&gt;\n"</span>,
+            <span class="hljs-attr">"protected"</span>: <span class="hljs-literal">false</span>
+        },
+        <span class="hljs-attr">"author"</span>: <span class="hljs-number">1</span>,
+        <span class="hljs-attr">"featured_media"</span>: <span class="hljs-number">0</span>,
+        <span class="hljs-attr">"menu_order"</span>: <span class="hljs-number">0</span>,
+        <span class="hljs-attr">"comment_status"</span>: <span class="hljs-string">"open"</span>,
+        <span class="hljs-attr">"ping_status"</span>: <span class="hljs-string">"open"</span>,
+        <span class="hljs-attr">"template"</span>: <span class="hljs-string">""</span>,
+        <span class="hljs-attr">"meta"</span>: [],
+        <span class="hljs-attr">"acf"</span>: <span class="hljs-literal">false</span>,
+        <span class="hljs-attr">"_links"</span>: {
+            <span class="hljs-attr">"self"</span>: [
+                {
+                    <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/funding-opportunity\/48"</span>
+                }
+            ],
+            <span class="hljs-attr">"collection"</span>: [
+                {
+                    <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/funding-opportunity"</span>
+                }
+            ],
+            <span class="hljs-attr">"about"</span>: [
+                {
+                    <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/types\/funding-opportunity"</span>
+                }
+            ],
+            <span class="hljs-attr">"author"</span>: [
+                {
+                    <span class="hljs-attr">"embeddable"</span>: <span class="hljs-literal">true</span>,
+                    <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/users\/1"</span>
+                }
+            ],
+            <span class="hljs-attr">"replies"</span>: [
+                {
+                    <span class="hljs-attr">"embeddable"</span>: <span class="hljs-literal">true</span>,
+                    <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/comments?post=48"</span>
+                }
+            ],
+            <span class="hljs-attr">"version-history"</span>: [
+                {
+                    <span class="hljs-attr">"count"</span>: <span class="hljs-number">1</span>,
+                    <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/funding-opportunity\/48\/revisions"</span>
+                }
+            ],
+            <span class="hljs-attr">"predecessor-version"</span>: [
+                {
+                    <span class="hljs-attr">"id"</span>: <span class="hljs-number">49</span>,
+                    <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/funding-opportunity\/48\/revisions\/49"</span>
+                }
+            ],
+            <span class="hljs-attr">"wp:attachment"</span>: [
+                {
+                    <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/media?parent=48"</span>
+                }
+            ],
+            <span class="hljs-attr">"curies"</span>: [
+                {
+                    <span class="hljs-attr">"name"</span>: <span class="hljs-string">"wp"</span>,
+                    <span class="hljs-attr">"href"</span>: <span class="hljs-string">"https:\/\/api.w.org\/{rel}"</span>,
+                    <span class="hljs-attr">"templated"</span>: <span class="hljs-literal">true</span>
+                }
+            ]
+        }
+    }
+
+</code></pre></div></div></div></div><div class="row"><div class="col-6 lhs"><div class="resource-heading way-point" id="resource-events">Events</div></div><div class="col-6 rhs"></div></div><div class="row"><div class="col-6 lhs"><div class="transition-heading way-point" id="transition-get-events-get">Get Events</div></div><div class="col-6 rhs"><div class="api-definition"><div class="api-definition-heading rhs-heading">Definition</div><div class="api-definition-description rhs-highlight code"><span class="api-method get">GET</span><span class="api-url"> http://domain.com/wp-json/wp/v2/event</span></div></div><div class="sample-request-heading rhs-heading">Request</div><div class="headers"><div class="headers-heading rhs-heading">Request Headers</div><div class="headers-description code rhs-highlight"><pre class="hljs"><code><div class="header-row"><span class="key hljs-attr">Content-Type: </span><span class="value">application/json</span></div></code></pre></div></div><div class="sample-request"><div class="sample-request-heading rhs-heading">Example Request</div><div class="sample-request-description rhs-highlight code"> <pre class="hljs"><code>curl --request GET \<br>  --url http:<span class="hljs-comment">//domain.com/wp-json/wp/v2/event \</span>
+  --header <span class="hljs-string">'content-type: application/json'</span></code></pre></div></div><div class="sample-response"><div class="sample-response-heading rhs-heading"> <span>Response </span><span class="status-code">200</span></div><div class="headers"><div class="headers-heading rhs-heading">Response Headers</div><div class="headers-description code rhs-highlight"><pre class="hljs"><code><div class="header-row"><span class="key hljs-attr">Content-Type: </span><span class="value">application/json</span></div></code></pre></div></div><div class="sample-response-body rhs-heading">Response Body</div><div class="sample-response-body-description rhs-highlight code"><pre class="hljs"><code>    [
+        {
+            <span class="hljs-attr">"id"</span>: <span class="hljs-number">52</span>,
+            <span class="hljs-attr">"date"</span>: <span class="hljs-string">"2019-06-24T11:58:00"</span>,
+            <span class="hljs-attr">"date_gmt"</span>: <span class="hljs-string">"2019-06-24T11:58:00"</span>,
+            <span class="hljs-attr">"guid"</span>: {
+                <span class="hljs-attr">"rendered"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/?post_type=event&amp;#038;p=52"</span>
+            },
+            <span class="hljs-attr">"modified"</span>: <span class="hljs-string">"2019-06-24T11:58:00"</span>,
+            <span class="hljs-attr">"modified_gmt"</span>: <span class="hljs-string">"2019-06-24T11:58:00"</span>,
+            <span class="hljs-attr">"slug"</span>: <span class="hljs-string">"sed-purus-diam-sodales-sit-amet-porttitor-id"</span>,
+            <span class="hljs-attr">"status"</span>: <span class="hljs-string">"publish"</span>,
+            <span class="hljs-attr">"type"</span>: <span class="hljs-string">"event"</span>,
+            <span class="hljs-attr">"link"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/event\/sed-purus-diam-sodales-sit-amet-porttitor-id\/"</span>,
+            <span class="hljs-attr">"title"</span>: {
+                <span class="hljs-attr">"rendered"</span>: <span class="hljs-string">"Sed purus diam, sodales sit amet porttitor id"</span>
+            },
+            <span class="hljs-attr">"content"</span>: {
+                <span class="hljs-attr">"rendered"</span>: <span class="hljs-string">"\n&lt;p&gt;\nVestibulum elementum, neque ac tincidunt vulputate, felis metus viverra \neros, sed fermentum tellus ex vitae dui. Fusce non ligula consequat, \nsollicitudin nibh vitae, tempor neque. Vestibulum egestas et augue eu \naccumsan. Mauris id efficitur urna. Maecenas tristique eros erat. Sed \npurus diam, sodales sit amet porttitor id, sagittis ac felis. Praesent \naliquam blandit eros. Praesent sit amet mauris semper, bibendum nisl in,\n venenatis odio. Curabitur bibendum accumsan nulla eu elementum. \nCurabitur ultricies nulla ut varius sagittis. Pellentesque non sapien a \nante aliquet blandit. Proin tempor viverra condimentum. Ut eu nisl eros.\n\n\n&lt;\/p&gt;\n"</span>,
+                <span class="hljs-attr">"protected"</span>: <span class="hljs-literal">false</span>
+            },
+            <span class="hljs-attr">"excerpt"</span>: {
+                <span class="hljs-attr">"rendered"</span>: <span class="hljs-string">"&lt;p&gt;Vestibulum elementum, neque ac tincidunt vulputate, felis metus viverra eros, sed fermentum tellus ex vitae dui. Fusce non ligula consequat, sollicitudin nibh vitae, tempor neque. Vestibulum egestas et augue eu accumsan. Mauris id efficitur urna. Maecenas tristique eros erat. Sed purus diam, sodales sit amet porttitor id, sagittis ac felis. Praesent aliquam blandit eros. Praesent [&amp;hellip;]&lt;\/p&gt;\n"</span>,
+                <span class="hljs-attr">"protected"</span>: <span class="hljs-literal">false</span>
+            },
+            <span class="hljs-attr">"author"</span>: <span class="hljs-number">1</span>,
+            <span class="hljs-attr">"featured_media"</span>: <span class="hljs-number">0</span>,
+            <span class="hljs-attr">"menu_order"</span>: <span class="hljs-number">0</span>,
+            <span class="hljs-attr">"comment_status"</span>: <span class="hljs-string">"open"</span>,
+            <span class="hljs-attr">"ping_status"</span>: <span class="hljs-string">"open"</span>,
+            <span class="hljs-attr">"template"</span>: <span class="hljs-string">""</span>,
+            <span class="hljs-attr">"meta"</span>: [],
+            <span class="hljs-attr">"acf"</span>: <span class="hljs-literal">false</span>,
+            <span class="hljs-attr">"_links"</span>: {
+                <span class="hljs-attr">"self"</span>: [
+                    {
+                        <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/event\/52"</span>
+                    }
+                ],
+                <span class="hljs-attr">"collection"</span>: [
+                    {
+                        <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/event"</span>
+                    }
+                ],
+                <span class="hljs-attr">"about"</span>: [
+                    {
+                        <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/types\/event"</span>
+                    }
+                ],
+                <span class="hljs-attr">"author"</span>: [
+                    {
+                        <span class="hljs-attr">"embeddable"</span>: <span class="hljs-literal">true</span>,
+                        <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/users\/1"</span>
+                    }
+                ],
+                <span class="hljs-attr">"replies"</span>: [
+                    {
+                        <span class="hljs-attr">"embeddable"</span>: <span class="hljs-literal">true</span>,
+                        <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/comments?post=52"</span>
+                    }
+                ],
+                <span class="hljs-attr">"version-history"</span>: [
+                    {
+                        <span class="hljs-attr">"count"</span>: <span class="hljs-number">1</span>,
+                        <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/event\/52\/revisions"</span>
+                    }
+                ],
+                <span class="hljs-attr">"predecessor-version"</span>: [
+                    {
+                        <span class="hljs-attr">"id"</span>: <span class="hljs-number">53</span>,
+                        <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/event\/52\/revisions\/53"</span>
+                    }
+                ],
+                <span class="hljs-attr">"wp:attachment"</span>: [
+                    {
+                        <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/media?parent=52"</span>
+                    }
+                ],
+                <span class="hljs-attr">"curies"</span>: [
+                    {
+                        <span class="hljs-attr">"name"</span>: <span class="hljs-string">"wp"</span>,
+                        <span class="hljs-attr">"href"</span>: <span class="hljs-string">"https:\/\/api.w.org\/{rel}"</span>,
+                        <span class="hljs-attr">"templated"</span>: <span class="hljs-literal">true</span>
+                    }
+                ]
+            }
+        },
+        {
+            <span class="hljs-attr">"id"</span>: <span class="hljs-number">50</span>,
+            <span class="hljs-attr">"date"</span>: <span class="hljs-string">"2019-06-24T11:57:29"</span>,
+            <span class="hljs-attr">"date_gmt"</span>: <span class="hljs-string">"2019-06-24T11:57:29"</span>,
+            <span class="hljs-attr">"guid"</span>: {
+                <span class="hljs-attr">"rendered"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/?post_type=event&amp;#038;p=50"</span>
+            },
+            <span class="hljs-attr">"modified"</span>: <span class="hljs-string">"2019-06-24T11:57:29"</span>,
+            <span class="hljs-attr">"modified_gmt"</span>: <span class="hljs-string">"2019-06-24T11:57:29"</span>,
+            <span class="hljs-attr">"slug"</span>: <span class="hljs-string">"mauris-cursus-elit-vel-ultricies-pretium"</span>,
+            <span class="hljs-attr">"status"</span>: <span class="hljs-string">"publish"</span>,
+            <span class="hljs-attr">"type"</span>: <span class="hljs-string">"event"</span>,
+            <span class="hljs-attr">"link"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/event\/mauris-cursus-elit-vel-ultricies-pretium\/"</span>,
+            <span class="hljs-attr">"title"</span>: {
+                <span class="hljs-attr">"rendered"</span>: <span class="hljs-string">"Mauris cursus, elit vel ultricies pretium"</span>
+            },
+            <span class="hljs-attr">"content"</span>: {
+                <span class="hljs-attr">"rendered"</span>: <span class="hljs-string">"\n&lt;p&gt;\nDuis non libero eget urna bibendum gravida. Suspendisse potenti. In \nmagna augue, scelerisque at nunc sit amet, finibus dignissim dolor. Cras\n in risus in sem imperdiet tincidunt vitae id neque. Suspendisse \npotenti. Curabitur iaculis vel felis ac mollis. Nullam scelerisque nibh \nlibero, ut commodo augue dictum id. Mauris pellentesque placerat nisi, \nid mattis nibh maximus vitae. Mauris cursus, elit vel ultricies pretium,\n sem nunc fringilla nulla, in sodales sem turpis nec quam. Vestibulum \nante ipsum primis in faucibus orci luctus et ultrices posuere cubilia \nCurae; Quisque non ligula eu mauris dapibus vulputate id eget dui. \nPraesent auctor posuere tristique.\n\n\n&lt;\/p&gt;\n"</span>,
+                <span class="hljs-attr">"protected"</span>: <span class="hljs-literal">false</span>
+            },
+            <span class="hljs-attr">"excerpt"</span>: {
+                <span class="hljs-attr">"rendered"</span>: <span class="hljs-string">"&lt;p&gt;Duis non libero eget urna bibendum gravida. Suspendisse potenti. In magna augue, scelerisque at nunc sit amet, finibus dignissim dolor. Cras in risus in sem imperdiet tincidunt vitae id neque. Suspendisse potenti. Curabitur iaculis vel felis ac mollis. Nullam scelerisque nibh libero, ut commodo augue dictum id. Mauris pellentesque placerat nisi, id mattis nibh maximus [&amp;hellip;]&lt;\/p&gt;\n"</span>,
+                <span class="hljs-attr">"protected"</span>: <span class="hljs-literal">false</span>
+            },
+            <span class="hljs-attr">"author"</span>: <span class="hljs-number">1</span>,
+            <span class="hljs-attr">"featured_media"</span>: <span class="hljs-number">0</span>,
+            <span class="hljs-attr">"menu_order"</span>: <span class="hljs-number">0</span>,
+            <span class="hljs-attr">"comment_status"</span>: <span class="hljs-string">"open"</span>,
+            <span class="hljs-attr">"ping_status"</span>: <span class="hljs-string">"open"</span>,
+            <span class="hljs-attr">"template"</span>: <span class="hljs-string">""</span>,
+            <span class="hljs-attr">"meta"</span>: [],
+            <span class="hljs-attr">"acf"</span>: <span class="hljs-literal">false</span>,
+            <span class="hljs-attr">"_links"</span>: {
+                <span class="hljs-attr">"self"</span>: [
+                    {
+                        <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/event\/50"</span>
+                    }
+                ],
+                <span class="hljs-attr">"collection"</span>: [
+                    {
+                        <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/event"</span>
+                    }
+                ],
+                <span class="hljs-attr">"about"</span>: [
+                    {
+                        <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/types\/event"</span>
+                    }
+                ],
+                <span class="hljs-attr">"author"</span>: [
+                    {
+                        <span class="hljs-attr">"embeddable"</span>: <span class="hljs-literal">true</span>,
+                        <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/users\/1"</span>
+                    }
+                ],
+                <span class="hljs-attr">"replies"</span>: [
+                    {
+                        <span class="hljs-attr">"embeddable"</span>: <span class="hljs-literal">true</span>,
+                        <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/comments?post=50"</span>
+                    }
+                ],
+                <span class="hljs-attr">"version-history"</span>: [
+                    {
+                        <span class="hljs-attr">"count"</span>: <span class="hljs-number">1</span>,
+                        <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/event\/50\/revisions"</span>
+                    }
+                ],
+                <span class="hljs-attr">"predecessor-version"</span>: [
+                    {
+                        <span class="hljs-attr">"id"</span>: <span class="hljs-number">51</span>,
+                        <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/event\/50\/revisions\/51"</span>
+                    }
+                ],
+                <span class="hljs-attr">"wp:attachment"</span>: [
+                    {
+                        <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/media?parent=50"</span>
+                    }
+                ],
+                <span class="hljs-attr">"curies"</span>: [
+                    {
+                        <span class="hljs-attr">"name"</span>: <span class="hljs-string">"wp"</span>,
+                        <span class="hljs-attr">"href"</span>: <span class="hljs-string">"https:\/\/api.w.org\/{rel}"</span>,
+                        <span class="hljs-attr">"templated"</span>: <span class="hljs-literal">true</span>
+                    }
+                ]
+            }
+        }
+    ]
+
+</code></pre></div></div></div></div><div class="row"><div class="col-6 lhs"><div class="resource-heading way-point" id="resource-event">Event</div></div><div class="col-6 rhs"></div></div><div class="row"><div class="col-6 lhs"><div class="transition-heading way-point" id="transition-get-event-get">Get Event</div><h5 class="part-heading">Url Parameters</h5><ul class="params"><li class="param"><div class="left"><div><span class="key">id</span></div><div><span class="type">string</span></div></div><div class="right"></div></li></ul></div><div class="col-6 rhs"><div class="api-definition"><div class="api-definition-heading rhs-heading">Definition</div><div class="api-definition-description rhs-highlight code"><span class="api-method get">GET</span><span class="api-url"> http://domain.com/wp-json/wp/v2/event/<mark>{id}</mark></span></div></div><div class="sample-request-heading rhs-heading">Request</div><div class="headers"><div class="headers-heading rhs-heading">Request Headers</div><div class="headers-description code rhs-highlight"><pre class="hljs"><code><div class="header-row"><span class="key hljs-attr">Content-Type: </span><span class="value">application/json</span></div></code></pre></div></div><div class="sample-request"><div class="sample-request-heading rhs-heading">Example Request</div><div class="sample-request-description rhs-highlight code"> <pre class="hljs"><code>curl --request GET \<br>  --url http:<span class="hljs-comment">//domain.com/wp-json/wp/v2/event/{id} \</span>
+  --header <span class="hljs-string">'content-type: application/json'</span></code></pre></div></div><div class="sample-response"><div class="sample-response-heading rhs-heading"> <span>Response </span><span class="status-code">200</span></div><div class="headers"><div class="headers-heading rhs-heading">Response Headers</div><div class="headers-description code rhs-highlight"><pre class="hljs"><code><div class="header-row"><span class="key hljs-attr">Content-Type: </span><span class="value">application/json</span></div></code></pre></div></div><div class="sample-response-body rhs-heading">Response Body</div><div class="sample-response-body-description rhs-highlight code"><pre class="hljs"><code>    {
+        <span class="hljs-attr">"id"</span>: <span class="hljs-number">52</span>,
+        <span class="hljs-attr">"date"</span>: <span class="hljs-string">"2019-06-24T11:58:00"</span>,
+        <span class="hljs-attr">"date_gmt"</span>: <span class="hljs-string">"2019-06-24T11:58:00"</span>,
+        <span class="hljs-attr">"guid"</span>: {
+            <span class="hljs-attr">"rendered"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/?post_type=event&amp;#038;p=52"</span>
+        },
+        <span class="hljs-attr">"modified"</span>: <span class="hljs-string">"2019-06-24T11:58:00"</span>,
+        <span class="hljs-attr">"modified_gmt"</span>: <span class="hljs-string">"2019-06-24T11:58:00"</span>,
+        <span class="hljs-attr">"slug"</span>: <span class="hljs-string">"sed-purus-diam-sodales-sit-amet-porttitor-id"</span>,
+        <span class="hljs-attr">"status"</span>: <span class="hljs-string">"publish"</span>,
+        <span class="hljs-attr">"type"</span>: <span class="hljs-string">"event"</span>,
+        <span class="hljs-attr">"link"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/event\/sed-purus-diam-sodales-sit-amet-porttitor-id\/"</span>,
+        <span class="hljs-attr">"title"</span>: {
+            <span class="hljs-attr">"rendered"</span>: <span class="hljs-string">"Sed purus diam, sodales sit amet porttitor id"</span>
+        },
+        <span class="hljs-attr">"content"</span>: {
+            <span class="hljs-attr">"rendered"</span>: <span class="hljs-string">"\n&lt;p&gt;\nVestibulum elementum, neque ac tincidunt vulputate, felis metus viverra \neros, sed fermentum tellus ex vitae dui. Fusce non ligula consequat, \nsollicitudin nibh vitae, tempor neque. Vestibulum egestas et augue eu \naccumsan. Mauris id efficitur urna. Maecenas tristique eros erat. Sed \npurus diam, sodales sit amet porttitor id, sagittis ac felis. Praesent \naliquam blandit eros. Praesent sit amet mauris semper, bibendum nisl in,\n venenatis odio. Curabitur bibendum accumsan nulla eu elementum. \nCurabitur ultricies nulla ut varius sagittis. Pellentesque non sapien a \nante aliquet blandit. Proin tempor viverra condimentum. Ut eu nisl eros.\n\n\n&lt;\/p&gt;\n"</span>,
+            <span class="hljs-attr">"protected"</span>: <span class="hljs-literal">false</span>
+        },
+        <span class="hljs-attr">"excerpt"</span>: {
+            <span class="hljs-attr">"rendered"</span>: <span class="hljs-string">"&lt;p&gt;Vestibulum elementum, neque ac tincidunt vulputate, felis metus viverra eros, sed fermentum tellus ex vitae dui. Fusce non ligula consequat, sollicitudin nibh vitae, tempor neque. Vestibulum egestas et augue eu accumsan. Mauris id efficitur urna. Maecenas tristique eros erat. Sed purus diam, sodales sit amet porttitor id, sagittis ac felis. Praesent aliquam blandit eros. Praesent [&amp;hellip;]&lt;\/p&gt;\n"</span>,
+            <span class="hljs-attr">"protected"</span>: <span class="hljs-literal">false</span>
+        },
+        <span class="hljs-attr">"author"</span>: <span class="hljs-number">1</span>,
+        <span class="hljs-attr">"featured_media"</span>: <span class="hljs-number">0</span>,
+        <span class="hljs-attr">"menu_order"</span>: <span class="hljs-number">0</span>,
+        <span class="hljs-attr">"comment_status"</span>: <span class="hljs-string">"open"</span>,
+        <span class="hljs-attr">"ping_status"</span>: <span class="hljs-string">"open"</span>,
+        <span class="hljs-attr">"template"</span>: <span class="hljs-string">""</span>,
+        <span class="hljs-attr">"meta"</span>: [],
+        <span class="hljs-attr">"acf"</span>: <span class="hljs-literal">false</span>,
+        <span class="hljs-attr">"_links"</span>: {
+            <span class="hljs-attr">"self"</span>: [
+                {
+                    <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/event\/52"</span>
+                }
+            ],
+            <span class="hljs-attr">"collection"</span>: [
+                {
+                    <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/event"</span>
+                }
+            ],
+            <span class="hljs-attr">"about"</span>: [
+                {
+                    <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/types\/event"</span>
+                }
+            ],
+            <span class="hljs-attr">"author"</span>: [
+                {
+                    <span class="hljs-attr">"embeddable"</span>: <span class="hljs-literal">true</span>,
+                    <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/users\/1"</span>
+                }
+            ],
+            <span class="hljs-attr">"replies"</span>: [
+                {
+                    <span class="hljs-attr">"embeddable"</span>: <span class="hljs-literal">true</span>,
+                    <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/comments?post=52"</span>
+                }
+            ],
+            <span class="hljs-attr">"version-history"</span>: [
+                {
+                    <span class="hljs-attr">"count"</span>: <span class="hljs-number">1</span>,
+                    <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/event\/52\/revisions"</span>
+                }
+            ],
+            <span class="hljs-attr">"predecessor-version"</span>: [
+                {
+                    <span class="hljs-attr">"id"</span>: <span class="hljs-number">53</span>,
+                    <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/event\/52\/revisions\/53"</span>
+                }
+            ],
+            <span class="hljs-attr">"wp:attachment"</span>: [
+                {
+                    <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/media?parent=52"</span>
+                }
+            ],
+            <span class="hljs-attr">"curies"</span>: [
+                {
+                    <span class="hljs-attr">"name"</span>: <span class="hljs-string">"wp"</span>,
+                    <span class="hljs-attr">"href"</span>: <span class="hljs-string">"https:\/\/api.w.org\/{rel}"</span>,
+                    <span class="hljs-attr">"templated"</span>: <span class="hljs-literal">true</span>
+                }
+            ]
+        }
+    }
+
+</code></pre></div></div></div></div></div></div><script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/noframework.waypoints.min.js"></script><script>function triggerEvent(el, eventName) {
+    if (!el) return;
+    var evt;
+    try {
+        evt = new window.Event(eventName, {bubbles: true});
+    }
+    catch (e) {
+        evt = document.createEvent('Event');
+        evt.initEvent(eventName, true, false);
+    }
+    finally {
+        el.dispatchEvent(evt);
+    }
+};
+var docbody = document.querySelector('.doc-body');
+docbody.addEventListener('click', function(e) {
+	if (e.target.classList.contains('expand') || e.target.classList.contains('close')) {
+		var childAttr = e.target.parentNode.parentNode;
+		childAttr.classList.toggle('show');
+	}
+});
+var sidebar = document.querySelector('.sidebar');
+sidebar.addEventListener('click', function(e) {
+	if (e.target.classList.contains('resource-nav-item')) {
+		var selected = sidebar.querySelector('.resource-header.expand');
+		var resourceHeader = e.target.parentNode;
+		if (selected !== e.target.parentNode) {
+			selected && selected.classList.remove('expand');
+			resourceHeader.classList.add('expand');
+		}
+	} else if (e.target.classList.contains('child-nav-text')) {
+		var selected = sidebar.querySelector('.child-nav-item.selected');
+		if (selected !== e.target.parentNode) {
+			selected && selected.classList.remove('selected');
+			e.target.parentNode.classList.add('selected');
+		}
+	} else if (e.target && e.target.parentNode && e.target.parentNode.classList.contains('group-header')) {
+		var selected = sidebar.querySelector('.resource-header.expand');
+		selected && selected.classList.remove('expand');
+		selected = sidebar.querySelector('.child-nav-item.selected');
+		selected && selected.classList.remove('selected');
+	}
+});
+var langBar = document.querySelector('.top-header .lang-header');
+langBar.addEventListener('click', function(e) {
+	if (e.target.classList.contains('lan')) {
+		var selectedLang = langBar.querySelector('.selected');
+		selectedLang = selectedLang && selectedLang.getAttribute('lang')
+		var targetLang = e.target.getAttribute('lang');
+		if (window.location.pathname.indexOf('/' + selectedLang) !== -1) {
+			window.location.pathname = window.location.pathname.replace('/' + selectedLang, '/' + targetLang);
+		} else if (window.location.search.indexOf(selectedLang) !== -1) {
+			window.location.search = window.location.search.replace(selectedLang, targetLang);
+		} else {
+		}
+	}
+})
+var waypoints = document.querySelectorAll('.way-point');
+function selectSection(navEl) {
+	var selected;
+	if (navEl) {
+		if (navEl.classList.contains('child-nav-item')) {
+			var resourceNav = navEl.parentNode.parentNode.parentNode;
+			selected = sidebar.querySelector('.child-nav-item.selected');
+			selected && (selected !== navEl) && selected.classList.remove('selected');
+			selected = sidebar.querySelector('.resource-header.expand');
+			selected && (selected !== resourceNav) && selected.classList.remove('expand');
+			resourceNav.classList.add('expand');
+			navEl.classList.add('selected');
+		} else if (navEl.classList.contains('resource-nav-item')) {
+			selected = sidebar.querySelector('.child-nav-item.selected');
+			selected && (selected !== navEl) && selected.classList.remove('selected');
+			selected = sidebar.querySelector('.resource-header.expand');
+			selected && (selected !== resourceNav) && selected.classList.remove('expand');
+			navEl.parentNode && navEl.parentNode.classList.add('expand');
+		} else {
+			selected = sidebar.querySelector('.child-nav-item.selected');
+			selected && (selected !== navEl) && selected.classList.remove('selected');
+			selected = sidebar.querySelector('.resource-header.expand');
+			selected && (selected !== resourceNav) && selected.classList.remove('expand');
+		}
+	}
+}
+var wayHandler = debounce(function() {
+
+	if (this.element.classList.contains('header-anchor')) {
+		this.element = this.element.parentNode;
+	}
+
+	var tid = this.element.id;
+	var id = '#' + this.element.id;
+
+	var navEl = document.querySelector('.sidebar a[_href=\"' + id + '\"]');
+	selectSection(navEl)
+}, 0, true)
+var hAnchors = document.querySelectorAll('.header-anchor');
+var topElement = document.querySelector('.top')
+for(var i = 0;i < waypoints.length; i++) {
+	new Waypoint({
+		continuous: false,
+		context: document.querySelector('.container'),
+		element: waypoints[i],
+		handler: wayHandler
+	});
+}
+for(var i = 0;i < hAnchors.length; i++) {
+	new Waypoint({
+		continuous: false,
+		context: document.querySelector('.container'),
+		element: hAnchors[i],
+		handler: wayHandler,
+		offset: 20
+	});
+}
+new Waypoint({
+	continuous: false,
+	context: document.querySelector('.container'),
+	element: topElement,
+	handler: wayHandler,
+	offset: -10
+});
+function debounce(func, wait, immediate) {
+	var timeout;
+	return function() {
+		var context = this, args = arguments;
+		var later = function() {
+			timeout = null;
+			if (!immediate) func.apply(context, args);
+		};
+		var callNow = immediate && !timeout;
+		clearTimeout(timeout);
+		timeout = setTimeout(later, wait);
+		if (callNow) func.apply(context, args);
+	};
+};
+var h = window.location.hash
+if (h) {
+	var navEl = document.querySelector('.sidebar a[_href=\"' + h + '\"]');
+	var selected;
+	selectSection(navEl)
+} else {
+	var navEl = document.querySelector('.sidebar a');
+	selectSection(navEl)
+}</script></div></body>

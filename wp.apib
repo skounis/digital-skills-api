@@ -1,0 +1,2032 @@
+FORMAT: 1A
+HOST: http://domain.com/
+
+# DSI Wordpress API
+
+This document describes the Rest API of a Wordpress based implementation.
+
+For the extention of the post types the [Advanced Custom Fields](https://www.advancedcustomfields.com/) and [ACF to REST API](https://github.com/airesvsg/acf-to-rest-api) plugins were used.
+
+The base address of the API is the URL of the Wordpress website. For demonstration, the base address `http://demo.com/` is assumed.
+
+## Authentication
+There is no need for authentication.
+
+## Pages [/wp-json/wp/v2/pages]
+### Get Pages [GET]
++ Request
+    + Headers
+
+            Content-Type: application/json
+
++ Response 200 (application/json)
+
+        [
+            {
+                "id": 2,
+                "date": "2019-06-21T09:43:30",
+                "date_gmt": "2019-06-21T09:43:30",
+                "guid": {
+                    "rendered": "http:\/\/domain.com\/wordpress\/?page_id=2"
+                },
+                "modified": "2019-06-21T09:43:30",
+                "modified_gmt": "2019-06-21T09:43:30",
+                "slug": "sample-page",
+                "status": "publish",
+                "type": "page",
+                "link": "http:\/\/domain.com\/wordpress\/sample-page\/",
+                "title": {
+                    "rendered": "Sample Page"
+                },
+                "content": {
+                    "rendered": "\n<p>This is an example page. It&#8217;s different from a blog post because it will stay in one place and will show up in your site navigation (in most themes). Most people start with an About page that introduces them to potential site visitors. It might say something like this:<\/p>\n\n\n\n<blockquote class=\"wp-block-quote\"><p>Hi there! I&#8217;m a bike messenger by day, aspiring actor by night, and this is my website. I live in Los Angeles, have a great dog named Jack, and I like pi&#241;a coladas. (And gettin&#8217; caught in the rain.)<\/p><\/blockquote>\n\n\n\n<p>&#8230;or something like this:<\/p>\n\n\n\n<blockquote class=\"wp-block-quote\"><p>The XYZ Doohickey Company was founded in 1971, and has been providing quality doohickeys to the public ever since. Located in Gotham City, XYZ employs over 2,000 people and does all kinds of awesome things for the Gotham community.<\/p><\/blockquote>\n\n\n\n<p>As a new WordPress user, you should go to <a href=\"http:\/\/domain.com\/wordpress\/wp-admin\/\">your dashboard<\/a> to delete this page and create new pages for your content. Have fun!<\/p>\n",
+                    "protected": false
+                },
+                "excerpt": {
+                    "rendered": "<p>This is an example page. It&#8217;s different from a blog post because it will stay in one place and will show up in your site navigation (in most themes). Most people start with an About page that introduces them to potential site visitors. It might say something like this: Hi there! I&#8217;m a bike messenger [&hellip;]<\/p>\n",
+                    "protected": false
+                },
+                "author": 1,
+                "featured_media": 0,
+                "parent": 0,
+                "menu_order": 0,
+                "comment_status": "closed",
+                "ping_status": "open",
+                "template": "",
+                "meta": [],
+                "acf": false,
+                "_links": {
+                    "self": [
+                        {
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/pages\/2"
+                        }
+                    ],
+                    "collection": [
+                        {
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/pages"
+                        }
+                    ],
+                    "about": [
+                        {
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/types\/page"
+                        }
+                    ],
+                    "author": [
+                        {
+                            "embeddable": true,
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/users\/1"
+                        }
+                    ],
+                    "replies": [
+                        {
+                            "embeddable": true,
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/comments?post=2"
+                        }
+                    ],
+                    "version-history": [
+                        {
+                            "count": 0,
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/pages\/2\/revisions"
+                        }
+                    ],
+                    "wp:attachment": [
+                        {
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/media?parent=2"
+                        }
+                    ],
+                    "curies": [
+                        {
+                            "name": "wp",
+                            "href": "https:\/\/api.w.org\/{rel}",
+                            "templated": true
+                        }
+                    ]
+                }
+            }
+        ]
+
+## Page [/wp-json/wp/v2/pages/{id}]
+### Get Page [GET]
++ Parameters
+    + id - The id of a certain page (e.g. 1)
+
++ Request
+        + Headers
+            Content-Type: application/json
+
++ Response 200 (application/json)
+
+        [
+            {
+                "id": 2,
+                "date": "2019-06-21T09:43:30",
+                "date_gmt": "2019-06-21T09:43:30",
+                "guid": {
+                    "rendered": "http:\/\/domain.com\/wordpress\/?page_id=2"
+                },
+                "modified": "2019-06-21T09:43:30",
+                "modified_gmt": "2019-06-21T09:43:30",
+                "slug": "sample-page",
+                "status": "publish",
+                "type": "page",
+                "link": "http:\/\/domain.com\/wordpress\/sample-page\/",
+                "title": {
+                    "rendered": "Sample Page"
+                },
+                "content": {
+                    "rendered": "\n<p>This is an example page. It&#8217;s different from a blog post because it will stay in one place and will show up in your site navigation (in most themes). Most people start with an About page that introduces them to potential site visitors. It might say something like this:<\/p>\n\n\n\n<blockquote class=\"wp-block-quote\"><p>Hi there! I&#8217;m a bike messenger by day, aspiring actor by night, and this is my website. I live in Los Angeles, have a great dog named Jack, and I like pi&#241;a coladas. (And gettin&#8217; caught in the rain.)<\/p><\/blockquote>\n\n\n\n<p>&#8230;or something like this:<\/p>\n\n\n\n<blockquote class=\"wp-block-quote\"><p>The XYZ Doohickey Company was founded in 1971, and has been providing quality doohickeys to the public ever since. Located in Gotham City, XYZ employs over 2,000 people and does all kinds of awesome things for the Gotham community.<\/p><\/blockquote>\n\n\n\n<p>As a new WordPress user, you should go to <a href=\"http:\/\/domain.com\/wordpress\/wp-admin\/\">your dashboard<\/a> to delete this page and create new pages for your content. Have fun!<\/p>\n",
+                    "protected": false
+                },
+                "excerpt": {
+                    "rendered": "<p>This is an example page. It&#8217;s different from a blog post because it will stay in one place and will show up in your site navigation (in most themes). Most people start with an About page that introduces them to potential site visitors. It might say something like this: Hi there! I&#8217;m a bike messenger [&hellip;]<\/p>\n",
+                    "protected": false
+                },
+                "author": 1,
+                "featured_media": 0,
+                "parent": 0,
+                "menu_order": 0,
+                "comment_status": "closed",
+                "ping_status": "open",
+                "template": "",
+                "meta": [],
+                "acf": false,
+                "_links": {
+                    "self": [
+                        {
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/pages\/2"
+                        }
+                    ],
+                    "collection": [
+                        {
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/pages"
+                        }
+                    ],
+                    "about": [
+                        {
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/types\/page"
+                        }
+                    ],
+                    "author": [
+                        {
+                            "embeddable": true,
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/users\/1"
+                        }
+                    ],
+                    "replies": [
+                        {
+                            "embeddable": true,
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/comments?post=2"
+                        }
+                    ],
+                    "version-history": [
+                        {
+                            "count": 0,
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/pages\/2\/revisions"
+                        }
+                    ],
+                    "wp:attachment": [
+                        {
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/media?parent=2"
+                        }
+                    ],
+                    "curies": [
+                        {
+                            "name": "wp",
+                            "href": "https:\/\/api.w.org\/{rel}",
+                            "templated": true
+                        }
+                    ]
+                }
+            }
+        ]
+
+## Posts [/wp-json/wp/v2/posts]
+### Get Posts [GET]
++ Request
+    + Headers
+
+            Content-Type: application/json
+
++ Response 200 (application/json)
+
+        [
+            {
+                "id": 1,
+                "date": "2019-06-21T09:43:30",
+                "date_gmt": "2019-06-21T09:43:30",
+                "guid": {
+                    "rendered": "http:\/\/domain.com\/wordpress\/?p=1"
+                },
+                "modified": "2019-06-21T10:04:50",
+                "modified_gmt": "2019-06-21T10:04:50",
+                "slug": "hello-world",
+                "status": "publish",
+                "type": "post",
+                "link": "http:\/\/domain.com\/wordpress\/hello-world\/",
+                "title": {
+                    "rendered": "Hello world!"
+                },
+                "content": {
+                    "rendered": "\n<p>Welcome to WordPress. This is your first post. Edit or delete it, then start writing!<\/p>\n",
+                    "protected": false
+                },
+                "excerpt": {
+                    "rendered": "<p>Welcome to WordPress. This is your first post. Edit or delete it, then start writing!<\/p>\n",
+                    "protected": false
+                },
+                "author": 1,
+                "featured_media": 0,
+                "comment_status": "open",
+                "ping_status": "open",
+                "sticky": false,
+                "template": "",
+                "format": "standard",
+                "meta": [],
+                "categories": [
+                    1
+                ],
+                "tags": [],
+                "_links": {
+                    "self": [
+                        {
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/posts\/1"
+                        }
+                    ],
+                    "collection": [
+                        {
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/posts"
+                        }
+                    ],
+                    "about": [
+                        {
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/types\/post"
+                        }
+                    ],
+                    "author": [
+                        {
+                            "embeddable": true,
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/users\/1"
+                        }
+                    ],
+                    "replies": [
+                        {
+                            "embeddable": true,
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/comments?post=1"
+                        }
+                    ],
+                    "version-history": [
+                        {
+                            "count": 3,
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/posts\/1\/revisions"
+                        }
+                    ],
+                    "predecessor-version": [
+                        {
+                            "id": 11,
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/posts\/1\/revisions\/11"
+                        }
+                    ],
+                    "wp:attachment": [
+                        {
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/media?parent=1"
+                        }
+                    ],
+                    "wp:term": [
+                        {
+                            "taxonomy": "category",
+                            "embeddable": true,
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/categories?post=1"
+                        },
+                        {
+                            "taxonomy": "post_tag",
+                            "embeddable": true,
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/tags?post=1"
+                        }
+                    ],
+                    "curies": [
+                        {
+                            "name": "wp",
+                            "href": "https:\/\/api.w.org\/{rel}",
+                            "templated": true
+                        }
+                    ]
+                }
+            }
+        ]
+
+## Post [/wp-json/wp/v2/posts/{id}]
+### Get Post [GET]
++ Parameters
+    + id - The id of a certain post (e.g. 1)
+
++ Request
+    + Headers
+
+            Content-Type: application/json
+
++ Response 200 (application/json)
+
+        {
+            "id": 1,
+            "date": "2019-06-21T09:43:30",
+            "date_gmt": "2019-06-21T09:43:30",
+            "guid": {
+                "rendered": "http:\/\/domain.com\/wordpress\/?p=1"
+            },
+            "modified": "2019-06-21T10:04:50",
+            "modified_gmt": "2019-06-21T10:04:50",
+            "slug": "hello-world",
+            "status": "publish",
+            "type": "post",
+            "link": "http:\/\/domain.com\/wordpress\/hello-world\/",
+            "title": {
+                "rendered": "Hello world!"
+            },
+            "content": {
+                "rendered": "\n<p>Welcome to WordPress. This is your first post. Edit or delete it, then start writing!<\/p>\n",
+                "protected": false
+            },
+            "excerpt": {
+                "rendered": "<p>Welcome to WordPress. This is your first post. Edit or delete it, then start writing!<\/p>\n",
+                "protected": false
+            },
+            "author": 1,
+            "featured_media": 0,
+            "comment_status": "open",
+            "ping_status": "open",
+            "sticky": false,
+            "template": "",
+            "format": "standard",
+            "meta": [],
+            "categories": [
+                1
+            ],
+            "tags": [],
+            "_links": {
+                "self": [
+                    {
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/posts\/1"
+                    }
+                ],
+                "collection": [
+                    {
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/posts"
+                    }
+                ],
+                "about": [
+                    {
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/types\/post"
+                    }
+                ],
+                "author": [
+                    {
+                        "embeddable": true,
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/users\/1"
+                    }
+                ],
+                "replies": [
+                    {
+                        "embeddable": true,
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/comments?post=1"
+                    }
+                ],
+                "version-history": [
+                    {
+                        "count": 3,
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/posts\/1\/revisions"
+                    }
+                ],
+                "predecessor-version": [
+                    {
+                        "id": 11,
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/posts\/1\/revisions\/11"
+                    }
+                ],
+                "wp:attachment": [
+                    {
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/media?parent=1"
+                    }
+                ],
+                "wp:term": [
+                    {
+                        "taxonomy": "category",
+                        "embeddable": true,
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/categories?post=1"
+                    },
+                    {
+                        "taxonomy": "post_tag",
+                        "embeddable": true,
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/tags?post=1"
+                    }
+                ],
+                "curies": [
+                    {
+                        "name": "wp",
+                        "href": "https:\/\/api.w.org\/{rel}",
+                        "templated": true
+                    }
+                ]
+            }
+        }
+
+## Best Practices [/wp-json/wp/v2/best-practices]
+### Get Best Practices [GET]
++ Request
+    + Headers
+
+            Content-Type: application/json
+
++ Response 200 (application/json)
+[
+    {
+        "id": 34,
+        "date": "2019-06-24T11:25:09",
+        "date_gmt": "2019-06-24T11:25:09",
+        "guid": {
+            "rendered": "http:\/\/domain.com\/wordpress\/?post_type=best-practices&#038;p=34"
+        },
+        "modified": "2019-06-24T11:30:59",
+        "modified_gmt": "2019-06-24T11:30:59",
+        "slug": "women-in-digital-initiatives-luxembourg",
+        "status": "publish",
+        "type": "best-practices",
+        "link": "http:\/\/domain.com\/wordpress\/best-practices\/women-in-digital-initiatives-luxembourg\/",
+        "title": {
+            "rendered": "Women in Digital Initiatives Luxembourg"
+        },
+        "content": {
+            "rendered": "\n<p>Launched as a grassroots initiative by women volunteers, WIDE has now become the leading and national reference organisation to champion inclusion of girls &amp; women in the new technologies and the digital field.<br><\/p>\n\n\n\n<p>WIDE has created strong links with industry, government and educators at the national and European level to provide concrete &amp; practical actions on the field. Our organisation organizes activities, workshops &amp; training for both women and men, with the aim of introducing more diversity in new technologies, start-ups and the ICT industry.<\/p>\n",
+            "protected": false
+        },
+        "excerpt": {
+            "rendered": "<p>Launched as a grassroots initiative by women volunteers, WIDE has now become the leading and national reference organisation to champion inclusion of girls &amp; women in the new technologies and the digital field. WIDE has created strong links with industry, government and educators at the national and European level to provide concrete &amp; practical actions [&hellip;]<\/p>\n",
+            "protected": false
+        },
+        "author": 1,
+        "featured_media": 0,
+        "menu_order": 0,
+        "comment_status": "open",
+        "ping_status": "open",
+        "template": "",
+        "meta": [],
+        "acf": {
+            "geographical_scope": [
+                {
+                    "term_id": 3,
+                    "name": "Belgium",
+                    "slug": "belgium",
+                    "term_group": 0,
+                    "term_taxonomy_id": 3,
+                    "taxonomy": "category",
+                    "description": "",
+                    "parent": 0,
+                    "count": 0,
+                    "filter": "raw"
+                },
+                {
+                    "term_id": 8,
+                    "name": "Luxembourg",
+                    "slug": "luxembourg",
+                    "term_group": 0,
+                    "term_taxonomy_id": 8,
+                    "taxonomy": "category",
+                    "description": "",
+                    "parent": 0,
+                    "count": 0,
+                    "filter": "raw"
+                }
+            ],
+            "type_of_iniative": "Digital Skills Award Participant",
+            "target_group": "Digital skills for women and girls",
+            "type_of_funding": "Public and Private",
+            "website": "http:\/\/wide.lu",
+            "start_date": "04\/07\/2018",
+            "end_date": "04\/09\/2018",
+            "organisation": "Work Wide Women",
+            "topics": [
+                {
+                    "term_id": 6,
+                    "name": "Commerce",
+                    "slug": "commerce",
+                    "term_group": 0,
+                    "term_taxonomy_id": 6,
+                    "taxonomy": "post_tag",
+                    "description": "",
+                    "parent": 0,
+                    "count": 0,
+                    "filter": "raw"
+                },
+                {
+                    "term_id": 4,
+                    "name": "Machine Learning",
+                    "slug": "machine-learning",
+                    "term_group": 0,
+                    "term_taxonomy_id": 4,
+                    "taxonomy": "post_tag",
+                    "description": "",
+                    "parent": 0,
+                    "count": 0,
+                    "filter": "raw"
+                }
+            ]
+        },
+        "_links": {
+            "self": [
+                {
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/best-practices\/34"
+                }
+            ],
+            "collection": [
+                {
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/best-practices"
+                }
+            ],
+            "about": [
+                {
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/types\/best-practices"
+                }
+            ],
+            "author": [
+                {
+                    "embeddable": true,
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/users\/1"
+                }
+            ],
+            "replies": [
+                {
+                    "embeddable": true,
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/comments?post=34"
+                }
+            ],
+            "version-history": [
+                {
+                    "count": 5,
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/best-practices\/34\/revisions"
+                }
+            ],
+            "predecessor-version": [
+                {
+                    "id": 41,
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/best-practices\/34\/revisions\/41"
+                }
+            ],
+            "wp:attachment": [
+                {
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/media?parent=34"
+                }
+            ],
+            "curies": [
+                {
+                    "name": "wp",
+                    "href": "https:\/\/api.w.org\/{rel}",
+                    "templated": true
+                }
+            ]
+        }
+    },
+    {
+        "id": 29,
+        "date": "2019-06-24T11:20:27",
+        "date_gmt": "2019-06-24T11:20:27",
+        "guid": {
+            "rendered": "http:\/\/domain.com\/wordpress\/?post_type=best-practices&#038;p=29"
+        },
+        "modified": "2019-06-24T11:27:32",
+        "modified_gmt": "2019-06-24T11:27:32",
+        "slug": "work-wide-women",
+        "status": "publish",
+        "type": "best-practices",
+        "link": "http:\/\/domain.com\/wordpress\/best-practices\/work-wide-women\/",
+        "title": {
+            "rendered": "WORK WIDE WOMEN"
+        },
+        "content": {
+            "rendered": "\n<p>The project offers to different types of benefit. On one side, it provides trainings to women to develop new skills and a better understanding about newly created professions. On the other side, it fosters companies to increase the presence of women within their employees. Training is the main driver: we strongly believe that education is the key to open all doors.<br><\/p>\n\n\n\n<p>The company was founded in Bologna in 2014, thanks to the support of TIM #WCAP: a Telecom Italia program that rewards and supports innovative business projects. Over the years, around these issues, we have built a national and international network that has given us the opportunity to achieve numerous awards and work alongside large companies that operate in the digital and technological innovation.<\/p>\n\n\n\n<p>We do online trainings through our platform, and vis-a-vis, addressed to women, and to companies&#8217; employees and management.<\/p>\n\n\n\n<p>We also carry out digital literacy program for women refugees and foreign women in order to offer them a different option to enter our job market and a different point of view about the job opportunities in the country.<\/p>\n\n\n\n<p>Thanks to projects such as this, we gained the WELCOME Logo issued by the UNHCR; we have been during 2017 one of the companies who facilitated the refugees integration in the job market in Italy.<\/p>\n\n\n\n<p>We care about diversity to convert it in equality: our aim is to create an equal environment, where men and women can work together to improve our lives, to increase our economy and improving our society.<\/p>\n",
+            "protected": false
+        },
+        "excerpt": {
+            "rendered": "<p>The project offers to different types of benefit. On one side, it provides trainings to women to develop new skills and a better understanding about newly created professions. On the other side, it fosters companies to increase the presence of women within their employees. Training is the main driver: we strongly believe that education is [&hellip;]<\/p>\n",
+            "protected": false
+        },
+        "author": 1,
+        "featured_media": 0,
+        "menu_order": 0,
+        "comment_status": "open",
+        "ping_status": "open",
+        "template": "",
+        "meta": [],
+        "acf": {
+            "geographical_scope": [
+                {
+                    "term_id": 2,
+                    "name": "Greece",
+                    "slug": "greece",
+                    "term_group": 0,
+                    "term_taxonomy_id": 2,
+                    "taxonomy": "category",
+                    "description": "",
+                    "parent": 0,
+                    "count": 0,
+                    "filter": "raw"
+                },
+                {
+                    "term_id": 7,
+                    "name": "Italy",
+                    "slug": "italy",
+                    "term_group": 0,
+                    "term_taxonomy_id": 7,
+                    "taxonomy": "category",
+                    "description": "",
+                    "parent": 0,
+                    "count": 0,
+                    "filter": "raw"
+                },
+                {
+                    "term_id": 8,
+                    "name": "Luxembourg",
+                    "slug": "luxembourg",
+                    "term_group": 0,
+                    "term_taxonomy_id": 8,
+                    "taxonomy": "category",
+                    "description": "",
+                    "parent": 0,
+                    "count": 0,
+                    "filter": "raw"
+                }
+            ],
+            "type_of_iniative": "Digital Skills Award Participant",
+            "target_group": "Digital skills for women and girls",
+            "type_of_funding": "Public and Private",
+            "website": "http:\/\/wide.lu",
+            "start_date": "12\/06\/2019",
+            "end_date": "25\/06\/2019",
+            "organisation": "Work Wide Women",
+            "topics": [
+                {
+                    "term_id": 5,
+                    "name": "AI",
+                    "slug": "ai",
+                    "term_group": 0,
+                    "term_taxonomy_id": 5,
+                    "taxonomy": "post_tag",
+                    "description": "",
+                    "parent": 0,
+                    "count": 0,
+                    "filter": "raw"
+                },
+                {
+                    "term_id": 6,
+                    "name": "Commerce",
+                    "slug": "commerce",
+                    "term_group": 0,
+                    "term_taxonomy_id": 6,
+                    "taxonomy": "post_tag",
+                    "description": "",
+                    "parent": 0,
+                    "count": 0,
+                    "filter": "raw"
+                },
+                {
+                    "term_id": 4,
+                    "name": "Machine Learning",
+                    "slug": "machine-learning",
+                    "term_group": 0,
+                    "term_taxonomy_id": 4,
+                    "taxonomy": "post_tag",
+                    "description": "",
+                    "parent": 0,
+                    "count": 0,
+                    "filter": "raw"
+                }
+            ]
+        },
+        "_links": {
+            "self": [
+                {
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/best-practices\/29"
+                }
+            ],
+            "collection": [
+                {
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/best-practices"
+                }
+            ],
+            "about": [
+                {
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/types\/best-practices"
+                }
+            ],
+            "author": [
+                {
+                    "embeddable": true,
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/users\/1"
+                }
+            ],
+            "replies": [
+                {
+                    "embeddable": true,
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/comments?post=29"
+                }
+            ],
+            "version-history": [
+                {
+                    "count": 6,
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/best-practices\/29\/revisions"
+                }
+            ],
+            "predecessor-version": [
+                {
+                    "id": 38,
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/best-practices\/29\/revisions\/38"
+                }
+            ],
+            "wp:attachment": [
+                {
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/media?parent=29"
+                }
+            ],
+            "curies": [
+                {
+                    "name": "wp",
+                    "href": "https:\/\/api.w.org\/{rel}",
+                    "templated": true
+                }
+            ]
+        }
+    }
+]
+
+## Best Practice [/wp-json/wp/v2/best-practices/{id}]
+### Get Best Practice [GET]
++ Parameters
+    + id - The id of a record (e.g. 1)
+
++ Request
+    + Headers
+        Content-Type: application/json
+
++ Response 200 (application/json)
+        {
+            "id": 34,
+            "date": "2019-06-24T11:25:09",
+            "date_gmt": "2019-06-24T11:25:09",
+            "guid": {
+                "rendered": "http:\/\/domain.com\/wordpress\/?post_type=best-practices&#038;p=34"
+            },
+            "modified": "2019-06-24T11:30:59",
+            "modified_gmt": "2019-06-24T11:30:59",
+            "slug": "women-in-digital-initiatives-luxembourg",
+            "status": "publish",
+            "type": "best-practices",
+            "link": "http:\/\/domain.com\/wordpress\/best-practices\/women-in-digital-initiatives-luxembourg\/",
+            "title": {
+                "rendered": "Women in Digital Initiatives Luxembourg"
+            },
+            "content": {
+                "rendered": "\n<p>Launched as a grassroots initiative by women volunteers, WIDE has now become the leading and national reference organisation to champion inclusion of girls &amp; women in the new technologies and the digital field.<br><\/p>\n\n\n\n<p>WIDE has created strong links with industry, government and educators at the national and European level to provide concrete &amp; practical actions on the field. Our organisation organizes activities, workshops &amp; training for both women and men, with the aim of introducing more diversity in new technologies, start-ups and the ICT industry.<\/p>\n",
+                "protected": false
+            },
+            "excerpt": {
+                "rendered": "<p>Launched as a grassroots initiative by women volunteers, WIDE has now become the leading and national reference organisation to champion inclusion of girls &amp; women in the new technologies and the digital field. WIDE has created strong links with industry, government and educators at the national and European level to provide concrete &amp; practical actions [&hellip;]<\/p>\n",
+                "protected": false
+            },
+            "author": 1,
+            "featured_media": 0,
+            "menu_order": 0,
+            "comment_status": "open",
+            "ping_status": "open",
+            "template": "",
+            "meta": [],
+            "acf": {
+                "geographical_scope": [
+                    {
+                        "term_id": 3,
+                        "name": "Belgium",
+                        "slug": "belgium",
+                        "term_group": 0,
+                        "term_taxonomy_id": 3,
+                        "taxonomy": "category",
+                        "description": "",
+                        "parent": 0,
+                        "count": 0,
+                        "filter": "raw"
+                    },
+                    {
+                        "term_id": 8,
+                        "name": "Luxembourg",
+                        "slug": "luxembourg",
+                        "term_group": 0,
+                        "term_taxonomy_id": 8,
+                        "taxonomy": "category",
+                        "description": "",
+                        "parent": 0,
+                        "count": 0,
+                        "filter": "raw"
+                    }
+                ],
+                "type_of_iniative": "Digital Skills Award Participant",
+                "target_group": "Digital skills for women and girls",
+                "type_of_funding": "Public and Private",
+                "website": "http:\/\/wide.lu",
+                "start_date": "04\/07\/2018",
+                "end_date": "04\/09\/2018",
+                "organisation": "Work Wide Women",
+                "topics": [
+                    {
+                        "term_id": 6,
+                        "name": "Commerce",
+                        "slug": "commerce",
+                        "term_group": 0,
+                        "term_taxonomy_id": 6,
+                        "taxonomy": "post_tag",
+                        "description": "",
+                        "parent": 0,
+                        "count": 0,
+                        "filter": "raw"
+                    },
+                    {
+                        "term_id": 4,
+                        "name": "Machine Learning",
+                        "slug": "machine-learning",
+                        "term_group": 0,
+                        "term_taxonomy_id": 4,
+                        "taxonomy": "post_tag",
+                        "description": "",
+                        "parent": 0,
+                        "count": 0,
+                        "filter": "raw"
+                    }
+                ]
+            },
+            "_links": {
+                "self": [
+                    {
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/best-practices\/34"
+                    }
+                ],
+                "collection": [
+                    {
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/best-practices"
+                    }
+                ],
+                "about": [
+                    {
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/types\/best-practices"
+                    }
+                ],
+                "author": [
+                    {
+                        "embeddable": true,
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/users\/1"
+                    }
+                ],
+                "replies": [
+                    {
+                        "embeddable": true,
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/comments?post=34"
+                    }
+                ],
+                "version-history": [
+                    {
+                        "count": 5,
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/best-practices\/34\/revisions"
+                    }
+                ],
+                "predecessor-version": [
+                    {
+                        "id": 41,
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/best-practices\/34\/revisions\/41"
+                    }
+                ],
+                "wp:attachment": [
+                    {
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/media?parent=34"
+                    }
+                ],
+                "curies": [
+                    {
+                        "name": "wp",
+                        "href": "https:\/\/api.w.org\/{rel}",
+                        "templated": true
+                    }
+                ]
+            }
+        }
+
+## Skill Assessment Tools [/wp-json/wp/v2/skill-assessment]
+### Get Skill Assessment Tools [GET]
++ Request
+    + Headers
+        Content-Type: application/json
+
++ Response 200 (application/json)
+        [
+            {
+                "id": 56,
+                "date": "2019-06-24T11:59:59",
+                "date_gmt": "2019-06-24T11:59:59",
+                "guid": {
+                    "rendered": "http:\/\/domain.com\/wordpress\/?post_type=skill-assessment&#038;p=56"
+                },
+                "modified": "2019-06-24T11:59:59",
+                "modified_gmt": "2019-06-24T11:59:59",
+                "slug": "maecenas-sed-interdum-sapien",
+                "status": "publish",
+                "type": "skill-assessment",
+                "link": "http:\/\/domain.com\/wordpress\/skill-assessment\/maecenas-sed-interdum-sapien\/",
+                "title": {
+                    "rendered": "Maecenas sed interdum sapien"
+                },
+                "content": {
+                    "rendered": "\n<p>\nCras diam risus, porta a luctus gravida, ultricies eget nibh. \nSuspendisse potenti. Nullam vel ultrices tortor. Duis ultricies arcu \ndolor, at convallis nibh venenatis vel. Curabitur vehicula, est nec \nmattis pulvinar, nisl dolor condimentum tortor, quis aliquam orci tellus\n sed elit. Suspendisse in faucibus nulla, at vestibulum est. Vivamus ac \ndictum turpis. Maecenas sed interdum sapien. Etiam sagittis lacus nec \nlorem maximus tincidunt. Etiam vel risus pharetra, egestas sem quis, \npretium velit. Suspendisse non interdum ante. Nunc vulputate tortor \nnunc, vel blandit quam bibendum vitae.\n\n\n<\/p>\n",
+                    "protected": false
+                },
+                "excerpt": {
+                    "rendered": "<p>Cras diam risus, porta a luctus gravida, ultricies eget nibh. Suspendisse potenti. Nullam vel ultrices tortor. Duis ultricies arcu dolor, at convallis nibh venenatis vel. Curabitur vehicula, est nec mattis pulvinar, nisl dolor condimentum tortor, quis aliquam orci tellus sed elit. Suspendisse in faucibus nulla, at vestibulum est. Vivamus ac dictum turpis. Maecenas sed interdum [&hellip;]<\/p>\n",
+                    "protected": false
+                },
+                "author": 1,
+                "featured_media": 0,
+                "menu_order": 0,
+                "comment_status": "open",
+                "ping_status": "open",
+                "template": "",
+                "meta": [],
+                "acf": false,
+                "_links": {
+                    "self": [
+                        {
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/skill-assessment\/56"
+                        }
+                    ],
+                    "collection": [
+                        {
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/skill-assessment"
+                        }
+                    ],
+                    "about": [
+                        {
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/types\/skill-assessment"
+                        }
+                    ],
+                    "author": [
+                        {
+                            "embeddable": true,
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/users\/1"
+                        }
+                    ],
+                    "replies": [
+                        {
+                            "embeddable": true,
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/comments?post=56"
+                        }
+                    ],
+                    "version-history": [
+                        {
+                            "count": 1,
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/skill-assessment\/56\/revisions"
+                        }
+                    ],
+                    "predecessor-version": [
+                        {
+                            "id": 57,
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/skill-assessment\/56\/revisions\/57"
+                        }
+                    ],
+                    "wp:attachment": [
+                        {
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/media?parent=56"
+                        }
+                    ],
+                    "curies": [
+                        {
+                            "name": "wp",
+                            "href": "https:\/\/api.w.org\/{rel}",
+                            "templated": true
+                        }
+                    ]
+                }
+            },
+            {
+                "id": 54,
+                "date": "2019-06-24T11:59:38",
+                "date_gmt": "2019-06-24T11:59:38",
+                "guid": {
+                    "rendered": "http:\/\/domain.com\/wordpress\/?post_type=skill-assessment&#038;p=54"
+                },
+                "modified": "2019-06-24T11:59:38",
+                "modified_gmt": "2019-06-24T11:59:38",
+                "slug": "praesent-feugiat-lectus-dui",
+                "status": "publish",
+                "type": "skill-assessment",
+                "link": "http:\/\/domain.com\/wordpress\/skill-assessment\/praesent-feugiat-lectus-dui\/",
+                "title": {
+                    "rendered": "Praesent feugiat lectus dui"
+                },
+                "content": {
+                    "rendered": "\n<p>\nUt in elit in ipsum pharetra efficitur placerat sed tortor. Nulla \nfacilisis congue felis, eget iaculis lectus molestie nec. Sed sed ipsum \nvitae felis auctor suscipit. Vestibulum sit amet fermentum tellus, ut \nefficitur sapien. Donec sed malesuada urna, sollicitudin tincidunt \npurus. Aenean posuere, tortor vel rhoncus interdum, metus nisl ultricies\n leo, non viverra ante risus nec sem. Proin vestibulum, dolor ut \npharetra lacinia, risus massa dapibus leo, sit amet scelerisque ante \nsapien non orci. Duis interdum pulvinar elit sit amet ornare. Vestibulum\n ac arcu vitae odio ullamcorper sagittis nec sit amet sem. Etiam mattis,\n velit nec rhoncus consectetur, odio augue venenatis tellus, non sodales\n tortor purus et tortor. Phasellus posuere tellus eget dolor rhoncus \nvehicula. Praesent feugiat lectus dui, ac porta diam semper quis. \nCurabitur iaculis, risus eu iaculis sollicitudin, nisl justo rhoncus \nlibero, quis gravida nulla tortor ut augue.\n\n<\/p>\n",
+                    "protected": false
+                },
+                "excerpt": {
+                    "rendered": "<p>Ut in elit in ipsum pharetra efficitur placerat sed tortor. Nulla facilisis congue felis, eget iaculis lectus molestie nec. Sed sed ipsum vitae felis auctor suscipit. Vestibulum sit amet fermentum tellus, ut efficitur sapien. Donec sed malesuada urna, sollicitudin tincidunt purus. Aenean posuere, tortor vel rhoncus interdum, metus nisl ultricies leo, non viverra ante risus [&hellip;]<\/p>\n",
+                    "protected": false
+                },
+                "author": 1,
+                "featured_media": 0,
+                "menu_order": 0,
+                "comment_status": "open",
+                "ping_status": "open",
+                "template": "",
+                "meta": [],
+                "acf": false,
+                "_links": {
+                    "self": [
+                        {
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/skill-assessment\/54"
+                        }
+                    ],
+                    "collection": [
+                        {
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/skill-assessment"
+                        }
+                    ],
+                    "about": [
+                        {
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/types\/skill-assessment"
+                        }
+                    ],
+                    "author": [
+                        {
+                            "embeddable": true,
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/users\/1"
+                        }
+                    ],
+                    "replies": [
+                        {
+                            "embeddable": true,
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/comments?post=54"
+                        }
+                    ],
+                    "version-history": [
+                        {
+                            "count": 1,
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/skill-assessment\/54\/revisions"
+                        }
+                    ],
+                    "predecessor-version": [
+                        {
+                            "id": 55,
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/skill-assessment\/54\/revisions\/55"
+                        }
+                    ],
+                    "wp:attachment": [
+                        {
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/media?parent=54"
+                        }
+                    ],
+                    "curies": [
+                        {
+                            "name": "wp",
+                            "href": "https:\/\/api.w.org\/{rel}",
+                            "templated": true
+                        }
+                    ]
+                }
+            }
+        ]
+
+## Skill Assessment Tool [/wp-json/wp/v2/skill-assessment/{id}]
+### Get Skill Assessment Tool [GET]
++ Parameters
+    + id - The id of a record (e.g. 1)
+
++ Request
+    + Headers
+        Content-Type: application/json
+
++ Response 200 (application/json)
+        {
+            "id": 56,
+            "date": "2019-06-24T11:59:59",
+            "date_gmt": "2019-06-24T11:59:59",
+            "guid": {
+                "rendered": "http:\/\/domain.com\/wordpress\/?post_type=skill-assessment&#038;p=56"
+            },
+            "modified": "2019-06-24T11:59:59",
+            "modified_gmt": "2019-06-24T11:59:59",
+            "slug": "maecenas-sed-interdum-sapien",
+            "status": "publish",
+            "type": "skill-assessment",
+            "link": "http:\/\/domain.com\/wordpress\/skill-assessment\/maecenas-sed-interdum-sapien\/",
+            "title": {
+                "rendered": "Maecenas sed interdum sapien"
+            },
+            "content": {
+                "rendered": "\n<p>\nCras diam risus, porta a luctus gravida, ultricies eget nibh. \nSuspendisse potenti. Nullam vel ultrices tortor. Duis ultricies arcu \ndolor, at convallis nibh venenatis vel. Curabitur vehicula, est nec \nmattis pulvinar, nisl dolor condimentum tortor, quis aliquam orci tellus\n sed elit. Suspendisse in faucibus nulla, at vestibulum est. Vivamus ac \ndictum turpis. Maecenas sed interdum sapien. Etiam sagittis lacus nec \nlorem maximus tincidunt. Etiam vel risus pharetra, egestas sem quis, \npretium velit. Suspendisse non interdum ante. Nunc vulputate tortor \nnunc, vel blandit quam bibendum vitae.\n\n\n<\/p>\n",
+                "protected": false
+            },
+            "excerpt": {
+                "rendered": "<p>Cras diam risus, porta a luctus gravida, ultricies eget nibh. Suspendisse potenti. Nullam vel ultrices tortor. Duis ultricies arcu dolor, at convallis nibh venenatis vel. Curabitur vehicula, est nec mattis pulvinar, nisl dolor condimentum tortor, quis aliquam orci tellus sed elit. Suspendisse in faucibus nulla, at vestibulum est. Vivamus ac dictum turpis. Maecenas sed interdum [&hellip;]<\/p>\n",
+                "protected": false
+            },
+            "author": 1,
+            "featured_media": 0,
+            "menu_order": 0,
+            "comment_status": "open",
+            "ping_status": "open",
+            "template": "",
+            "meta": [],
+            "acf": false,
+            "_links": {
+                "self": [
+                    {
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/skill-assessment\/56"
+                    }
+                ],
+                "collection": [
+                    {
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/skill-assessment"
+                    }
+                ],
+                "about": [
+                    {
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/types\/skill-assessment"
+                    }
+                ],
+                "author": [
+                    {
+                        "embeddable": true,
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/users\/1"
+                    }
+                ],
+                "replies": [
+                    {
+                        "embeddable": true,
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/comments?post=56"
+                    }
+                ],
+                "version-history": [
+                    {
+                        "count": 1,
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/skill-assessment\/56\/revisions"
+                    }
+                ],
+                "predecessor-version": [
+                    {
+                        "id": 57,
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/skill-assessment\/56\/revisions\/57"
+                    }
+                ],
+                "wp:attachment": [
+                    {
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/media?parent=56"
+                    }
+                ],
+                "curies": [
+                    {
+                        "name": "wp",
+                        "href": "https:\/\/api.w.org\/{rel}",
+                        "templated": true
+                    }
+                ]
+            }
+        }
+
+## Training offers [/wp-json/wp/v2/training-offer]
+### Get Training offers [GET]
++ Request
+    + Headers
+        Content-Type: application/json
+
++ Response 200 (application/json)
+        [
+            {
+                "id": 44,
+                "date": "2019-06-24T11:56:13",
+                "date_gmt": "2019-06-24T11:56:13",
+                "guid": {
+                    "rendered": "http:\/\/domain.com\/wordpress\/?post_type=training-offer&#038;p=44"
+                },
+                "modified": "2019-06-24T11:56:13",
+                "modified_gmt": "2019-06-24T11:56:13",
+                "slug": "integer-sit-amet-arcu-turpis",
+                "status": "publish",
+                "type": "training-offer",
+                "link": "http:\/\/domain.com\/wordpress\/training-offer\/integer-sit-amet-arcu-turpis\/",
+                "title": {
+                    "rendered": "Integer sit amet arcu turpis"
+                },
+                "content": {
+                    "rendered": "\n<p>\nPraesent tincidunt leo eget magna sollicitudin scelerisque. Nullam sem \nenim, dignissim nec odio et, euismod facilisis nunc. Proin consequat \nporttitor purus non varius. Phasellus blandit vestibulum hendrerit. Ut \niaculis dignissim leo, vitae molestie nibh dapibus ut. Integer sit amet \narcu turpis. Cras nec varius orci. Proin ex enim, ornare ac eros id, \npretium luctus mi. Duis mollis, leo in facilisis eleifend, nulla magna \nporttitor sapien, et venenatis odio nibh non orci. Etiam interdum nibh a\n diam tempus pulvinar.\n\n<\/p>\n",
+                    "protected": false
+                },
+                "excerpt": {
+                    "rendered": "<p>Praesent tincidunt leo eget magna sollicitudin scelerisque. Nullam sem enim, dignissim nec odio et, euismod facilisis nunc. Proin consequat porttitor purus non varius. Phasellus blandit vestibulum hendrerit. Ut iaculis dignissim leo, vitae molestie nibh dapibus ut. Integer sit amet arcu turpis. Cras nec varius orci. Proin ex enim, ornare ac eros id, pretium luctus mi. [&hellip;]<\/p>\n",
+                    "protected": false
+                },
+                "author": 1,
+                "featured_media": 0,
+                "menu_order": 0,
+                "comment_status": "open",
+                "ping_status": "open",
+                "template": "",
+                "meta": [],
+                "acf": false,
+                "_links": {
+                    "self": [
+                        {
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/training-offer\/44"
+                        }
+                    ],
+                    "collection": [
+                        {
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/training-offer"
+                        }
+                    ],
+                    "about": [
+                        {
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/types\/training-offer"
+                        }
+                    ],
+                    "author": [
+                        {
+                            "embeddable": true,
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/users\/1"
+                        }
+                    ],
+                    "replies": [
+                        {
+                            "embeddable": true,
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/comments?post=44"
+                        }
+                    ],
+                    "version-history": [
+                        {
+                            "count": 1,
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/training-offer\/44\/revisions"
+                        }
+                    ],
+                    "predecessor-version": [
+                        {
+                            "id": 45,
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/training-offer\/44\/revisions\/45"
+                        }
+                    ],
+                    "wp:attachment": [
+                        {
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/media?parent=44"
+                        }
+                    ],
+                    "curies": [
+                        {
+                            "name": "wp",
+                            "href": "https:\/\/api.w.org\/{rel}",
+                            "templated": true
+                        }
+                    ]
+                }
+            },
+            {
+                "id": 42,
+                "date": "2019-06-24T11:55:53",
+                "date_gmt": "2019-06-24T11:55:53",
+                "guid": {
+                    "rendered": "http:\/\/domain.com\/wordpress\/?post_type=training-offer&#038;p=42"
+                },
+                "modified": "2019-06-24T11:55:53",
+                "modified_gmt": "2019-06-24T11:55:53",
+                "slug": "cras-et-elit-vehicula",
+                "status": "publish",
+                "type": "training-offer",
+                "link": "http:\/\/domain.com\/wordpress\/training-offer\/cras-et-elit-vehicula\/",
+                "title": {
+                    "rendered": "Cras et elit vehicula"
+                },
+                "content": {
+                    "rendered": "\n<p>\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sed \nligula molestie tellus luctus pulvinar in sollicitudin mi. Curabitur non\n metus vitae nunc interdum aliquam sed sit amet nibh. Fusce tristique \nquam sit amet lacus vulputate, in sollicitudin diam tincidunt. Maecenas \naliquam tristique arcu, quis sagittis urna aliquet quis. Proin id \ncondimentum mi. Donec ornare nulla accumsan tristique consectetur. Cras \net elit vehicula, gravida sem eget, vehicula massa. Suspendisse a tortor\n arcu. Vestibulum convallis mollis lacus, vitae auctor ex auctor sed. \nEtiam pellentesque ultricies diam ut tincidunt. Nullam tristique id \ntortor et viverra. Nam augue justo, dapibus et maximus ac, aliquet vitae\n ligula. Cras felis metus, consectetur at elit non, suscipit lacinia \nodio.\n\n\n<\/p>\n",
+                    "protected": false
+                },
+                "excerpt": {
+                    "rendered": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sed ligula molestie tellus luctus pulvinar in sollicitudin mi. Curabitur non metus vitae nunc interdum aliquam sed sit amet nibh. Fusce tristique quam sit amet lacus vulputate, in sollicitudin diam tincidunt. Maecenas aliquam tristique arcu, quis sagittis urna aliquet quis. Proin id condimentum mi. Donec ornare [&hellip;]<\/p>\n",
+                    "protected": false
+                },
+                "author": 1,
+                "featured_media": 0,
+                "menu_order": 0,
+                "comment_status": "open",
+                "ping_status": "open",
+                "template": "",
+                "meta": [],
+                "acf": false,
+                "_links": {
+                    "self": [
+                        {
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/training-offer\/42"
+                        }
+                    ],
+                    "collection": [
+                        {
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/training-offer"
+                        }
+                    ],
+                    "about": [
+                        {
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/types\/training-offer"
+                        }
+                    ],
+                    "author": [
+                        {
+                            "embeddable": true,
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/users\/1"
+                        }
+                    ],
+                    "replies": [
+                        {
+                            "embeddable": true,
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/comments?post=42"
+                        }
+                    ],
+                    "version-history": [
+                        {
+                            "count": 1,
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/training-offer\/42\/revisions"
+                        }
+                    ],
+                    "predecessor-version": [
+                        {
+                            "id": 43,
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/training-offer\/42\/revisions\/43"
+                        }
+                    ],
+                    "wp:attachment": [
+                        {
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/media?parent=42"
+                        }
+                    ],
+                    "curies": [
+                        {
+                            "name": "wp",
+                            "href": "https:\/\/api.w.org\/{rel}",
+                            "templated": true
+                        }
+                    ]
+                }
+            }
+        ]
+
+## Training offer [/wp-json/wp/v2/training-offer/{id}]
+### Get Training offer [GET]
++ Parameters
+    + id - The id of a record (e.g. 1)
+
++ Request
+    + Headers
+        Content-Type: application/json
+
++ Response 200 (application/json)
+        {
+            "id": 44,
+            "date": "2019-06-24T11:56:13",
+            "date_gmt": "2019-06-24T11:56:13",
+            "guid": {
+                "rendered": "http:\/\/domain.com\/wordpress\/?post_type=training-offer&#038;p=44"
+            },
+            "modified": "2019-06-24T11:56:13",
+            "modified_gmt": "2019-06-24T11:56:13",
+            "slug": "integer-sit-amet-arcu-turpis",
+            "status": "publish",
+            "type": "training-offer",
+            "link": "http:\/\/domain.com\/wordpress\/training-offer\/integer-sit-amet-arcu-turpis\/",
+            "title": {
+                "rendered": "Integer sit amet arcu turpis"
+            },
+            "content": {
+                "rendered": "\n<p>\nPraesent tincidunt leo eget magna sollicitudin scelerisque. Nullam sem \nenim, dignissim nec odio et, euismod facilisis nunc. Proin consequat \nporttitor purus non varius. Phasellus blandit vestibulum hendrerit. Ut \niaculis dignissim leo, vitae molestie nibh dapibus ut. Integer sit amet \narcu turpis. Cras nec varius orci. Proin ex enim, ornare ac eros id, \npretium luctus mi. Duis mollis, leo in facilisis eleifend, nulla magna \nporttitor sapien, et venenatis odio nibh non orci. Etiam interdum nibh a\n diam tempus pulvinar.\n\n<\/p>\n",
+                "protected": false
+            },
+            "excerpt": {
+                "rendered": "<p>Praesent tincidunt leo eget magna sollicitudin scelerisque. Nullam sem enim, dignissim nec odio et, euismod facilisis nunc. Proin consequat porttitor purus non varius. Phasellus blandit vestibulum hendrerit. Ut iaculis dignissim leo, vitae molestie nibh dapibus ut. Integer sit amet arcu turpis. Cras nec varius orci. Proin ex enim, ornare ac eros id, pretium luctus mi. [&hellip;]<\/p>\n",
+                "protected": false
+            },
+            "author": 1,
+            "featured_media": 0,
+            "menu_order": 0,
+            "comment_status": "open",
+            "ping_status": "open",
+            "template": "",
+            "meta": [],
+            "acf": false,
+            "_links": {
+                "self": [
+                    {
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/training-offer\/44"
+                    }
+                ],
+                "collection": [
+                    {
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/training-offer"
+                    }
+                ],
+                "about": [
+                    {
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/types\/training-offer"
+                    }
+                ],
+                "author": [
+                    {
+                        "embeddable": true,
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/users\/1"
+                    }
+                ],
+                "replies": [
+                    {
+                        "embeddable": true,
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/comments?post=44"
+                    }
+                ],
+                "version-history": [
+                    {
+                        "count": 1,
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/training-offer\/44\/revisions"
+                    }
+                ],
+                "predecessor-version": [
+                    {
+                        "id": 45,
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/training-offer\/44\/revisions\/45"
+                    }
+                ],
+                "wp:attachment": [
+                    {
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/media?parent=44"
+                    }
+                ],
+                "curies": [
+                    {
+                        "name": "wp",
+                        "href": "https:\/\/api.w.org\/{rel}",
+                        "templated": true
+                    }
+                ]
+            }
+        }
+
+## Funding opportunities [/wp-json/wp/v2/funding-opportunity]
+### Get Funding opportunities [GET]
++ Request
+    + Headers
+        Content-Type: application/json
+
++ Response 200 (application/json)
+        [
+            {
+                "id": 48,
+                "date": "2019-06-24T11:57:05",
+                "date_gmt": "2019-06-24T11:57:05",
+                "guid": {
+                    "rendered": "http:\/\/domain.com\/wordpress\/?post_type=funding-opportunity&#038;p=48"
+                },
+                "modified": "2019-06-24T11:57:05",
+                "modified_gmt": "2019-06-24T11:57:05",
+                "slug": "quisque-ullamcorper-eu-eros-sed-dignissim",
+                "status": "publish",
+                "type": "funding-opportunity",
+                "link": "http:\/\/domain.com\/wordpress\/funding-opportunity\/quisque-ullamcorper-eu-eros-sed-dignissim\/",
+                "title": {
+                    "rendered": "Quisque ullamcorper eu eros sed dignissim"
+                },
+                "content": {
+                    "rendered": "\n<p>\nAliquam placerat arcu ut lorem viverra, a sollicitudin leo auctor. Etiam\n eleifend tristique faucibus. Phasellus eu nibh tempus, egestas nisi at,\n facilisis quam. Phasellus tempor tellus vel augue vestibulum iaculis. \nNullam sed ullamcorper nibh. Sed consequat enim tortor, sit amet aliquam\n quam dignissim vehicula. Proin ornare et purus vitae consequat. Quisque\n ullamcorper eu eros sed dignissim. Aenean bibendum risus vel magna \npharetra dapibus. Morbi eleifend ultricies placerat. Vestibulum eu velit\n odio. Etiam scelerisque auctor consectetur.\n\n\n<\/p>\n",
+                    "protected": false
+                },
+                "excerpt": {
+                    "rendered": "<p>Aliquam placerat arcu ut lorem viverra, a sollicitudin leo auctor. Etiam eleifend tristique faucibus. Phasellus eu nibh tempus, egestas nisi at, facilisis quam. Phasellus tempor tellus vel augue vestibulum iaculis. Nullam sed ullamcorper nibh. Sed consequat enim tortor, sit amet aliquam quam dignissim vehicula. Proin ornare et purus vitae consequat. Quisque ullamcorper eu eros sed [&hellip;]<\/p>\n",
+                    "protected": false
+                },
+                "author": 1,
+                "featured_media": 0,
+                "menu_order": 0,
+                "comment_status": "open",
+                "ping_status": "open",
+                "template": "",
+                "meta": [],
+                "acf": false,
+                "_links": {
+                    "self": [
+                        {
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/funding-opportunity\/48"
+                        }
+                    ],
+                    "collection": [
+                        {
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/funding-opportunity"
+                        }
+                    ],
+                    "about": [
+                        {
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/types\/funding-opportunity"
+                        }
+                    ],
+                    "author": [
+                        {
+                            "embeddable": true,
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/users\/1"
+                        }
+                    ],
+                    "replies": [
+                        {
+                            "embeddable": true,
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/comments?post=48"
+                        }
+                    ],
+                    "version-history": [
+                        {
+                            "count": 1,
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/funding-opportunity\/48\/revisions"
+                        }
+                    ],
+                    "predecessor-version": [
+                        {
+                            "id": 49,
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/funding-opportunity\/48\/revisions\/49"
+                        }
+                    ],
+                    "wp:attachment": [
+                        {
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/media?parent=48"
+                        }
+                    ],
+                    "curies": [
+                        {
+                            "name": "wp",
+                            "href": "https:\/\/api.w.org\/{rel}",
+                            "templated": true
+                        }
+                    ]
+                }
+            },
+            {
+                "id": 46,
+                "date": "2019-06-24T11:56:46",
+                "date_gmt": "2019-06-24T11:56:46",
+                "guid": {
+                    "rendered": "http:\/\/domain.com\/wordpress\/?post_type=funding-opportunity&#038;p=46"
+                },
+                "modified": "2019-06-24T11:56:46",
+                "modified_gmt": "2019-06-24T11:56:46",
+                "slug": "proin-fringilla-auctor-magna",
+                "status": "publish",
+                "type": "funding-opportunity",
+                "link": "http:\/\/domain.com\/wordpress\/funding-opportunity\/proin-fringilla-auctor-magna\/",
+                "title": {
+                    "rendered": "Proin fringilla auctor magna"
+                },
+                "content": {
+                    "rendered": "\n<p>\nAenean pharetra sem ut tincidunt vestibulum. Vestibulum tempus nisi \nnisl, non dignissim turpis lobortis accumsan. Mauris posuere quis metus a\n blandit. Donec laoreet nec ex eget varius. Sed pellentesque lacus ut \nmolestie iaculis. Donec a dolor gravida, tristique metus vitae, euismod \nfelis. Proin fringilla auctor magna, sed vehicula mauris fringilla sit \namet.\n\n\n<\/p>\n",
+                    "protected": false
+                },
+                "excerpt": {
+                    "rendered": "<p>Aenean pharetra sem ut tincidunt vestibulum. Vestibulum tempus nisi nisl, non dignissim turpis lobortis accumsan. Mauris posuere quis metus a blandit. Donec laoreet nec ex eget varius. Sed pellentesque lacus ut molestie iaculis. Donec a dolor gravida, tristique metus vitae, euismod felis. Proin fringilla auctor magna, sed vehicula mauris fringilla sit amet.<\/p>\n",
+                    "protected": false
+                },
+                "author": 1,
+                "featured_media": 0,
+                "menu_order": 0,
+                "comment_status": "open",
+                "ping_status": "open",
+                "template": "",
+                "meta": [],
+                "acf": false,
+                "_links": {
+                    "self": [
+                        {
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/funding-opportunity\/46"
+                        }
+                    ],
+                    "collection": [
+                        {
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/funding-opportunity"
+                        }
+                    ],
+                    "about": [
+                        {
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/types\/funding-opportunity"
+                        }
+                    ],
+                    "author": [
+                        {
+                            "embeddable": true,
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/users\/1"
+                        }
+                    ],
+                    "replies": [
+                        {
+                            "embeddable": true,
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/comments?post=46"
+                        }
+                    ],
+                    "version-history": [
+                        {
+                            "count": 1,
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/funding-opportunity\/46\/revisions"
+                        }
+                    ],
+                    "predecessor-version": [
+                        {
+                            "id": 47,
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/funding-opportunity\/46\/revisions\/47"
+                        }
+                    ],
+                    "wp:attachment": [
+                        {
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/media?parent=46"
+                        }
+                    ],
+                    "curies": [
+                        {
+                            "name": "wp",
+                            "href": "https:\/\/api.w.org\/{rel}",
+                            "templated": true
+                        }
+                    ]
+                }
+            }
+        ]
+
+## Funding opportunity [/wp-json/wp/v2/funding-opportunities/{id}]
+### Get Funding opportunity [GET]
++ Parameters
+    + id - The id of a record (e.g. 1)
+
++ Request
+    + Headers
+        Content-Type: application/json
+
++ Response 200 (application/json)
+        {
+            "id": 48,
+            "date": "2019-06-24T11:57:05",
+            "date_gmt": "2019-06-24T11:57:05",
+            "guid": {
+                "rendered": "http:\/\/domain.com\/wordpress\/?post_type=funding-opportunity&#038;p=48"
+            },
+            "modified": "2019-06-24T11:57:05",
+            "modified_gmt": "2019-06-24T11:57:05",
+            "slug": "quisque-ullamcorper-eu-eros-sed-dignissim",
+            "status": "publish",
+            "type": "funding-opportunity",
+            "link": "http:\/\/domain.com\/wordpress\/funding-opportunity\/quisque-ullamcorper-eu-eros-sed-dignissim\/",
+            "title": {
+                "rendered": "Quisque ullamcorper eu eros sed dignissim"
+            },
+            "content": {
+                "rendered": "\n<p>\nAliquam placerat arcu ut lorem viverra, a sollicitudin leo auctor. Etiam\n eleifend tristique faucibus. Phasellus eu nibh tempus, egestas nisi at,\n facilisis quam. Phasellus tempor tellus vel augue vestibulum iaculis. \nNullam sed ullamcorper nibh. Sed consequat enim tortor, sit amet aliquam\n quam dignissim vehicula. Proin ornare et purus vitae consequat. Quisque\n ullamcorper eu eros sed dignissim. Aenean bibendum risus vel magna \npharetra dapibus. Morbi eleifend ultricies placerat. Vestibulum eu velit\n odio. Etiam scelerisque auctor consectetur.\n\n\n<\/p>\n",
+                "protected": false
+            },
+            "excerpt": {
+                "rendered": "<p>Aliquam placerat arcu ut lorem viverra, a sollicitudin leo auctor. Etiam eleifend tristique faucibus. Phasellus eu nibh tempus, egestas nisi at, facilisis quam. Phasellus tempor tellus vel augue vestibulum iaculis. Nullam sed ullamcorper nibh. Sed consequat enim tortor, sit amet aliquam quam dignissim vehicula. Proin ornare et purus vitae consequat. Quisque ullamcorper eu eros sed [&hellip;]<\/p>\n",
+                "protected": false
+            },
+            "author": 1,
+            "featured_media": 0,
+            "menu_order": 0,
+            "comment_status": "open",
+            "ping_status": "open",
+            "template": "",
+            "meta": [],
+            "acf": false,
+            "_links": {
+                "self": [
+                    {
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/funding-opportunity\/48"
+                    }
+                ],
+                "collection": [
+                    {
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/funding-opportunity"
+                    }
+                ],
+                "about": [
+                    {
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/types\/funding-opportunity"
+                    }
+                ],
+                "author": [
+                    {
+                        "embeddable": true,
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/users\/1"
+                    }
+                ],
+                "replies": [
+                    {
+                        "embeddable": true,
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/comments?post=48"
+                    }
+                ],
+                "version-history": [
+                    {
+                        "count": 1,
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/funding-opportunity\/48\/revisions"
+                    }
+                ],
+                "predecessor-version": [
+                    {
+                        "id": 49,
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/funding-opportunity\/48\/revisions\/49"
+                    }
+                ],
+                "wp:attachment": [
+                    {
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/media?parent=48"
+                    }
+                ],
+                "curies": [
+                    {
+                        "name": "wp",
+                        "href": "https:\/\/api.w.org\/{rel}",
+                        "templated": true
+                    }
+                ]
+            }
+        }
+
+
+## Events [/wp-json/wp/v2/event]
+### Get Events [GET]
++ Request
+    + Headers
+        Content-Type: application/json
+
++ Response 200 (application/json)
+        [
+            {
+                "id": 52,
+                "date": "2019-06-24T11:58:00",
+                "date_gmt": "2019-06-24T11:58:00",
+                "guid": {
+                    "rendered": "http:\/\/domain.com\/wordpress\/?post_type=event&#038;p=52"
+                },
+                "modified": "2019-06-24T11:58:00",
+                "modified_gmt": "2019-06-24T11:58:00",
+                "slug": "sed-purus-diam-sodales-sit-amet-porttitor-id",
+                "status": "publish",
+                "type": "event",
+                "link": "http:\/\/domain.com\/wordpress\/event\/sed-purus-diam-sodales-sit-amet-porttitor-id\/",
+                "title": {
+                    "rendered": "Sed purus diam, sodales sit amet porttitor id"
+                },
+                "content": {
+                    "rendered": "\n<p>\nVestibulum elementum, neque ac tincidunt vulputate, felis metus viverra \neros, sed fermentum tellus ex vitae dui. Fusce non ligula consequat, \nsollicitudin nibh vitae, tempor neque. Vestibulum egestas et augue eu \naccumsan. Mauris id efficitur urna. Maecenas tristique eros erat. Sed \npurus diam, sodales sit amet porttitor id, sagittis ac felis. Praesent \naliquam blandit eros. Praesent sit amet mauris semper, bibendum nisl in,\n venenatis odio. Curabitur bibendum accumsan nulla eu elementum. \nCurabitur ultricies nulla ut varius sagittis. Pellentesque non sapien a \nante aliquet blandit. Proin tempor viverra condimentum. Ut eu nisl eros.\n\n\n<\/p>\n",
+                    "protected": false
+                },
+                "excerpt": {
+                    "rendered": "<p>Vestibulum elementum, neque ac tincidunt vulputate, felis metus viverra eros, sed fermentum tellus ex vitae dui. Fusce non ligula consequat, sollicitudin nibh vitae, tempor neque. Vestibulum egestas et augue eu accumsan. Mauris id efficitur urna. Maecenas tristique eros erat. Sed purus diam, sodales sit amet porttitor id, sagittis ac felis. Praesent aliquam blandit eros. Praesent [&hellip;]<\/p>\n",
+                    "protected": false
+                },
+                "author": 1,
+                "featured_media": 0,
+                "menu_order": 0,
+                "comment_status": "open",
+                "ping_status": "open",
+                "template": "",
+                "meta": [],
+                "acf": false,
+                "_links": {
+                    "self": [
+                        {
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/event\/52"
+                        }
+                    ],
+                    "collection": [
+                        {
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/event"
+                        }
+                    ],
+                    "about": [
+                        {
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/types\/event"
+                        }
+                    ],
+                    "author": [
+                        {
+                            "embeddable": true,
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/users\/1"
+                        }
+                    ],
+                    "replies": [
+                        {
+                            "embeddable": true,
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/comments?post=52"
+                        }
+                    ],
+                    "version-history": [
+                        {
+                            "count": 1,
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/event\/52\/revisions"
+                        }
+                    ],
+                    "predecessor-version": [
+                        {
+                            "id": 53,
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/event\/52\/revisions\/53"
+                        }
+                    ],
+                    "wp:attachment": [
+                        {
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/media?parent=52"
+                        }
+                    ],
+                    "curies": [
+                        {
+                            "name": "wp",
+                            "href": "https:\/\/api.w.org\/{rel}",
+                            "templated": true
+                        }
+                    ]
+                }
+            },
+            {
+                "id": 50,
+                "date": "2019-06-24T11:57:29",
+                "date_gmt": "2019-06-24T11:57:29",
+                "guid": {
+                    "rendered": "http:\/\/domain.com\/wordpress\/?post_type=event&#038;p=50"
+                },
+                "modified": "2019-06-24T11:57:29",
+                "modified_gmt": "2019-06-24T11:57:29",
+                "slug": "mauris-cursus-elit-vel-ultricies-pretium",
+                "status": "publish",
+                "type": "event",
+                "link": "http:\/\/domain.com\/wordpress\/event\/mauris-cursus-elit-vel-ultricies-pretium\/",
+                "title": {
+                    "rendered": "Mauris cursus, elit vel ultricies pretium"
+                },
+                "content": {
+                    "rendered": "\n<p>\nDuis non libero eget urna bibendum gravida. Suspendisse potenti. In \nmagna augue, scelerisque at nunc sit amet, finibus dignissim dolor. Cras\n in risus in sem imperdiet tincidunt vitae id neque. Suspendisse \npotenti. Curabitur iaculis vel felis ac mollis. Nullam scelerisque nibh \nlibero, ut commodo augue dictum id. Mauris pellentesque placerat nisi, \nid mattis nibh maximus vitae. Mauris cursus, elit vel ultricies pretium,\n sem nunc fringilla nulla, in sodales sem turpis nec quam. Vestibulum \nante ipsum primis in faucibus orci luctus et ultrices posuere cubilia \nCurae; Quisque non ligula eu mauris dapibus vulputate id eget dui. \nPraesent auctor posuere tristique.\n\n\n<\/p>\n",
+                    "protected": false
+                },
+                "excerpt": {
+                    "rendered": "<p>Duis non libero eget urna bibendum gravida. Suspendisse potenti. In magna augue, scelerisque at nunc sit amet, finibus dignissim dolor. Cras in risus in sem imperdiet tincidunt vitae id neque. Suspendisse potenti. Curabitur iaculis vel felis ac mollis. Nullam scelerisque nibh libero, ut commodo augue dictum id. Mauris pellentesque placerat nisi, id mattis nibh maximus [&hellip;]<\/p>\n",
+                    "protected": false
+                },
+                "author": 1,
+                "featured_media": 0,
+                "menu_order": 0,
+                "comment_status": "open",
+                "ping_status": "open",
+                "template": "",
+                "meta": [],
+                "acf": false,
+                "_links": {
+                    "self": [
+                        {
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/event\/50"
+                        }
+                    ],
+                    "collection": [
+                        {
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/event"
+                        }
+                    ],
+                    "about": [
+                        {
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/types\/event"
+                        }
+                    ],
+                    "author": [
+                        {
+                            "embeddable": true,
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/users\/1"
+                        }
+                    ],
+                    "replies": [
+                        {
+                            "embeddable": true,
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/comments?post=50"
+                        }
+                    ],
+                    "version-history": [
+                        {
+                            "count": 1,
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/event\/50\/revisions"
+                        }
+                    ],
+                    "predecessor-version": [
+                        {
+                            "id": 51,
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/event\/50\/revisions\/51"
+                        }
+                    ],
+                    "wp:attachment": [
+                        {
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/media?parent=50"
+                        }
+                    ],
+                    "curies": [
+                        {
+                            "name": "wp",
+                            "href": "https:\/\/api.w.org\/{rel}",
+                            "templated": true
+                        }
+                    ]
+                }
+            }
+        ]
+
+
+## Event [/wp-json/wp/v2/event/{id}]
+### Get Event [GET]
++ Parameters
+    + id - The id of a record (e.g. 1)
+
++ Request
+    + Headers
+        Content-Type: application/json
+
++ Response 200 (application/json)
+        {
+            "id": 52,
+            "date": "2019-06-24T11:58:00",
+            "date_gmt": "2019-06-24T11:58:00",
+            "guid": {
+                "rendered": "http:\/\/domain.com\/wordpress\/?post_type=event&#038;p=52"
+            },
+            "modified": "2019-06-24T11:58:00",
+            "modified_gmt": "2019-06-24T11:58:00",
+            "slug": "sed-purus-diam-sodales-sit-amet-porttitor-id",
+            "status": "publish",
+            "type": "event",
+            "link": "http:\/\/domain.com\/wordpress\/event\/sed-purus-diam-sodales-sit-amet-porttitor-id\/",
+            "title": {
+                "rendered": "Sed purus diam, sodales sit amet porttitor id"
+            },
+            "content": {
+                "rendered": "\n<p>\nVestibulum elementum, neque ac tincidunt vulputate, felis metus viverra \neros, sed fermentum tellus ex vitae dui. Fusce non ligula consequat, \nsollicitudin nibh vitae, tempor neque. Vestibulum egestas et augue eu \naccumsan. Mauris id efficitur urna. Maecenas tristique eros erat. Sed \npurus diam, sodales sit amet porttitor id, sagittis ac felis. Praesent \naliquam blandit eros. Praesent sit amet mauris semper, bibendum nisl in,\n venenatis odio. Curabitur bibendum accumsan nulla eu elementum. \nCurabitur ultricies nulla ut varius sagittis. Pellentesque non sapien a \nante aliquet blandit. Proin tempor viverra condimentum. Ut eu nisl eros.\n\n\n<\/p>\n",
+                "protected": false
+            },
+            "excerpt": {
+                "rendered": "<p>Vestibulum elementum, neque ac tincidunt vulputate, felis metus viverra eros, sed fermentum tellus ex vitae dui. Fusce non ligula consequat, sollicitudin nibh vitae, tempor neque. Vestibulum egestas et augue eu accumsan. Mauris id efficitur urna. Maecenas tristique eros erat. Sed purus diam, sodales sit amet porttitor id, sagittis ac felis. Praesent aliquam blandit eros. Praesent [&hellip;]<\/p>\n",
+                "protected": false
+            },
+            "author": 1,
+            "featured_media": 0,
+            "menu_order": 0,
+            "comment_status": "open",
+            "ping_status": "open",
+            "template": "",
+            "meta": [],
+            "acf": false,
+            "_links": {
+                "self": [
+                    {
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/event\/52"
+                    }
+                ],
+                "collection": [
+                    {
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/event"
+                    }
+                ],
+                "about": [
+                    {
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/types\/event"
+                    }
+                ],
+                "author": [
+                    {
+                        "embeddable": true,
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/users\/1"
+                    }
+                ],
+                "replies": [
+                    {
+                        "embeddable": true,
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/comments?post=52"
+                    }
+                ],
+                "version-history": [
+                    {
+                        "count": 1,
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/event\/52\/revisions"
+                    }
+                ],
+                "predecessor-version": [
+                    {
+                        "id": 53,
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/event\/52\/revisions\/53"
+                    }
+                ],
+                "wp:attachment": [
+                    {
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/media?parent=52"
+                    }
+                ],
+                "curies": [
+                    {
+                        "name": "wp",
+                        "href": "https:\/\/api.w.org\/{rel}",
+                        "templated": true
+                    }
+                ]
+            }
+        }
