@@ -3,14 +3,14 @@ HOST: http://domain.com/
 
 # DSI Wordpress API
 
-This document describes the Rest API of a Wordpress based implementation.
+This document describes the Rest API of a Wordpress based implementation. 
 
-For the extention of the post types the [Advanced Custom Fields](https://www.advancedcustomfields.com/) and [ACF to REST API](https://github.com/airesvsg/acf-to-rest-api) plugins were used.
+For the extention of the post types the [Advanced Custom Fields](https://www.advancedcustomfields.com/) and [ACF to REST API](https://github.com/airesvsg/acf-to-rest-api) plugins were used. 
 
-The base address of the API is the URL of the Wordpress website. For demonstration, the base address `http://demo.com/` is assumed.
+The base address of the API is the URL of the Wordpress website. For demonstration, the base address `http://demo.com/` is assumed. 
 
 ## Authentication
-There is no need for authentication.
+There is no need for authentication. 
 
 ## Pages [/wp-json/wp/v2/pages]
 ### Get Pages [GET]
@@ -20,30 +20,29 @@ There is no need for authentication.
             Content-Type: application/json
 
 + Response 200 (application/json)
-
         [
             {
-                "id": 2,
+                "id": 3,
                 "date": "2019-06-21T09:43:30",
                 "date_gmt": "2019-06-21T09:43:30",
                 "guid": {
-                    "rendered": "http:\/\/domain.com\/wordpress\/?page_id=2"
+                    "rendered": "http:\/\/domain.com\/wordpress\/?page_id=3"
                 },
-                "modified": "2019-06-21T09:43:30",
-                "modified_gmt": "2019-06-21T09:43:30",
-                "slug": "sample-page",
+                "modified": "2019-06-27T14:01:19",
+                "modified_gmt": "2019-06-27T14:01:19",
+                "slug": "privacy-policy",
                 "status": "publish",
                 "type": "page",
-                "link": "http:\/\/domain.com\/wordpress\/sample-page\/",
+                "link": "http:\/\/domain.com\/wordpress\/privacy-policy\/",
                 "title": {
-                    "rendered": "Sample Page"
+                    "rendered": "Privacy Policy"
                 },
                 "content": {
-                    "rendered": "\n<p>This is an example page. It&#8217;s different from a blog post because it will stay in one place and will show up in your site navigation (in most themes). Most people start with an About page that introduces them to potential site visitors. It might say something like this:<\/p>\n\n\n\n<blockquote class=\"wp-block-quote\"><p>Hi there! I&#8217;m a bike messenger by day, aspiring actor by night, and this is my website. I live in Los Angeles, have a great dog named Jack, and I like pi&#241;a coladas. (And gettin&#8217; caught in the rain.)<\/p><\/blockquote>\n\n\n\n<p>&#8230;or something like this:<\/p>\n\n\n\n<blockquote class=\"wp-block-quote\"><p>The XYZ Doohickey Company was founded in 1971, and has been providing quality doohickeys to the public ever since. Located in Gotham City, XYZ employs over 2,000 people and does all kinds of awesome things for the Gotham community.<\/p><\/blockquote>\n\n\n\n<p>As a new WordPress user, you should go to <a href=\"http:\/\/domain.com\/wordpress\/wp-admin\/\">your dashboard<\/a> to delete this page and create new pages for your content. Have fun!<\/p>\n",
+                    "rendered": "\n<h2>Who we are<\/h2>\n\n\n\n<p>Our website address is: http:\/\/domain.com\/wordpress.<\/p>\n\n\n\n<h2>What personal data we collect and why we collect it<\/h2>\n\n\n\n<h3>Comments<\/h3>\n\n\n\n<p>When visitors leave comments on the site we collect the data shown in the comments form, and also the visitor\u2019s IP address and browser user agent string to help spam detection.<\/p>\n\n\n\n<p>An anonymized string created from your",
                     "protected": false
                 },
                 "excerpt": {
-                    "rendered": "<p>This is an example page. It&#8217;s different from a blog post because it will stay in one place and will show up in your site navigation (in most themes). Most people start with an About page that introduces them to potential site visitors. It might say something like this: Hi there! I&#8217;m a bike messenger [&hellip;]<\/p>\n",
+                    "rendered": "<p>Who we are Our website address is: http:\/\/domain.com\/wordpress. What personal data we collect and why we collect it Comments When visitors leave comments on the site we collect ...",
                     "protected": false
                 },
                 "author": 1,
@@ -54,11 +53,13 @@ There is no need for authentication.
                 "ping_status": "open",
                 "template": "",
                 "meta": [],
-                "acf": false,
+                "acf": {
+                    "publish_in_core_platform": true
+                },
                 "_links": {
                     "self": [
                         {
-                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/pages\/2"
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/pages\/3"
                         }
                     ],
                     "collection": [
@@ -80,18 +81,24 @@ There is no need for authentication.
                     "replies": [
                         {
                             "embeddable": true,
-                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/comments?post=2"
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/comments?post=3"
                         }
                     ],
                     "version-history": [
                         {
-                            "count": 0,
-                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/pages\/2\/revisions"
+                            "count": 2,
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/pages\/3\/revisions"
+                        }
+                    ],
+                    "predecessor-version": [
+                        {
+                            "id": 195,
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/pages\/3\/revisions\/195"
                         }
                     ],
                     "wp:attachment": [
                         {
-                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/media?parent=2"
+                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/media?parent=3"
                         }
                     ],
                     "curies": [
@@ -116,89 +123,95 @@ There is no need for authentication.
 
 + Response 200 (application/json)
 
-        [
+{
+    "id": 3,
+    "date": "2019-06-21T09:43:30",
+    "date_gmt": "2019-06-21T09:43:30",
+    "guid": {
+        "rendered": "http:\/\/domain.com\/wordpress\/?page_id=3"
+    },
+    "modified": "2019-06-27T14:01:19",
+    "modified_gmt": "2019-06-27T14:01:19",
+    "slug": "privacy-policy",
+    "status": "publish",
+    "type": "page",
+    "link": "http:\/\/domain.com\/wordpress\/privacy-policy\/",
+    "title": {
+        "rendered": "Privacy Policy"
+    },
+    "content": {
+        "rendered": "\n<h2>Who we are<\/h2>\n\n\n\n<p>Our website address is: http:\/\/domain.com\/wordpress.<\/p>\n\n\n\n<h2>What personal data we collect and why we collect it<\/h2>\n\n\n\n<h3>Comments<\/h3>\n\n\n\n<p>When visitors leave comments on the site we collect the data shown in the comments form, and also the visitor\u2019s IP address and browser user agent string to help spam detection.<\/p>",
+        "protected": false
+    },
+    "excerpt": {
+        "rendered": "<p>Who we are Our website address is: http:\/\/domain.com\/wordpress. What personal data we collect and why we collect it Comments When visitors leave comments on the site we collect the data shown in the comments form, and also the visitor\u2019s IP address and browser user agent string to help spam detection. An anonymized string created from [&hellip;]<\/p>\n",
+        "protected": false
+    },
+    "author": 1,
+    "featured_media": 0,
+    "parent": 0,
+    "menu_order": 0,
+    "comment_status": "closed",
+    "ping_status": "open",
+    "template": "",
+    "meta": [],
+    "acf": {
+        "publish_in_core_platform": true
+    },
+    "_links": {
+        "self": [
             {
-                "id": 2,
-                "date": "2019-06-21T09:43:30",
-                "date_gmt": "2019-06-21T09:43:30",
-                "guid": {
-                    "rendered": "http:\/\/domain.com\/wordpress\/?page_id=2"
-                },
-                "modified": "2019-06-21T09:43:30",
-                "modified_gmt": "2019-06-21T09:43:30",
-                "slug": "sample-page",
-                "status": "publish",
-                "type": "page",
-                "link": "http:\/\/domain.com\/wordpress\/sample-page\/",
-                "title": {
-                    "rendered": "Sample Page"
-                },
-                "content": {
-                    "rendered": "\n<p>This is an example page. It&#8217;s different from a blog post because it will stay in one place and will show up in your site navigation (in most themes). Most people start with an About page that introduces them to potential site visitors. It might say something like this:<\/p>\n\n\n\n<blockquote class=\"wp-block-quote\"><p>Hi there! I&#8217;m a bike messenger by day, aspiring actor by night, and this is my website. I live in Los Angeles, have a great dog named Jack, and I like pi&#241;a coladas. (And gettin&#8217; caught in the rain.)<\/p><\/blockquote>\n\n\n\n<p>&#8230;or something like this:<\/p>\n\n\n\n<blockquote class=\"wp-block-quote\"><p>The XYZ Doohickey Company was founded in 1971, and has been providing quality doohickeys to the public ever since. Located in Gotham City, XYZ employs over 2,000 people and does all kinds of awesome things for the Gotham community.<\/p><\/blockquote>\n\n\n\n<p>As a new WordPress user, you should go to <a href=\"http:\/\/domain.com\/wordpress\/wp-admin\/\">your dashboard<\/a> to delete this page and create new pages for your content. Have fun!<\/p>\n",
-                    "protected": false
-                },
-                "excerpt": {
-                    "rendered": "<p>This is an example page. It&#8217;s different from a blog post because it will stay in one place and will show up in your site navigation (in most themes). Most people start with an About page that introduces them to potential site visitors. It might say something like this: Hi there! I&#8217;m a bike messenger [&hellip;]<\/p>\n",
-                    "protected": false
-                },
-                "author": 1,
-                "featured_media": 0,
-                "parent": 0,
-                "menu_order": 0,
-                "comment_status": "closed",
-                "ping_status": "open",
-                "template": "",
-                "meta": [],
-                "acf": false,
-                "_links": {
-                    "self": [
-                        {
-                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/pages\/2"
-                        }
-                    ],
-                    "collection": [
-                        {
-                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/pages"
-                        }
-                    ],
-                    "about": [
-                        {
-                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/types\/page"
-                        }
-                    ],
-                    "author": [
-                        {
-                            "embeddable": true,
-                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/users\/1"
-                        }
-                    ],
-                    "replies": [
-                        {
-                            "embeddable": true,
-                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/comments?post=2"
-                        }
-                    ],
-                    "version-history": [
-                        {
-                            "count": 0,
-                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/pages\/2\/revisions"
-                        }
-                    ],
-                    "wp:attachment": [
-                        {
-                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/media?parent=2"
-                        }
-                    ],
-                    "curies": [
-                        {
-                            "name": "wp",
-                            "href": "https:\/\/api.w.org\/{rel}",
-                            "templated": true
-                        }
-                    ]
-                }
+                "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/pages\/3"
+            }
+        ],
+        "collection": [
+            {
+                "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/pages"
+            }
+        ],
+        "about": [
+            {
+                "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/types\/page"
+            }
+        ],
+        "author": [
+            {
+                "embeddable": true,
+                "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/users\/1"
+            }
+        ],
+        "replies": [
+            {
+                "embeddable": true,
+                "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/comments?post=3"
+            }
+        ],
+        "version-history": [
+            {
+                "count": 2,
+                "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/pages\/3\/revisions"
+            }
+        ],
+        "predecessor-version": [
+            {
+                "id": 195,
+                "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/pages\/3\/revisions\/195"
+            }
+        ],
+        "wp:attachment": [
+            {
+                "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/media?parent=3"
+            }
+        ],
+        "curies": [
+            {
+                "name": "wp",
+                "href": "https:\/\/api.w.org\/{rel}",
+                "templated": true
             }
         ]
+    }
+}
 
 ## Posts [/wp-json/wp/v2/posts]
 ### Get Posts [GET]
@@ -321,7 +334,7 @@ There is no need for authentication.
 
 + Request
     + Headers
-
+    
             Content-Type: application/json
 
 + Response 200 (application/json)
@@ -429,11 +442,791 @@ There is no need for authentication.
             }
         }
 
+## Members [/wp-json/wp/v2/members]
+### Get Members [GET]
++ Request
+    + Headers
+    
+            Content-Type: application/json
+
++ Response 200 (application/json)
+    [
+        {
+            "id": 251,
+            "date": "2019-07-02T09:16:25",
+            "date_gmt": "2019-07-02T09:16:25",
+            "guid": {
+                "rendered": "http:\/\/domain.com\/wordpress\/?post_type=member&#038;p=251"
+            },
+            "modified": "2019-07-02T09:16:26",
+            "modified_gmt": "2019-07-02T09:16:26",
+            "slug": "donec-tristique",
+            "status": "publish",
+            "type": "member",
+            "link": "http:\/\/domain.com\/wordpress\/member\/donec-tristique\/",
+            "title": {
+                "rendered": "Donec tristique"
+            },
+            "content": {
+                "rendered": "\n<p>\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc id enim \nsed sapien sollicitudin tristique. Ut tristique diam sit amet tellus \npellentesque, id vestibulum ligula varius. Quisque nec sem nec lacus \ncursus congue. Duis sed consequat magna. Mauris tristique aliquam \nsodales. Sed vel quam tempor, mattis nisi nec, vestibulum tellus. \nSuspendisse venenatis, lorem non luctus venenatis, est magna volutpat \nquam, ut porttitor mi neque convallis ante. Donec tristique, ligula ac \npharetra efficitur, orci massa condimentum velit, sit amet interdum leo \norci eu leo. Quisque bibendum ipsum non porttitor malesuada.\n<\/p>\n\n\n\n<p>\nProin faucibus sapien a vulputate aliquam. Quisque vel erat ac neque \nlobortis tincidunt. Praesent facilisis libero in imperdiet laoreet. \nMorbi ut fringilla turpis. Pellentesque placerat a urna at scelerisque. \nDonec vel ante imperdiet, finibus dolor ut, vestibulum orci. Nam posuere\n convallis metus ut rhoncus. Cras ultricies libero sem, et maximus \nmauris mollis ac. In auctor vestibulum ipsum, ac eleifend urna faucibus \nat.\n<\/p>\n",
+                "protected": false
+            },
+            "excerpt": {
+                "rendered": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc id enim sed sapien sollicitudin tristique. Ut tristique diam sit amet tellus pellentesque, id vestibulum ligula varius. Quisque nec sem nec lacus cursus congue. Duis sed consequat magna. Mauris tristique aliquam sodales. Sed vel quam tempor, mattis nisi nec, vestibulum tellus. Suspendisse venenatis, lorem non luctus [&hellip;]<\/p>\n",
+                "protected": false
+            },
+            "author": 1,
+            "featured_media": 0,
+            "menu_order": 0,
+            "comment_status": "open",
+            "ping_status": "open",
+            "template": "",
+            "meta": [],
+            "acf": {
+                "member_category": {
+                    "term_id": 15,
+                    "name": "Education provider",
+                    "slug": "education-provider",
+                    "term_group": 0,
+                    "term_taxonomy_id": 15,
+                    "taxonomy": "member-category",
+                    "description": "",
+                    "parent": 0,
+                    "count": 0,
+                    "filter": "raw"
+                },
+                "link": "https:\/\/ec.europa.eu\/",
+                "logo": {
+                    "ID": 252,
+                    "id": 252,
+                    "title": "Retro",
+                    "filename": "Retro.png",
+                    "filesize": 19930,
+                    "url": "http:\/\/domain.com\/wordpress\/wp-content\/uploads\/2019\/07\/Retro.png",
+                    "link": "http:\/\/domain.com\/wordpress\/member\/donec-tristique\/retro\/",
+                    "alt": "",
+                    "author": "1",
+                    "description": "",
+                    "caption": "",
+                    "name": "retro",
+                    "status": "inherit",
+                    "uploaded_to": 251,
+                    "date": "2019-07-02 09:16:12",
+                    "modified": "2019-07-02 09:16:12",
+                    "menu_order": 0,
+                    "mime_type": "image\/png",
+                    "type": "image",
+                    "subtype": "png",
+                    "icon": "http:\/\/domain.com\/wordpress\/wp-includes\/images\/media\/default.png",
+                    "width": 200,
+                    "height": 200,
+                    "sizes": {
+                        "thumbnail": "http:\/\/domain.com\/wordpress\/wp-content\/uploads\/2019\/07\/Retro-150x150.png",
+                        "thumbnail-width": 150,
+                        "thumbnail-height": 150,
+                        "medium": "http:\/\/domain.com\/wordpress\/wp-content\/uploads\/2019\/07\/Retro.png",
+                        "medium-width": 200,
+                        "medium-height": 200,
+                        "medium_large": "http:\/\/domain.com\/wordpress\/wp-content\/uploads\/2019\/07\/Retro.png",
+                        "medium_large-width": 200,
+                        "medium_large-height": 200,
+                        "large": "http:\/\/domain.com\/wordpress\/wp-content\/uploads\/2019\/07\/Retro.png",
+                        "large-width": 200,
+                        "large-height": 200,
+                        "post-thumbnail": "http:\/\/domain.com\/wordpress\/wp-content\/uploads\/2019\/07\/Retro.png",
+                        "post-thumbnail-width": 200,
+                        "post-thumbnail-height": 200
+                    }
+                },
+                "publish_in_core_platform": true
+            },
+            "_links": {
+                "self": [
+                    {
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/member\/251"
+                    }
+                ],
+                "collection": [
+                    {
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/member"
+                    }
+                ],
+                "about": [
+                    {
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/types\/member"
+                    }
+                ],
+                "author": [
+                    {
+                        "embeddable": true,
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/users\/1"
+                    }
+                ],
+                "replies": [
+                    {
+                        "embeddable": true,
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/comments?post=251"
+                    }
+                ],
+                "version-history": [
+                    {
+                        "count": 2,
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/member\/251\/revisions"
+                    }
+                ],
+                "predecessor-version": [
+                    {
+                        "id": 254,
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/member\/251\/revisions\/254"
+                    }
+                ],
+                "wp:attachment": [
+                    {
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/media?parent=251"
+                    }
+                ],
+                "curies": [
+                    {
+                        "name": "wp",
+                        "href": "https:\/\/api.w.org\/{rel}",
+                        "templated": true
+                    }
+                ]
+            }
+        }
+    ]
+
+## Member [/wp-json/wp/v2/members/{id}]
+### Get Member [GET]
++ Parameters
+    + id - The id of a certain post (e.g. 1)
+
++ Request
+    + Headers
+            Content-Type: application/json
+
++ Response 200 (application/json)
+    {
+        "id": 251,
+        "date": "2019-07-02T09:16:25",
+        "date_gmt": "2019-07-02T09:16:25",
+        "guid": {
+            "rendered": "http:\/\/domain.com\/wordpress\/?post_type=member&#038;p=251"
+        },
+        "modified": "2019-07-02T09:16:26",
+        "modified_gmt": "2019-07-02T09:16:26",
+        "slug": "donec-tristique",
+        "status": "publish",
+        "type": "member",
+        "link": "http:\/\/domain.com\/wordpress\/member\/donec-tristique\/",
+        "title": {
+            "rendered": "Donec tristique"
+        },
+        "content": {
+            "rendered": "\n<p>\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc id enim \nsed sapien sollicitudin tristique. Ut tristique diam sit amet tellus \npellentesque, id vestibulum ligula varius. Quisque nec sem nec lacus \ncursus congue. Duis sed consequat magna. Mauris tristique aliquam \nsodales. Sed vel quam tempor, mattis nisi nec, vestibulum tellus. \nSuspendisse venenatis, lorem non luctus venenatis, est magna volutpat \nquam, ut porttitor mi neque convallis ante. Donec tristique, ligula ac \npharetra efficitur, orci massa condimentum velit, sit amet interdum leo \norci eu leo. Quisque bibendum ipsum non porttitor malesuada.\n<\/p>\n\n\n\n<p>\nProin faucibus sapien a vulputate aliquam. Quisque vel erat ac neque \nlobortis tincidunt. Praesent facilisis libero in imperdiet laoreet. \nMorbi ut fringilla turpis. Pellentesque placerat a urna at scelerisque. \nDonec vel ante imperdiet, finibus dolor ut, vestibulum orci. Nam posuere\n convallis metus ut rhoncus. Cras ultricies libero sem, et maximus \nmauris mollis ac. In auctor vestibulum ipsum, ac eleifend urna faucibus \nat.\n<\/p>\n",
+            "protected": false
+        },
+        "excerpt": {
+            "rendered": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc id enim sed sapien sollicitudin tristique. Ut tristique diam sit amet tellus pellentesque, id vestibulum ligula varius. Quisque nec sem nec lacus cursus congue. Duis sed consequat magna. Mauris tristique aliquam sodales. Sed vel quam tempor, mattis nisi nec, vestibulum tellus. Suspendisse venenatis, lorem non luctus [&hellip;]<\/p>\n",
+            "protected": false
+        },
+        "author": 1,
+        "featured_media": 0,
+        "menu_order": 0,
+        "comment_status": "open",
+        "ping_status": "open",
+        "template": "",
+        "meta": [],
+        "acf": {
+            "member_category": {
+                "term_id": 15,
+                "name": "Education provider",
+                "slug": "education-provider",
+                "term_group": 0,
+                "term_taxonomy_id": 15,
+                "taxonomy": "member-category",
+                "description": "",
+                "parent": 0,
+                "count": 0,
+                "filter": "raw"
+            },
+            "link": "https:\/\/ec.europa.eu\/",
+            "logo": {
+                "ID": 252,
+                "id": 252,
+                "title": "Retro",
+                "filename": "Retro.png",
+                "filesize": 19930,
+                "url": "http:\/\/domain.com\/wordpress\/wp-content\/uploads\/2019\/07\/Retro.png",
+                "link": "http:\/\/domain.com\/wordpress\/member\/donec-tristique\/retro\/",
+                "alt": "",
+                "author": "1",
+                "description": "",
+                "caption": "",
+                "name": "retro",
+                "status": "inherit",
+                "uploaded_to": 251,
+                "date": "2019-07-02 09:16:12",
+                "modified": "2019-07-02 09:16:12",
+                "menu_order": 0,
+                "mime_type": "image\/png",
+                "type": "image",
+                "subtype": "png",
+                "icon": "http:\/\/domain.com\/wordpress\/wp-includes\/images\/media\/default.png",
+                "width": 200,
+                "height": 200,
+                "sizes": {
+                    "thumbnail": "http:\/\/domain.com\/wordpress\/wp-content\/uploads\/2019\/07\/Retro-150x150.png",
+                    "thumbnail-width": 150,
+                    "thumbnail-height": 150,
+                    "medium": "http:\/\/domain.com\/wordpress\/wp-content\/uploads\/2019\/07\/Retro.png",
+                    "medium-width": 200,
+                    "medium-height": 200,
+                    "medium_large": "http:\/\/domain.com\/wordpress\/wp-content\/uploads\/2019\/07\/Retro.png",
+                    "medium_large-width": 200,
+                    "medium_large-height": 200,
+                    "large": "http:\/\/domain.com\/wordpress\/wp-content\/uploads\/2019\/07\/Retro.png",
+                    "large-width": 200,
+                    "large-height": 200,
+                    "post-thumbnail": "http:\/\/domain.com\/wordpress\/wp-content\/uploads\/2019\/07\/Retro.png",
+                    "post-thumbnail-width": 200,
+                    "post-thumbnail-height": 200
+                }
+            },
+            "publish_in_core_platform": true
+        },
+        "_links": {
+            "self": [
+                {
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/member\/251"
+                }
+            ],
+            "collection": [
+                {
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/member"
+                }
+            ],
+            "about": [
+                {
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/types\/member"
+                }
+            ],
+            "author": [
+                {
+                    "embeddable": true,
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/users\/1"
+                }
+            ],
+            "replies": [
+                {
+                    "embeddable": true,
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/comments?post=251"
+                }
+            ],
+            "version-history": [
+                {
+                    "count": 2,
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/member\/251\/revisions"
+                }
+            ],
+            "predecessor-version": [
+                {
+                    "id": 254,
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/member\/251\/revisions\/254"
+                }
+            ],
+            "wp:attachment": [
+                {
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/media?parent=251"
+                }
+            ],
+            "curies": [
+                {
+                    "name": "wp",
+                    "href": "https:\/\/api.w.org\/{rel}",
+                    "templated": true
+                }
+            ]
+        }
+    }
+
+## Strategic Documents [/wp-json/wp/v2/strategic-documents]
+### Get Strategic Documents [GET]
++ Request
+    + Headers
+            Content-Type: application/json
+            
++ Response 200 (application/json)
+    [
+        {
+            "id": 255,
+            "date": "2019-07-02T09:26:56",
+            "date_gmt": "2019-07-02T09:26:56",
+            "guid": {
+                "rendered": "http:\/\/domain.com\/wordpress\/?post_type=strategic-document&#038;p=255"
+            },
+            "modified": "2019-07-02T09:26:57",
+            "modified_gmt": "2019-07-02T09:26:57",
+            "slug": "nunc-suscipit-imperdiet-faucibus",
+            "status": "publish",
+            "type": "strategic-document",
+            "link": "http:\/\/domain.com\/wordpress\/strategic-document\/nunc-suscipit-imperdiet-faucibus\/",
+            "title": {
+                "rendered": "Nunc suscipit imperdiet faucibus"
+            },
+            "content": {
+                "rendered": "\n<p>\nNullam ligula ex, elementum vel scelerisque nec, interdum sit amet urna.\n Class aptent taciti sociosqu ad litora torquent per conubia nostra, per\n inceptos himenaeos. Nunc suscipit imperdiet faucibus. In pulvinar, \nligula ac ultricies ultrices, libero lorem volutpat augue, quis \ndignissim sapien lorem sit amet metus. Phasellus pharetra sem sed congue\n sagittis. Nullam eget nisl ut diam mollis suscipit a sed velit. Fusce \nfinibus felis at dolor tincidunt pretium. Nunc convallis orci porttitor \nimperdiet dictum. Nullam quis nunc in arcu dapibus dictum. Mauris mollis\n vitae diam sed finibus. Etiam eget dolor at elit scelerisque \nvestibulum. Suspendisse eu sem vitae nulla fermentum posuere. Donec ut \nmi quis nulla feugiat efficitur. Nullam sed congue est. Nam vitae magna \nmalesuada, facilisis massa nec, facilisis libero. Suspendisse rutrum ex \nin blandit bibendum.\n\n\n<\/p>\n",
+                "protected": false
+            },
+            "excerpt": {
+                "rendered": "<p>Nullam ligula ex, elementum vel scelerisque nec, interdum sit amet urna. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nunc suscipit imperdiet faucibus. In pulvinar, ligula ac ultricies ultrices, libero lorem volutpat augue, quis dignissim sapien lorem sit amet metus. Phasellus pharetra sem sed congue sagittis. Nullam eget nisl ut [&hellip;]<\/p>\n",
+                "protected": false
+            },
+            "author": 1,
+            "featured_media": 0,
+            "menu_order": 0,
+            "comment_status": "open",
+            "ping_status": "open",
+            "template": "",
+            "meta": [],
+            "acf": {
+                "language": [
+                    24,
+                    23
+                ],
+                "target": [
+                    5,
+                    6
+                ],
+                "roadmap": "Nullam sed congue est. Nam vitae magna malesuada, facilisis massa nec, facilisis libero. Suspendisse rutrum ex in blandit bibendum. ",
+                "latest_update": "24\/07\/2019 12:00 am",
+                "funding": " Nam vitae magna",
+                "reporting": "Suspendisse rutrum",
+                "stakeholders_involvement": "Blandit bibendum. ",
+                "document": {
+                    "ID": 256,
+                    "id": 256,
+                    "title": "Sample",
+                    "filename": "Sample.pdf",
+                    "filesize": 28248,
+                    "url": "http:\/\/domain.com\/wordpress\/wp-content\/uploads\/2019\/07\/Sample.pdf",
+                    "link": "http:\/\/domain.com\/wordpress\/strategic-document\/nunc-suscipit-imperdiet-faucibus\/sample\/",
+                    "alt": "",
+                    "author": "1",
+                    "description": "",
+                    "caption": "",
+                    "name": "sample",
+                    "status": "inherit",
+                    "uploaded_to": 255,
+                    "date": "2019-07-02 09:26:10",
+                    "modified": "2019-07-02 09:26:10",
+                    "menu_order": 0,
+                    "mime_type": "application\/pdf",
+                    "type": "application",
+                    "subtype": "pdf",
+                    "icon": "http:\/\/domain.com\/wordpress\/wp-includes\/images\/media\/document.png"
+                },
+                "managing_authority": "Mauris mollis",
+                "publish_in_core_platform": true
+            },
+            "_links": {
+                "self": [
+                    {
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/strategic-document\/255"
+                    }
+                ],
+                "collection": [
+                    {
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/strategic-document"
+                    }
+                ],
+                "about": [
+                    {
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/types\/strategic-document"
+                    }
+                ],
+                "author": [
+                    {
+                        "embeddable": true,
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/users\/1"
+                    }
+                ],
+                "replies": [
+                    {
+                        "embeddable": true,
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/comments?post=255"
+                    }
+                ],
+                "version-history": [
+                    {
+                        "count": 2,
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/strategic-document\/255\/revisions"
+                    }
+                ],
+                "predecessor-version": [
+                    {
+                        "id": 258,
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/strategic-document\/255\/revisions\/258"
+                    }
+                ],
+                "wp:attachment": [
+                    {
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/media?parent=255"
+                    }
+                ],
+                "curies": [
+                    {
+                        "name": "wp",
+                        "href": "https:\/\/api.w.org\/{rel}",
+                        "templated": true
+                    }
+                ]
+            }
+        }
+    ]
+
+## Strategic Document [/wp-json/wp/v2/strategic-documents/{id}]
+### Get Strategic Document [GET]
++ Parameters
+    + id - The id of a certain post (e.g. 1)
+
++ Request
+    + Headers
+            Content-Type: application/json
+
++ Response 200 (application/json)
+    {
+        "id": 255,
+        "date": "2019-07-02T09:26:56",
+        "date_gmt": "2019-07-02T09:26:56",
+        "guid": {
+            "rendered": "http:\/\/domain.com\/wordpress\/?post_type=strategic-document&#038;p=255"
+        },
+        "modified": "2019-07-02T09:26:57",
+        "modified_gmt": "2019-07-02T09:26:57",
+        "slug": "nunc-suscipit-imperdiet-faucibus",
+        "status": "publish",
+        "type": "strategic-document",
+        "link": "http:\/\/domain.com\/wordpress\/strategic-document\/nunc-suscipit-imperdiet-faucibus\/",
+        "title": {
+            "rendered": "Nunc suscipit imperdiet faucibus"
+        },
+        "content": {
+            "rendered": "\n<p>\nNullam ligula ex, elementum vel scelerisque nec, interdum sit amet urna.\n Class aptent taciti sociosqu ad litora torquent per conubia nostra, per\n inceptos himenaeos. Nunc suscipit imperdiet faucibus. In pulvinar, \nligula ac ultricies ultrices, libero lorem volutpat augue, quis \ndignissim sapien lorem sit amet metus. Phasellus pharetra sem sed congue\n sagittis. Nullam eget nisl ut diam mollis suscipit a sed velit. Fusce \nfinibus felis at dolor tincidunt pretium. Nunc convallis orci porttitor \nimperdiet dictum. Nullam quis nunc in arcu dapibus dictum. Mauris mollis\n vitae diam sed finibus. Etiam eget dolor at elit scelerisque \nvestibulum. Suspendisse eu sem vitae nulla fermentum posuere. Donec ut \nmi quis nulla feugiat efficitur. Nullam sed congue est. Nam vitae magna \nmalesuada, facilisis massa nec, facilisis libero. Suspendisse rutrum ex \nin blandit bibendum.\n\n\n<\/p>\n",
+            "protected": false
+        },
+        "excerpt": {
+            "rendered": "<p>Nullam ligula ex, elementum vel scelerisque nec, interdum sit amet urna. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nunc suscipit imperdiet faucibus. In pulvinar, ligula ac ultricies ultrices, libero lorem volutpat augue, quis dignissim sapien lorem sit amet metus. Phasellus pharetra sem sed congue sagittis. Nullam eget nisl ut [&hellip;]<\/p>\n",
+            "protected": false
+        },
+        "author": 1,
+        "featured_media": 0,
+        "menu_order": 0,
+        "comment_status": "open",
+        "ping_status": "open",
+        "template": "",
+        "meta": [],
+        "acf": {
+            "language": [
+                24,
+                23
+            ],
+            "target": [
+                5,
+                6
+            ],
+            "roadmap": "Nullam sed congue est. Nam vitae magna malesuada, facilisis massa nec, facilisis libero. Suspendisse rutrum ex in blandit bibendum. ",
+            "latest_update": "24\/07\/2019 12:00 am",
+            "funding": " Nam vitae magna",
+            "reporting": "Suspendisse rutrum",
+            "stakeholders_involvement": "Blandit bibendum. ",
+            "document": {
+                "ID": 256,
+                "id": 256,
+                "title": "Sample",
+                "filename": "Sample.pdf",
+                "filesize": 28248,
+                "url": "http:\/\/domain.com\/wordpress\/wp-content\/uploads\/2019\/07\/Sample.pdf",
+                "link": "http:\/\/domain.com\/wordpress\/strategic-document\/nunc-suscipit-imperdiet-faucibus\/sample\/",
+                "alt": "",
+                "author": "1",
+                "description": "",
+                "caption": "",
+                "name": "sample",
+                "status": "inherit",
+                "uploaded_to": 255,
+                "date": "2019-07-02 09:26:10",
+                "modified": "2019-07-02 09:26:10",
+                "menu_order": 0,
+                "mime_type": "application\/pdf",
+                "type": "application",
+                "subtype": "pdf",
+                "icon": "http:\/\/domain.com\/wordpress\/wp-includes\/images\/media\/document.png"
+            },
+            "managing_authority": "Mauris mollis",
+            "publish_in_core_platform": true
+        },
+        "_links": {
+            "self": [
+                {
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/strategic-document\/255"
+                }
+            ],
+            "collection": [
+                {
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/strategic-document"
+                }
+            ],
+            "about": [
+                {
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/types\/strategic-document"
+                }
+            ],
+            "author": [
+                {
+                    "embeddable": true,
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/users\/1"
+                }
+            ],
+            "replies": [
+                {
+                    "embeddable": true,
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/comments?post=255"
+                }
+            ],
+            "version-history": [
+                {
+                    "count": 2,
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/strategic-document\/255\/revisions"
+                }
+            ],
+            "predecessor-version": [
+                {
+                    "id": 258,
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/strategic-document\/255\/revisions\/258"
+                }
+            ],
+            "wp:attachment": [
+                {
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/media?parent=255"
+                }
+            ],
+            "curies": [
+                {
+                    "name": "wp",
+                    "href": "https:\/\/api.w.org\/{rel}",
+                    "templated": true
+                }
+            ]
+        }
+    }
+
+## EU Initiatives [/wp-json/wp/v2/eu-initiatives]
+### Get EU Initiatives [GET]
++ Request
+    + Headers
+            Content-Type: application/json
+            
++ Response 200 (application/json)
+    [
+        {
+            "id": 259,
+            "date": "2019-07-02T09:31:23",
+            "date_gmt": "2019-07-02T09:31:23",
+            "guid": {
+                "rendered": "http:\/\/domain.com\/wordpress\/?post_type=eu-initiative&#038;p=259"
+            },
+            "modified": "2019-07-02T09:31:23",
+            "modified_gmt": "2019-07-02T09:31:23",
+            "slug": "duis-sed-elit-id-libero",
+            "status": "publish",
+            "type": "eu-initiative",
+            "link": "http:\/\/domain.com\/wordpress\/eu-initiative\/duis-sed-elit-id-libero\/",
+            "title": {
+                "rendered": "Duis sed elit id libero"
+            },
+            "content": {
+                "rendered": "\n<p>\nNulla gravida tortor felis, non pulvinar ligula iaculis non. Suspendisse\n potenti. Proin condimentum tristique tristique. Suspendisse at diam \nquis nisi porta bibendum ac quis tellus. Integer sit amet tempor ante. \nPraesent sed leo eget eros bibendum ultrices vitae ullamcorper diam. \nDonec faucibus est eget bibendum suscipit. Duis sed elit id libero \nluctus interdum. Maecenas a urna tempor, volutpat arcu eu, eleifend est.\n Nullam eu dui sed ipsum iaculis ornare. Nullam orci enim, fermentum vel\n elementum vitae, aliquet ac massa. Mauris lacinia diam iaculis felis \niaculis, nec placerat ante facilisis. Aenean vel sollicitudin erat.\n\n\n<\/p>\n",
+                "protected": false
+            },
+            "excerpt": {
+                "rendered": "<p>Nulla gravida tortor felis, non pulvinar ligula iaculis non. Suspendisse potenti. Proin condimentum tristique tristique. Suspendisse at diam quis nisi porta bibendum ac quis tellus. Integer sit amet tempor ante. Praesent sed leo eget eros bibendum ultrices vitae ullamcorper diam. Donec faucibus est eget bibendum suscipit. Duis sed elit id libero luctus interdum. Maecenas a [&hellip;]<\/p>\n",
+                "protected": false
+            },
+            "author": 1,
+            "featured_media": 0,
+            "menu_order": 0,
+            "comment_status": "open",
+            "ping_status": "open",
+            "template": "",
+            "meta": [],
+            "acf": {
+                "link": "https:\/\/ec.europa.eu\/",
+                "publish_in_core_platform": true
+            },
+            "_links": {
+                "self": [
+                    {
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/eu-initiative\/259"
+                    }
+                ],
+                "collection": [
+                    {
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/eu-initiative"
+                    }
+                ],
+                "about": [
+                    {
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/types\/eu-initiative"
+                    }
+                ],
+                "author": [
+                    {
+                        "embeddable": true,
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/users\/1"
+                    }
+                ],
+                "replies": [
+                    {
+                        "embeddable": true,
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/comments?post=259"
+                    }
+                ],
+                "version-history": [
+                    {
+                        "count": 2,
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/eu-initiative\/259\/revisions"
+                    }
+                ],
+                "predecessor-version": [
+                    {
+                        "id": 261,
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/eu-initiative\/259\/revisions\/261"
+                    }
+                ],
+                "wp:attachment": [
+                    {
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/media?parent=259"
+                    }
+                ],
+                "curies": [
+                    {
+                        "name": "wp",
+                        "href": "https:\/\/api.w.org\/{rel}",
+                        "templated": true
+                    }
+                ]
+            }
+        }
+    ]
+
+## EU Initiative [/wp-json/wp/v2/eu-initiatives/{id}]
+### Get EU Initiative [GET]
++ Parameters
+    + id - The id of a certain post (e.g. 1)
+
++ Request
+    + Headers
+            Content-Type: application/json
+
++ Response 200 (application/json)
+    {
+        "id": 259,
+        "date": "2019-07-02T09:31:23",
+        "date_gmt": "2019-07-02T09:31:23",
+        "guid": {
+            "rendered": "http:\/\/domain.com\/wordpress\/?post_type=eu-initiative&#038;p=259"
+        },
+        "modified": "2019-07-02T09:31:23",
+        "modified_gmt": "2019-07-02T09:31:23",
+        "slug": "duis-sed-elit-id-libero",
+        "status": "publish",
+        "type": "eu-initiative",
+        "link": "http:\/\/domain.com\/wordpress\/eu-initiative\/duis-sed-elit-id-libero\/",
+        "title": {
+            "rendered": "Duis sed elit id libero"
+        },
+        "content": {
+            "rendered": "\n<p>\nNulla gravida tortor felis, non pulvinar ligula iaculis non. Suspendisse\n potenti. Proin condimentum tristique tristique. Suspendisse at diam \nquis nisi porta bibendum ac quis tellus. Integer sit amet tempor ante. \nPraesent sed leo eget eros bibendum ultrices vitae ullamcorper diam. \nDonec faucibus est eget bibendum suscipit. Duis sed elit id libero \nluctus interdum. Maecenas a urna tempor, volutpat arcu eu, eleifend est.\n Nullam eu dui sed ipsum iaculis ornare. Nullam orci enim, fermentum vel\n elementum vitae, aliquet ac massa. Mauris lacinia diam iaculis felis \niaculis, nec placerat ante facilisis. Aenean vel sollicitudin erat.\n\n\n<\/p>\n",
+            "protected": false
+        },
+        "excerpt": {
+            "rendered": "<p>Nulla gravida tortor felis, non pulvinar ligula iaculis non. Suspendisse potenti. Proin condimentum tristique tristique. Suspendisse at diam quis nisi porta bibendum ac quis tellus. Integer sit amet tempor ante. Praesent sed leo eget eros bibendum ultrices vitae ullamcorper diam. Donec faucibus est eget bibendum suscipit. Duis sed elit id libero luctus interdum. Maecenas a [&hellip;]<\/p>\n",
+            "protected": false
+        },
+        "author": 1,
+        "featured_media": 0,
+        "menu_order": 0,
+        "comment_status": "open",
+        "ping_status": "open",
+        "template": "",
+        "meta": [],
+        "acf": {
+            "link": "https:\/\/ec.europa.eu\/",
+            "publish_in_core_platform": true
+        },
+        "_links": {
+            "self": [
+                {
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/eu-initiative\/259"
+                }
+            ],
+            "collection": [
+                {
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/eu-initiative"
+                }
+            ],
+            "about": [
+                {
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/types\/eu-initiative"
+                }
+            ],
+            "author": [
+                {
+                    "embeddable": true,
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/users\/1"
+                }
+            ],
+            "replies": [
+                {
+                    "embeddable": true,
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/comments?post=259"
+                }
+            ],
+            "version-history": [
+                {
+                    "count": 2,
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/eu-initiative\/259\/revisions"
+                }
+            ],
+            "predecessor-version": [
+                {
+                    "id": 261,
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/eu-initiative\/259\/revisions\/261"
+                }
+            ],
+            "wp:attachment": [
+                {
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/media?parent=259"
+                }
+            ],
+            "curies": [
+                {
+                    "name": "wp",
+                    "href": "https:\/\/api.w.org\/{rel}",
+                    "templated": true
+                }
+            ]
+        }
+    }
+    
+    
+    
 ## Best Practices [/wp-json/wp/v2/best-practices]
 ### Get Best Practices [GET]
 + Request
     + Headers
-
+    
             Content-Type: application/json
 
 + Response 200 (application/json)
@@ -756,38 +1549,37 @@ There is no need for authentication.
     }
 ]
 
-## Best Practice [/wp-json/wp/v2/best-practices/{id}]
-### Get Best Practice [GET]
-+ Parameters
-    + id - The id of a record (e.g. 1)
+## Good Practices [/wp-json/wp/v2/good-practices]
+### Get Good Practices [GET]
 
 + Request
     + Headers
         Content-Type: application/json
 
 + Response 200 (application/json)
+    [
         {
-            "id": 34,
-            "date": "2019-06-24T11:25:09",
-            "date_gmt": "2019-06-24T11:25:09",
+            "id": 201,
+            "date": "2019-06-27T14:06:43",
+            "date_gmt": "2019-06-27T14:06:43",
             "guid": {
-                "rendered": "http:\/\/domain.com\/wordpress\/?post_type=best-practices&#038;p=34"
+                "rendered": "http:\/\/domain.com\/wordpress\/?post_type=good-practice&#038;p=201"
             },
-            "modified": "2019-06-24T11:30:59",
-            "modified_gmt": "2019-06-24T11:30:59",
-            "slug": "women-in-digital-initiatives-luxembourg",
+            "modified": "2019-06-27T14:06:43",
+            "modified_gmt": "2019-06-27T14:06:43",
+            "slug": "inspira-steam-promotion-of-technological-vocations-among-girls",
             "status": "publish",
-            "type": "best-practices",
-            "link": "http:\/\/domain.com\/wordpress\/best-practices\/women-in-digital-initiatives-luxembourg\/",
+            "type": "good-practice",
+            "link": "http:\/\/domain.com\/wordpress\/good-practice\/inspira-steam-promotion-of-technological-vocations-among-girls\/",
             "title": {
-                "rendered": "Women in Digital Initiatives Luxembourg"
+                "rendered": "Inspira STEAM &#8211; promotion of technological vocations among girls"
             },
             "content": {
-                "rendered": "\n<p>Launched as a grassroots initiative by women volunteers, WIDE has now become the leading and national reference organisation to champion inclusion of girls &amp; women in the new technologies and the digital field.<br><\/p>\n\n\n\n<p>WIDE has created strong links with industry, government and educators at the national and European level to provide concrete &amp; practical actions on the field. Our organisation organizes activities, workshops &amp; training for both women and men, with the aim of introducing more diversity in new technologies, start-ups and the ICT industry.<\/p>\n",
+                "rendered": "\n<p>To this end, the Project carries out raising awareness and orientation actions by professional women from different sectors (industry, higher education, research institutions, ONGs, public bodies, etc.) involved in science and technology. The project is very innovative since it applies group-mentoring methodology to promote STEAM vocations to 10-12 yr. old girls.<br><\/p>\n\n\n\n<p>Mentors are volunteer female technologists and scientists that work with girls participating in six one-hour sessions during school hours, addressing topics such as the relevance of STEAM nowadays, stereotypes, technological studies and careers, or women in science and technology throughout history. The purpose of these sessions is to help dissipating doubts and objections about these professions, clarify their motivations and strengthen their self-esteem to start the career path, if they so desire. We also consider crucial to engage boys in this process. Hence, a schoolteacher works in parallel with boys the same concepts and activities. Mentors are a critical part of the project, along with girls and boys.<\/p>\n",
                 "protected": false
             },
             "excerpt": {
-                "rendered": "<p>Launched as a grassroots initiative by women volunteers, WIDE has now become the leading and national reference organisation to champion inclusion of girls &amp; women in the new technologies and the digital field. WIDE has created strong links with industry, government and educators at the national and European level to provide concrete &amp; practical actions [&hellip;]<\/p>\n",
+                "rendered": "<p>To this end, the Project carries out raising awareness and orientation actions by professional women from different sectors (industry, higher education, research institutions, ONGs, public bodies, etc.) involved in science and technology. The project is very innovative since it applies group-mentoring methodology to promote STEAM vocations to 10-12 yr. old girls. Mentors are volunteer female [&hellip;]<\/p>\n",
                 "protected": false
             },
             "author": 1,
@@ -798,13 +1590,20 @@ There is no need for authentication.
             "template": "",
             "meta": [],
             "acf": {
+                "link": "http:\/\/inspirasteam.net\/",
+                "start_date": "28\/06\/2019",
+                "end_date": "29\/06\/2019",
+                "summary": "Hence, a schoolteacher works in parallel with boys the same concepts and activities. Mentors are a critical part of the project, along with girls and boys",
+                "target_group": "Digital skills for women and girls",
+                "type_of_funding": "Public and Private",
+                "type_of_iniative": "Digital Skills Award Participant",
                 "geographical_scope": [
                     {
-                        "term_id": 3,
-                        "name": "Belgium",
-                        "slug": "belgium",
+                        "term_id": 7,
+                        "name": "Italy",
+                        "slug": "italy",
                         "term_group": 0,
-                        "term_taxonomy_id": 3,
+                        "term_taxonomy_id": 7,
                         "taxonomy": "category",
                         "description": "",
                         "parent": 0,
@@ -824,13 +1623,7 @@ There is no need for authentication.
                         "filter": "raw"
                     }
                 ],
-                "type_of_iniative": "Digital Skills Award Participant",
-                "target_group": "Digital skills for women and girls",
-                "type_of_funding": "Public and Private",
-                "website": "http:\/\/wide.lu",
-                "start_date": "04\/07\/2018",
-                "end_date": "04\/09\/2018",
-                "organisation": "Work Wide Women",
+                "organisation": "University of Deusto",
                 "topics": [
                     {
                         "term_id": 6,
@@ -856,22 +1649,23 @@ There is no need for authentication.
                         "count": 0,
                         "filter": "raw"
                     }
-                ]
+                ],
+                "publish_in_core_platform": false
             },
             "_links": {
                 "self": [
                     {
-                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/best-practices\/34"
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/good-practice\/201"
                     }
                 ],
                 "collection": [
                     {
-                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/best-practices"
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/good-practice"
                     }
                 ],
                 "about": [
                     {
-                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/types\/best-practices"
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/types\/good-practice"
                     }
                 ],
                 "author": [
@@ -883,24 +1677,24 @@ There is no need for authentication.
                 "replies": [
                     {
                         "embeddable": true,
-                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/comments?post=34"
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/comments?post=201"
                     }
                 ],
                 "version-history": [
                     {
-                        "count": 5,
-                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/best-practices\/34\/revisions"
+                        "count": 2,
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/good-practice\/201\/revisions"
                     }
                 ],
                 "predecessor-version": [
                     {
-                        "id": 41,
-                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/best-practices\/34\/revisions\/41"
+                        "id": 203,
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/good-practice\/201\/revisions\/203"
                     }
                 ],
                 "wp:attachment": [
                     {
-                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/media?parent=34"
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/media?parent=201"
                     }
                 ],
                 "curies": [
@@ -911,222 +1705,29 @@ There is no need for authentication.
                     }
                 ]
             }
-        }
-
-## Skill Assessment Tools [/wp-json/wp/v2/skill-assessment]
-### Get Skill Assessment Tools [GET]
-+ Request
-    + Headers
-        Content-Type: application/json
-
-+ Response 200 (application/json)
-        [
-            {
-                "id": 56,
-                "date": "2019-06-24T11:59:59",
-                "date_gmt": "2019-06-24T11:59:59",
-                "guid": {
-                    "rendered": "http:\/\/domain.com\/wordpress\/?post_type=skill-assessment&#038;p=56"
-                },
-                "modified": "2019-06-24T11:59:59",
-                "modified_gmt": "2019-06-24T11:59:59",
-                "slug": "maecenas-sed-interdum-sapien",
-                "status": "publish",
-                "type": "skill-assessment",
-                "link": "http:\/\/domain.com\/wordpress\/skill-assessment\/maecenas-sed-interdum-sapien\/",
-                "title": {
-                    "rendered": "Maecenas sed interdum sapien"
-                },
-                "content": {
-                    "rendered": "\n<p>\nCras diam risus, porta a luctus gravida, ultricies eget nibh. \nSuspendisse potenti. Nullam vel ultrices tortor. Duis ultricies arcu \ndolor, at convallis nibh venenatis vel. Curabitur vehicula, est nec \nmattis pulvinar, nisl dolor condimentum tortor, quis aliquam orci tellus\n sed elit. Suspendisse in faucibus nulla, at vestibulum est. Vivamus ac \ndictum turpis. Maecenas sed interdum sapien. Etiam sagittis lacus nec \nlorem maximus tincidunt. Etiam vel risus pharetra, egestas sem quis, \npretium velit. Suspendisse non interdum ante. Nunc vulputate tortor \nnunc, vel blandit quam bibendum vitae.\n\n\n<\/p>\n",
-                    "protected": false
-                },
-                "excerpt": {
-                    "rendered": "<p>Cras diam risus, porta a luctus gravida, ultricies eget nibh. Suspendisse potenti. Nullam vel ultrices tortor. Duis ultricies arcu dolor, at convallis nibh venenatis vel. Curabitur vehicula, est nec mattis pulvinar, nisl dolor condimentum tortor, quis aliquam orci tellus sed elit. Suspendisse in faucibus nulla, at vestibulum est. Vivamus ac dictum turpis. Maecenas sed interdum [&hellip;]<\/p>\n",
-                    "protected": false
-                },
-                "author": 1,
-                "featured_media": 0,
-                "menu_order": 0,
-                "comment_status": "open",
-                "ping_status": "open",
-                "template": "",
-                "meta": [],
-                "acf": false,
-                "_links": {
-                    "self": [
-                        {
-                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/skill-assessment\/56"
-                        }
-                    ],
-                    "collection": [
-                        {
-                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/skill-assessment"
-                        }
-                    ],
-                    "about": [
-                        {
-                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/types\/skill-assessment"
-                        }
-                    ],
-                    "author": [
-                        {
-                            "embeddable": true,
-                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/users\/1"
-                        }
-                    ],
-                    "replies": [
-                        {
-                            "embeddable": true,
-                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/comments?post=56"
-                        }
-                    ],
-                    "version-history": [
-                        {
-                            "count": 1,
-                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/skill-assessment\/56\/revisions"
-                        }
-                    ],
-                    "predecessor-version": [
-                        {
-                            "id": 57,
-                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/skill-assessment\/56\/revisions\/57"
-                        }
-                    ],
-                    "wp:attachment": [
-                        {
-                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/media?parent=56"
-                        }
-                    ],
-                    "curies": [
-                        {
-                            "name": "wp",
-                            "href": "https:\/\/api.w.org\/{rel}",
-                            "templated": true
-                        }
-                    ]
-                }
-            },
-            {
-                "id": 54,
-                "date": "2019-06-24T11:59:38",
-                "date_gmt": "2019-06-24T11:59:38",
-                "guid": {
-                    "rendered": "http:\/\/domain.com\/wordpress\/?post_type=skill-assessment&#038;p=54"
-                },
-                "modified": "2019-06-24T11:59:38",
-                "modified_gmt": "2019-06-24T11:59:38",
-                "slug": "praesent-feugiat-lectus-dui",
-                "status": "publish",
-                "type": "skill-assessment",
-                "link": "http:\/\/domain.com\/wordpress\/skill-assessment\/praesent-feugiat-lectus-dui\/",
-                "title": {
-                    "rendered": "Praesent feugiat lectus dui"
-                },
-                "content": {
-                    "rendered": "\n<p>\nUt in elit in ipsum pharetra efficitur placerat sed tortor. Nulla \nfacilisis congue felis, eget iaculis lectus molestie nec. Sed sed ipsum \nvitae felis auctor suscipit. Vestibulum sit amet fermentum tellus, ut \nefficitur sapien. Donec sed malesuada urna, sollicitudin tincidunt \npurus. Aenean posuere, tortor vel rhoncus interdum, metus nisl ultricies\n leo, non viverra ante risus nec sem. Proin vestibulum, dolor ut \npharetra lacinia, risus massa dapibus leo, sit amet scelerisque ante \nsapien non orci. Duis interdum pulvinar elit sit amet ornare. Vestibulum\n ac arcu vitae odio ullamcorper sagittis nec sit amet sem. Etiam mattis,\n velit nec rhoncus consectetur, odio augue venenatis tellus, non sodales\n tortor purus et tortor. Phasellus posuere tellus eget dolor rhoncus \nvehicula. Praesent feugiat lectus dui, ac porta diam semper quis. \nCurabitur iaculis, risus eu iaculis sollicitudin, nisl justo rhoncus \nlibero, quis gravida nulla tortor ut augue.\n\n<\/p>\n",
-                    "protected": false
-                },
-                "excerpt": {
-                    "rendered": "<p>Ut in elit in ipsum pharetra efficitur placerat sed tortor. Nulla facilisis congue felis, eget iaculis lectus molestie nec. Sed sed ipsum vitae felis auctor suscipit. Vestibulum sit amet fermentum tellus, ut efficitur sapien. Donec sed malesuada urna, sollicitudin tincidunt purus. Aenean posuere, tortor vel rhoncus interdum, metus nisl ultricies leo, non viverra ante risus [&hellip;]<\/p>\n",
-                    "protected": false
-                },
-                "author": 1,
-                "featured_media": 0,
-                "menu_order": 0,
-                "comment_status": "open",
-                "ping_status": "open",
-                "template": "",
-                "meta": [],
-                "acf": false,
-                "_links": {
-                    "self": [
-                        {
-                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/skill-assessment\/54"
-                        }
-                    ],
-                    "collection": [
-                        {
-                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/skill-assessment"
-                        }
-                    ],
-                    "about": [
-                        {
-                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/types\/skill-assessment"
-                        }
-                    ],
-                    "author": [
-                        {
-                            "embeddable": true,
-                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/users\/1"
-                        }
-                    ],
-                    "replies": [
-                        {
-                            "embeddable": true,
-                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/comments?post=54"
-                        }
-                    ],
-                    "version-history": [
-                        {
-                            "count": 1,
-                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/skill-assessment\/54\/revisions"
-                        }
-                    ],
-                    "predecessor-version": [
-                        {
-                            "id": 55,
-                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/skill-assessment\/54\/revisions\/55"
-                        }
-                    ],
-                    "wp:attachment": [
-                        {
-                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/media?parent=54"
-                        }
-                    ],
-                    "curies": [
-                        {
-                            "name": "wp",
-                            "href": "https:\/\/api.w.org\/{rel}",
-                            "templated": true
-                        }
-                    ]
-                }
-            }
-        ]
-
-## Skill Assessment Tool [/wp-json/wp/v2/skill-assessment/{id}]
-### Get Skill Assessment Tool [GET]
-+ Parameters
-    + id - The id of a record (e.g. 1)
-
-+ Request
-    + Headers
-        Content-Type: application/json
-
-+ Response 200 (application/json)
+        },
         {
-            "id": 56,
-            "date": "2019-06-24T11:59:59",
-            "date_gmt": "2019-06-24T11:59:59",
+            "id": 198,
+            "date": "2019-06-27T14:04:39",
+            "date_gmt": "2019-06-27T14:04:39",
             "guid": {
-                "rendered": "http:\/\/domain.com\/wordpress\/?post_type=skill-assessment&#038;p=56"
+                "rendered": "http:\/\/domain.com\/wordpress\/?post_type=good-practice&#038;p=198"
             },
-            "modified": "2019-06-24T11:59:59",
-            "modified_gmt": "2019-06-24T11:59:59",
-            "slug": "maecenas-sed-interdum-sapien",
+            "modified": "2019-06-27T14:04:40",
+            "modified_gmt": "2019-06-27T14:04:40",
+            "slug": "world-robot-olympiad-germany",
             "status": "publish",
-            "type": "skill-assessment",
-            "link": "http:\/\/domain.com\/wordpress\/skill-assessment\/maecenas-sed-interdum-sapien\/",
+            "type": "good-practice",
+            "link": "http:\/\/domain.com\/wordpress\/good-practice\/world-robot-olympiad-germany\/",
             "title": {
-                "rendered": "Maecenas sed interdum sapien"
+                "rendered": "World Robot Olympiad Germany"
             },
             "content": {
-                "rendered": "\n<p>\nCras diam risus, porta a luctus gravida, ultricies eget nibh. \nSuspendisse potenti. Nullam vel ultrices tortor. Duis ultricies arcu \ndolor, at convallis nibh venenatis vel. Curabitur vehicula, est nec \nmattis pulvinar, nisl dolor condimentum tortor, quis aliquam orci tellus\n sed elit. Suspendisse in faucibus nulla, at vestibulum est. Vivamus ac \ndictum turpis. Maecenas sed interdum sapien. Etiam sagittis lacus nec \nlorem maximus tincidunt. Etiam vel risus pharetra, egestas sem quis, \npretium velit. Suspendisse non interdum ante. Nunc vulputate tortor \nnunc, vel blandit quam bibendum vitae.\n\n\n<\/p>\n",
+                "rendered": "\n<p>Since 2012, our organization is the official organizer of World Robot Olympiad (WRO) in Germany. WRO is an international robotic tournament in more than 70 countries to promote STEM education worldwide.<br><\/p>\n\n\n\n<p>With WRO tournaments, we have grown successfully over the last years. Starting with 32 teams in 2012, in 2018 more than 600 teams from more than 300 schools took part in our competitions. The main target audience are young children and students in the age from 6 to 19 years old and belonging teachers \/ parents. At WRO competitions, the students can take part in different competition categories with various age groups. The three main competition categories we do in Germany are:<\/p>\n\n\n\n<ol><li>Regular Category: Teams need to build and program and autonomous robot that can solve tasks on a field (size: 3 square meter). In different age groups (6-12, 8-12, 13-15 and 16-19) missions with different complexity are applied. In Regular Category students can practise weeks before the competition but need to re-build their robot without any photos or building instructions on the competition day. In addition, a surprise rule is announced at the day of competition. These elements should make sure that the participants have done the work on their own and can use their creativity and problem solving skills during the competition day.<br><\/li><li>Open Category: In this category, teams build a robot model that is connected to the season theme (e.g. Sustainable Development). Teams should think about a problem in their daily life that can be solved using robot and automation technology. Here, participants can combine skills to build and program a more complex robot model in a creative way with skills you need to make a presentation in front a group of judges.<\/li><li>Football Category: This category combines the excitement of soccer games with the challenge task to program 2 robots per team that can play soccer game autonomously. The playing ball is a ball that transmit infrared signals that can be detected by the robots. The robots itself can interact using Bluetooth technology to define their way during a game (e.g. one robot could act as a defender, one as a striker).<\/li><\/ol>\n",
                 "protected": false
             },
             "excerpt": {
-                "rendered": "<p>Cras diam risus, porta a luctus gravida, ultricies eget nibh. Suspendisse potenti. Nullam vel ultrices tortor. Duis ultricies arcu dolor, at convallis nibh venenatis vel. Curabitur vehicula, est nec mattis pulvinar, nisl dolor condimentum tortor, quis aliquam orci tellus sed elit. Suspendisse in faucibus nulla, at vestibulum est. Vivamus ac dictum turpis. Maecenas sed interdum [&hellip;]<\/p>\n",
+                "rendered": "<p>Since 2012, our organization is the official organizer of World Robot Olympiad (WRO) in Germany. WRO is an international robotic tournament in more than 70 countries to promote STEM education worldwide. With WRO tournaments, we have grown successfully over the last years. Starting with 32 teams in 2012, in 2018 more than 600 teams from [&hellip;]<\/p>\n",
                 "protected": false
             },
             "author": 1,
@@ -1136,21 +1737,83 @@ There is no need for authentication.
             "ping_status": "open",
             "template": "",
             "meta": [],
-            "acf": false,
+            "acf": {
+                "link": "http:\/\/www.worldrobotolympiad.de",
+                "start_date": "27\/06\/2019",
+                "end_date": "28\/06\/2019",
+                "summary": "The robots itself can interact using Bluetooth technology to define their way during a game (e.g. one robot could act as a defender, one as a striker).",
+                "target_group": "Digital skills in education",
+                "type_of_funding": "Private ",
+                "type_of_iniative": "Digital Skills Award Participant",
+                "geographical_scope": [
+                    {
+                        "term_id": 3,
+                        "name": "Belgium",
+                        "slug": "belgium",
+                        "term_group": 0,
+                        "term_taxonomy_id": 3,
+                        "taxonomy": "category",
+                        "description": "",
+                        "parent": 0,
+                        "count": 0,
+                        "filter": "raw"
+                    },
+                    {
+                        "term_id": 2,
+                        "name": "Greece",
+                        "slug": "greece",
+                        "term_group": 0,
+                        "term_taxonomy_id": 2,
+                        "taxonomy": "category",
+                        "description": "",
+                        "parent": 0,
+                        "count": 0,
+                        "filter": "raw"
+                    }
+                ],
+                "organisation": "TECHNIK BEGEISTERT e.V.",
+                "topics": [
+                    {
+                        "term_id": 5,
+                        "name": "AI",
+                        "slug": "ai",
+                        "term_group": 0,
+                        "term_taxonomy_id": 5,
+                        "taxonomy": "post_tag",
+                        "description": "",
+                        "parent": 0,
+                        "count": 0,
+                        "filter": "raw"
+                    },
+                    {
+                        "term_id": 6,
+                        "name": "Commerce",
+                        "slug": "commerce",
+                        "term_group": 0,
+                        "term_taxonomy_id": 6,
+                        "taxonomy": "post_tag",
+                        "description": "",
+                        "parent": 0,
+                        "count": 0,
+                        "filter": "raw"
+                    }
+                ],
+                "publish_in_core_platform": true
+            },
             "_links": {
                 "self": [
                     {
-                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/skill-assessment\/56"
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/good-practice\/198"
                     }
                 ],
                 "collection": [
                     {
-                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/skill-assessment"
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/good-practice"
                     }
                 ],
                 "about": [
                     {
-                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/types\/skill-assessment"
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/types\/good-practice"
                     }
                 ],
                 "author": [
@@ -1162,24 +1825,24 @@ There is no need for authentication.
                 "replies": [
                     {
                         "embeddable": true,
-                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/comments?post=56"
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/comments?post=198"
                     }
                 ],
                 "version-history": [
                     {
-                        "count": 1,
-                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/skill-assessment\/56\/revisions"
+                        "count": 2,
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/good-practice\/198\/revisions"
                     }
                 ],
                 "predecessor-version": [
                     {
-                        "id": 57,
-                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/skill-assessment\/56\/revisions\/57"
+                        "id": 200,
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/good-practice\/198\/revisions\/200"
                     }
                 ],
                 "wp:attachment": [
                     {
-                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/media?parent=56"
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/media?parent=198"
                     }
                 ],
                 "curies": [
@@ -1191,199 +1854,583 @@ There is no need for authentication.
                 ]
             }
         }
+    ]
 
-## Training offers [/wp-json/wp/v2/training-offer]
+## Good Practice [/wp-json/wp/v2/good-practices/{id}]
+### Get Good Practice [GET]
++ Parameters
+    + id - The id of a record (e.g. 1)
+    
++ Request
+    + Headers
+        Content-Type: application/json
+
++ Response 200 (application/json)
+    {
+        "id": 201,
+        "date": "2019-06-27T14:06:43",
+        "date_gmt": "2019-06-27T14:06:43",
+        "guid": {
+            "rendered": "http:\/\/domain.com\/wordpress\/?post_type=good-practice&#038;p=201"
+        },
+        "modified": "2019-06-27T14:06:43",
+        "modified_gmt": "2019-06-27T14:06:43",
+        "slug": "inspira-steam-promotion-of-technological-vocations-among-girls",
+        "status": "publish",
+        "type": "good-practice",
+        "link": "http:\/\/domain.com\/wordpress\/good-practice\/inspira-steam-promotion-of-technological-vocations-among-girls\/",
+        "title": {
+            "rendered": "Inspira STEAM &#8211; promotion of technological vocations among girls"
+        },
+        "content": {
+            "rendered": "\n<p>To this end, the Project carries out raising awareness and orientation actions by professional women from different sectors (industry, higher education, research institutions, ONGs, public bodies, etc.) involved in science and technology. The project is very innovative since it applies group-mentoring methodology to promote STEAM vocations to 10-12 yr. old girls.<br><\/p>\n\n\n\n<p>Mentors are volunteer female technologists and scientists that work with girls participating in six one-hour sessions during school hours, addressing topics such as the relevance of STEAM nowadays, stereotypes, technological studies and careers, or women in science and technology throughout history. The purpose of these sessions is to help dissipating doubts and objections about these professions, clarify their motivations and strengthen their self-esteem to start the career path, if they so desire. We also consider crucial to engage boys in this process. Hence, a schoolteacher works in parallel with boys the same concepts and activities. Mentors are a critical part of the project, along with girls and boys.<\/p>\n",
+            "protected": false
+        },
+        "excerpt": {
+            "rendered": "<p>To this end, the Project carries out raising awareness and orientation actions by professional women from different sectors (industry, higher education, research institutions, ONGs, public bodies, etc.) involved in science and technology. The project is very innovative since it applies group-mentoring methodology to promote STEAM vocations to 10-12 yr. old girls. Mentors are volunteer female [&hellip;]<\/p>\n",
+            "protected": false
+        },
+        "author": 1,
+        "featured_media": 0,
+        "menu_order": 0,
+        "comment_status": "open",
+        "ping_status": "open",
+        "template": "",
+        "meta": [],
+        "acf": {
+            "link": "http:\/\/inspirasteam.net\/",
+            "start_date": "28\/06\/2019",
+            "end_date": "29\/06\/2019",
+            "summary": "Hence, a schoolteacher works in parallel with boys the same concepts and activities. Mentors are a critical part of the project, along with girls and boys",
+            "target_group": "Digital skills for women and girls",
+            "type_of_funding": "Public and Private",
+            "type_of_iniative": "Digital Skills Award Participant",
+            "geographical_scope": [
+                {
+                    "term_id": 7,
+                    "name": "Italy",
+                    "slug": "italy",
+                    "term_group": 0,
+                    "term_taxonomy_id": 7,
+                    "taxonomy": "category",
+                    "description": "",
+                    "parent": 0,
+                    "count": 0,
+                    "filter": "raw"
+                },
+                {
+                    "term_id": 8,
+                    "name": "Luxembourg",
+                    "slug": "luxembourg",
+                    "term_group": 0,
+                    "term_taxonomy_id": 8,
+                    "taxonomy": "category",
+                    "description": "",
+                    "parent": 0,
+                    "count": 0,
+                    "filter": "raw"
+                }
+            ],
+            "organisation": "University of Deusto",
+            "topics": [
+                {
+                    "term_id": 6,
+                    "name": "Commerce",
+                    "slug": "commerce",
+                    "term_group": 0,
+                    "term_taxonomy_id": 6,
+                    "taxonomy": "post_tag",
+                    "description": "",
+                    "parent": 0,
+                    "count": 0,
+                    "filter": "raw"
+                },
+                {
+                    "term_id": 4,
+                    "name": "Machine Learning",
+                    "slug": "machine-learning",
+                    "term_group": 0,
+                    "term_taxonomy_id": 4,
+                    "taxonomy": "post_tag",
+                    "description": "",
+                    "parent": 0,
+                    "count": 0,
+                    "filter": "raw"
+                }
+            ],
+            "publish_in_core_platform": false
+        },
+        "_links": {
+            "self": [
+                {
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/good-practice\/201"
+                }
+            ],
+            "collection": [
+                {
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/good-practice"
+                }
+            ],
+            "about": [
+                {
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/types\/good-practice"
+                }
+            ],
+            "author": [
+                {
+                    "embeddable": true,
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/users\/1"
+                }
+            ],
+            "replies": [
+                {
+                    "embeddable": true,
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/comments?post=201"
+                }
+            ],
+            "version-history": [
+                {
+                    "count": 2,
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/good-practice\/201\/revisions"
+                }
+            ],
+            "predecessor-version": [
+                {
+                    "id": 203,
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/good-practice\/201\/revisions\/203"
+                }
+            ],
+            "wp:attachment": [
+                {
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/media?parent=201"
+                }
+            ],
+            "curies": [
+                {
+                    "name": "wp",
+                    "href": "https:\/\/api.w.org\/{rel}",
+                    "templated": true
+                }
+            ]
+        }
+    }
+
+## Training Resources [/wp-json/wp/v2/training-resources]
+### Get Training Resources [GET]
+
++ Request
+    + Headers
+        Content-Type: application/json
+
++ Response 200 (application/json)
+    [
+        {
+            "id": 262,
+            "date": "2019-07-02T09:49:25",
+            "date_gmt": "2019-07-02T09:49:25",
+            "guid": {
+                "rendered": "http:\/\/domain.com\/wordpress\/?post_type=training-resource&#038;p=262"
+            },
+            "modified": "2019-07-02T09:49:25",
+            "modified_gmt": "2019-07-02T09:49:25",
+            "slug": "morbi-dapibus",
+            "status": "publish",
+            "type": "training-resource",
+            "link": "http:\/\/domain.com\/wordpress\/training-resource\/morbi-dapibus\/",
+            "title": {
+                "rendered": "Morbi dapibus"
+            },
+            "content": {
+                "rendered": "\n<p>\nInteger at consectetur eros. Aliquam eget ipsum eu neque lacinia \nbibendum. Morbi ipsum lorem, egestas sed neque pharetra, hendrerit \nconsectetur nunc. Fusce ac massa in libero consectetur sodales. Morbi in\n dui eget diam laoreet ultrices vel et sem. Suspendisse potenti. Morbi \ndapibus ex in faucibus ultrices. Sed viverra quam eget porta aliquet. \nVivamus luctus sem velit, et convallis sem sodales iaculis. Aenean \nsuscipit imperdiet turpis, eget volutpat nibh elementum non. Mauris quis\n mi tempus, semper eros vitae, finibus urna. Suspendisse laoreet nulla \nac lectus sollicitudin condimentum. Proin turpis enim, auctor sed \nplacerat ut, fermentum a ipsum.\n\n\n<\/p>\n",
+                "protected": false
+            },
+            "excerpt": {
+                "rendered": "<p>Integer at consectetur eros. Aliquam eget ipsum eu neque lacinia bibendum. Morbi ipsum lorem, egestas sed neque pharetra, hendrerit consectetur nunc. Fusce ac massa in libero consectetur sodales. Morbi in dui eget diam laoreet ultrices vel et sem. Suspendisse potenti. Morbi dapibus ex in faucibus ultrices. Sed viverra quam eget porta aliquet. Vivamus luctus sem [&hellip;]<\/p>\n",
+                "protected": false
+            },
+            "author": 1,
+            "featured_media": 0,
+            "menu_order": 0,
+            "comment_status": "open",
+            "ping_status": "open",
+            "template": "",
+            "meta": [],
+            "acf": {
+                "link": "https:\/\/ec.europa.eu\/",
+                "topology": "Proin turpis enim",
+                "level": "Medium",
+                "methodology": "Suspendisse laoreet nulla",
+                "target_group": "Vivamus ",
+                "geographical_scope": [
+                    {
+                        "term_id": 3,
+                        "name": "Belgium",
+                        "slug": "belgium",
+                        "term_group": 0,
+                        "term_taxonomy_id": 3,
+                        "taxonomy": "category",
+                        "description": "",
+                        "parent": 0,
+                        "count": 0,
+                        "filter": "raw"
+                    },
+                    {
+                        "term_id": 2,
+                        "name": "Greece",
+                        "slug": "greece",
+                        "term_group": 0,
+                        "term_taxonomy_id": 2,
+                        "taxonomy": "category",
+                        "description": "",
+                        "parent": 0,
+                        "count": 0,
+                        "filter": "raw"
+                    }
+                ],
+                "document": {
+                    "ID": 256,
+                    "id": 256,
+                    "title": "Sample",
+                    "filename": "Sample.pdf",
+                    "filesize": 28248,
+                    "url": "http:\/\/domain.com\/wordpress\/wp-content\/uploads\/2019\/07\/Sample.pdf",
+                    "link": "http:\/\/domain.com\/wordpress\/strategic-document\/nunc-suscipit-imperdiet-faucibus\/sample\/",
+                    "alt": "",
+                    "author": "1",
+                    "description": "",
+                    "caption": "",
+                    "name": "sample",
+                    "status": "inherit",
+                    "uploaded_to": 255,
+                    "date": "2019-07-02 09:26:10",
+                    "modified": "2019-07-02 09:26:10",
+                    "menu_order": 0,
+                    "mime_type": "application\/pdf",
+                    "type": "application",
+                    "subtype": "pdf",
+                    "icon": "http:\/\/domain.com\/wordpress\/wp-includes\/images\/media\/document.png"
+                },
+                "provider": "Class aptent",
+                "topic": {
+                    "term_id": 26,
+                    "name": "Self-Assesment Tool",
+                    "slug": "self-assesment-tool",
+                    "term_group": 0,
+                    "term_taxonomy_id": 26,
+                    "taxonomy": "resource-topics",
+                    "description": "",
+                    "parent": 0,
+                    "count": 0,
+                    "filter": "raw"
+                },
+                "language": [
+                    {
+                        "term_id": 23,
+                        "name": "EL",
+                        "slug": "el",
+                        "term_group": 0,
+                        "term_taxonomy_id": 23,
+                        "taxonomy": "targetlanguages",
+                        "description": "",
+                        "parent": 0,
+                        "count": 0,
+                        "filter": "raw"
+                    },
+                    {
+                        "term_id": 22,
+                        "name": "EN",
+                        "slug": "en",
+                        "term_group": 0,
+                        "term_taxonomy_id": 22,
+                        "taxonomy": "targetlanguages",
+                        "description": "",
+                        "parent": 0,
+                        "count": 0,
+                        "filter": "raw"
+                    },
+                    {
+                        "term_id": 25,
+                        "name": "FR",
+                        "slug": "fr",
+                        "term_group": 0,
+                        "term_taxonomy_id": 25,
+                        "taxonomy": "targetlanguages",
+                        "description": "",
+                        "parent": 0,
+                        "count": 0,
+                        "filter": "raw"
+                    }
+                ],
+                "publish_in_core_platform": true
+            },
+            "_links": {
+                "self": [
+                    {
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/training-resource\/262"
+                    }
+                ],
+                "collection": [
+                    {
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/training-resource"
+                    }
+                ],
+                "about": [
+                    {
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/types\/training-resource"
+                    }
+                ],
+                "author": [
+                    {
+                        "embeddable": true,
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/users\/1"
+                    }
+                ],
+                "replies": [
+                    {
+                        "embeddable": true,
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/comments?post=262"
+                    }
+                ],
+                "version-history": [
+                    {
+                        "count": 2,
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/training-resource\/262\/revisions"
+                    }
+                ],
+                "predecessor-version": [
+                    {
+                        "id": 264,
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/training-resource\/262\/revisions\/264"
+                    }
+                ],
+                "wp:attachment": [
+                    {
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/media?parent=262"
+                    }
+                ],
+                "curies": [
+                    {
+                        "name": "wp",
+                        "href": "https:\/\/api.w.org\/{rel}",
+                        "templated": true
+                    }
+                ]
+            }
+        }
+    ]
+
+## Training Resource [/wp-json/wp/v2/training-resources/{id}]
+### Get Training Resource [GET]
++ Parameters
+    + id - The id of a record (e.g. 1)
+    
++ Request
+    + Headers
+        Content-Type: application/json
+
++ Response 200 (application/json)
+    {
+        "id": 262,
+        "date": "2019-07-02T09:49:25",
+        "date_gmt": "2019-07-02T09:49:25",
+        "guid": {
+            "rendered": "http:\/\/domain.com\/wordpress\/?post_type=training-resource&#038;p=262"
+        },
+        "modified": "2019-07-02T09:49:25",
+        "modified_gmt": "2019-07-02T09:49:25",
+        "slug": "morbi-dapibus",
+        "status": "publish",
+        "type": "training-resource",
+        "link": "http:\/\/domain.com\/wordpress\/training-resource\/morbi-dapibus\/",
+        "title": {
+            "rendered": "Morbi dapibus"
+        },
+        "content": {
+            "rendered": "\n<p>\nInteger at consectetur eros. Aliquam eget ipsum eu neque lacinia \nbibendum. Morbi ipsum lorem, egestas sed neque pharetra, hendrerit \nconsectetur nunc. Fusce ac massa in libero consectetur sodales. Morbi in\n dui eget diam laoreet ultrices vel et sem. Suspendisse potenti. Morbi \ndapibus ex in faucibus ultrices. Sed viverra quam eget porta aliquet. \nVivamus luctus sem velit, et convallis sem sodales iaculis. Aenean \nsuscipit imperdiet turpis, eget volutpat nibh elementum non. Mauris quis\n mi tempus, semper eros vitae, finibus urna. Suspendisse laoreet nulla \nac lectus sollicitudin condimentum. Proin turpis enim, auctor sed \nplacerat ut, fermentum a ipsum.\n\n\n<\/p>\n",
+            "protected": false
+        },
+        "excerpt": {
+            "rendered": "<p>Integer at consectetur eros. Aliquam eget ipsum eu neque lacinia bibendum. Morbi ipsum lorem, egestas sed neque pharetra, hendrerit consectetur nunc. Fusce ac massa in libero consectetur sodales. Morbi in dui eget diam laoreet ultrices vel et sem. Suspendisse potenti. Morbi dapibus ex in faucibus ultrices. Sed viverra quam eget porta aliquet. Vivamus luctus sem [&hellip;]<\/p>\n",
+            "protected": false
+        },
+        "author": 1,
+        "featured_media": 0,
+        "menu_order": 0,
+        "comment_status": "open",
+        "ping_status": "open",
+        "template": "",
+        "meta": [],
+        "acf": {
+            "link": "https:\/\/ec.europa.eu\/",
+            "topology": "Proin turpis enim",
+            "level": "Medium",
+            "methodology": "Suspendisse laoreet nulla",
+            "target_group": "Vivamus ",
+            "geographical_scope": [
+                {
+                    "term_id": 3,
+                    "name": "Belgium",
+                    "slug": "belgium",
+                    "term_group": 0,
+                    "term_taxonomy_id": 3,
+                    "taxonomy": "category",
+                    "description": "",
+                    "parent": 0,
+                    "count": 0,
+                    "filter": "raw"
+                },
+                {
+                    "term_id": 2,
+                    "name": "Greece",
+                    "slug": "greece",
+                    "term_group": 0,
+                    "term_taxonomy_id": 2,
+                    "taxonomy": "category",
+                    "description": "",
+                    "parent": 0,
+                    "count": 0,
+                    "filter": "raw"
+                }
+            ],
+            "document": {
+                "ID": 256,
+                "id": 256,
+                "title": "Sample",
+                "filename": "Sample.pdf",
+                "filesize": 28248,
+                "url": "http:\/\/domain.com\/wordpress\/wp-content\/uploads\/2019\/07\/Sample.pdf",
+                "link": "http:\/\/domain.com\/wordpress\/strategic-document\/nunc-suscipit-imperdiet-faucibus\/sample\/",
+                "alt": "",
+                "author": "1",
+                "description": "",
+                "caption": "",
+                "name": "sample",
+                "status": "inherit",
+                "uploaded_to": 255,
+                "date": "2019-07-02 09:26:10",
+                "modified": "2019-07-02 09:26:10",
+                "menu_order": 0,
+                "mime_type": "application\/pdf",
+                "type": "application",
+                "subtype": "pdf",
+                "icon": "http:\/\/domain.com\/wordpress\/wp-includes\/images\/media\/document.png"
+            },
+            "provider": "Class aptent",
+            "topic": {
+                "term_id": 26,
+                "name": "Self-Assesment Tool",
+                "slug": "self-assesment-tool",
+                "term_group": 0,
+                "term_taxonomy_id": 26,
+                "taxonomy": "resource-topics",
+                "description": "",
+                "parent": 0,
+                "count": 0,
+                "filter": "raw"
+            },
+            "language": [
+                {
+                    "term_id": 23,
+                    "name": "EL",
+                    "slug": "el",
+                    "term_group": 0,
+                    "term_taxonomy_id": 23,
+                    "taxonomy": "targetlanguages",
+                    "description": "",
+                    "parent": 0,
+                    "count": 0,
+                    "filter": "raw"
+                },
+                {
+                    "term_id": 22,
+                    "name": "EN",
+                    "slug": "en",
+                    "term_group": 0,
+                    "term_taxonomy_id": 22,
+                    "taxonomy": "targetlanguages",
+                    "description": "",
+                    "parent": 0,
+                    "count": 0,
+                    "filter": "raw"
+                },
+                {
+                    "term_id": 25,
+                    "name": "FR",
+                    "slug": "fr",
+                    "term_group": 0,
+                    "term_taxonomy_id": 25,
+                    "taxonomy": "targetlanguages",
+                    "description": "",
+                    "parent": 0,
+                    "count": 0,
+                    "filter": "raw"
+                }
+            ],
+            "publish_in_core_platform": true
+        },
+        "_links": {
+            "self": [
+                {
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/training-resource\/262"
+                }
+            ],
+            "collection": [
+                {
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/training-resource"
+                }
+            ],
+            "about": [
+                {
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/types\/training-resource"
+                }
+            ],
+            "author": [
+                {
+                    "embeddable": true,
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/users\/1"
+                }
+            ],
+            "replies": [
+                {
+                    "embeddable": true,
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/comments?post=262"
+                }
+            ],
+            "version-history": [
+                {
+                    "count": 2,
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/training-resource\/262\/revisions"
+                }
+            ],
+            "predecessor-version": [
+                {
+                    "id": 264,
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/training-resource\/262\/revisions\/264"
+                }
+            ],
+            "wp:attachment": [
+                {
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/media?parent=262"
+                }
+            ],
+            "curies": [
+                {
+                    "name": "wp",
+                    "href": "https:\/\/api.w.org\/{rel}",
+                    "templated": true
+                }
+            ]
+        }
+    }
+
+## Training offers [/wp-json/wp/v2/training-offers]
 ### Get Training offers [GET]
 + Request
     + Headers
         Content-Type: application/json
 
 + Response 200 (application/json)
-        [
-            {
-                "id": 44,
-                "date": "2019-06-24T11:56:13",
-                "date_gmt": "2019-06-24T11:56:13",
-                "guid": {
-                    "rendered": "http:\/\/domain.com\/wordpress\/?post_type=training-offer&#038;p=44"
-                },
-                "modified": "2019-06-24T11:56:13",
-                "modified_gmt": "2019-06-24T11:56:13",
-                "slug": "integer-sit-amet-arcu-turpis",
-                "status": "publish",
-                "type": "training-offer",
-                "link": "http:\/\/domain.com\/wordpress\/training-offer\/integer-sit-amet-arcu-turpis\/",
-                "title": {
-                    "rendered": "Integer sit amet arcu turpis"
-                },
-                "content": {
-                    "rendered": "\n<p>\nPraesent tincidunt leo eget magna sollicitudin scelerisque. Nullam sem \nenim, dignissim nec odio et, euismod facilisis nunc. Proin consequat \nporttitor purus non varius. Phasellus blandit vestibulum hendrerit. Ut \niaculis dignissim leo, vitae molestie nibh dapibus ut. Integer sit amet \narcu turpis. Cras nec varius orci. Proin ex enim, ornare ac eros id, \npretium luctus mi. Duis mollis, leo in facilisis eleifend, nulla magna \nporttitor sapien, et venenatis odio nibh non orci. Etiam interdum nibh a\n diam tempus pulvinar.\n\n<\/p>\n",
-                    "protected": false
-                },
-                "excerpt": {
-                    "rendered": "<p>Praesent tincidunt leo eget magna sollicitudin scelerisque. Nullam sem enim, dignissim nec odio et, euismod facilisis nunc. Proin consequat porttitor purus non varius. Phasellus blandit vestibulum hendrerit. Ut iaculis dignissim leo, vitae molestie nibh dapibus ut. Integer sit amet arcu turpis. Cras nec varius orci. Proin ex enim, ornare ac eros id, pretium luctus mi. [&hellip;]<\/p>\n",
-                    "protected": false
-                },
-                "author": 1,
-                "featured_media": 0,
-                "menu_order": 0,
-                "comment_status": "open",
-                "ping_status": "open",
-                "template": "",
-                "meta": [],
-                "acf": false,
-                "_links": {
-                    "self": [
-                        {
-                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/training-offer\/44"
-                        }
-                    ],
-                    "collection": [
-                        {
-                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/training-offer"
-                        }
-                    ],
-                    "about": [
-                        {
-                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/types\/training-offer"
-                        }
-                    ],
-                    "author": [
-                        {
-                            "embeddable": true,
-                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/users\/1"
-                        }
-                    ],
-                    "replies": [
-                        {
-                            "embeddable": true,
-                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/comments?post=44"
-                        }
-                    ],
-                    "version-history": [
-                        {
-                            "count": 1,
-                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/training-offer\/44\/revisions"
-                        }
-                    ],
-                    "predecessor-version": [
-                        {
-                            "id": 45,
-                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/training-offer\/44\/revisions\/45"
-                        }
-                    ],
-                    "wp:attachment": [
-                        {
-                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/media?parent=44"
-                        }
-                    ],
-                    "curies": [
-                        {
-                            "name": "wp",
-                            "href": "https:\/\/api.w.org\/{rel}",
-                            "templated": true
-                        }
-                    ]
-                }
-            },
-            {
-                "id": 42,
-                "date": "2019-06-24T11:55:53",
-                "date_gmt": "2019-06-24T11:55:53",
-                "guid": {
-                    "rendered": "http:\/\/domain.com\/wordpress\/?post_type=training-offer&#038;p=42"
-                },
-                "modified": "2019-06-24T11:55:53",
-                "modified_gmt": "2019-06-24T11:55:53",
-                "slug": "cras-et-elit-vehicula",
-                "status": "publish",
-                "type": "training-offer",
-                "link": "http:\/\/domain.com\/wordpress\/training-offer\/cras-et-elit-vehicula\/",
-                "title": {
-                    "rendered": "Cras et elit vehicula"
-                },
-                "content": {
-                    "rendered": "\n<p>\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sed \nligula molestie tellus luctus pulvinar in sollicitudin mi. Curabitur non\n metus vitae nunc interdum aliquam sed sit amet nibh. Fusce tristique \nquam sit amet lacus vulputate, in sollicitudin diam tincidunt. Maecenas \naliquam tristique arcu, quis sagittis urna aliquet quis. Proin id \ncondimentum mi. Donec ornare nulla accumsan tristique consectetur. Cras \net elit vehicula, gravida sem eget, vehicula massa. Suspendisse a tortor\n arcu. Vestibulum convallis mollis lacus, vitae auctor ex auctor sed. \nEtiam pellentesque ultricies diam ut tincidunt. Nullam tristique id \ntortor et viverra. Nam augue justo, dapibus et maximus ac, aliquet vitae\n ligula. Cras felis metus, consectetur at elit non, suscipit lacinia \nodio.\n\n\n<\/p>\n",
-                    "protected": false
-                },
-                "excerpt": {
-                    "rendered": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sed ligula molestie tellus luctus pulvinar in sollicitudin mi. Curabitur non metus vitae nunc interdum aliquam sed sit amet nibh. Fusce tristique quam sit amet lacus vulputate, in sollicitudin diam tincidunt. Maecenas aliquam tristique arcu, quis sagittis urna aliquet quis. Proin id condimentum mi. Donec ornare [&hellip;]<\/p>\n",
-                    "protected": false
-                },
-                "author": 1,
-                "featured_media": 0,
-                "menu_order": 0,
-                "comment_status": "open",
-                "ping_status": "open",
-                "template": "",
-                "meta": [],
-                "acf": false,
-                "_links": {
-                    "self": [
-                        {
-                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/training-offer\/42"
-                        }
-                    ],
-                    "collection": [
-                        {
-                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/training-offer"
-                        }
-                    ],
-                    "about": [
-                        {
-                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/types\/training-offer"
-                        }
-                    ],
-                    "author": [
-                        {
-                            "embeddable": true,
-                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/users\/1"
-                        }
-                    ],
-                    "replies": [
-                        {
-                            "embeddable": true,
-                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/comments?post=42"
-                        }
-                    ],
-                    "version-history": [
-                        {
-                            "count": 1,
-                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/training-offer\/42\/revisions"
-                        }
-                    ],
-                    "predecessor-version": [
-                        {
-                            "id": 43,
-                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/training-offer\/42\/revisions\/43"
-                        }
-                    ],
-                    "wp:attachment": [
-                        {
-                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/media?parent=42"
-                        }
-                    ],
-                    "curies": [
-                        {
-                            "name": "wp",
-                            "href": "https:\/\/api.w.org\/{rel}",
-                            "templated": true
-                        }
-                    ]
-                }
-            }
-        ]
-
-## Training offer [/wp-json/wp/v2/training-offer/{id}]
-### Get Training offer [GET]
-+ Parameters
-    + id - The id of a record (e.g. 1)
-
-+ Request
-    + Headers
-        Content-Type: application/json
-
-+ Response 200 (application/json)
+    [
         {
             "id": 44,
             "date": "2019-06-24T11:56:13",
@@ -1391,8 +2438,8 @@ There is no need for authentication.
             "guid": {
                 "rendered": "http:\/\/domain.com\/wordpress\/?post_type=training-offer&#038;p=44"
             },
-            "modified": "2019-06-24T11:56:13",
-            "modified_gmt": "2019-06-24T11:56:13",
+            "modified": "2019-07-02T11:09:15",
+            "modified_gmt": "2019-07-02T11:09:15",
             "slug": "integer-sit-amet-arcu-turpis",
             "status": "publish",
             "type": "training-offer",
@@ -1415,7 +2462,72 @@ There is no need for authentication.
             "ping_status": "open",
             "template": "",
             "meta": [],
-            "acf": false,
+            "acf": {
+                "target_group": "Phasellus ",
+                "geographical_scope": [
+                    {
+                        "term_id": 3,
+                        "name": "Belgium",
+                        "slug": "belgium",
+                        "term_group": 0,
+                        "term_taxonomy_id": 3,
+                        "taxonomy": "category",
+                        "description": "",
+                        "parent": 0,
+                        "count": 0,
+                        "filter": "raw"
+                    },
+                    {
+                        "term_id": 7,
+                        "name": "Italy",
+                        "slug": "italy",
+                        "term_group": 0,
+                        "term_taxonomy_id": 7,
+                        "taxonomy": "category",
+                        "description": "",
+                        "parent": 0,
+                        "count": 0,
+                        "filter": "raw"
+                    }
+                ],
+                "topics": [
+                    {
+                        "term_id": 5,
+                        "name": "AI",
+                        "slug": "ai",
+                        "term_group": 0,
+                        "term_taxonomy_id": 5,
+                        "taxonomy": "post_tag",
+                        "description": "",
+                        "parent": 0,
+                        "count": 0,
+                        "filter": "raw"
+                    }
+                ],
+                "typology": "Duis mollis",
+                "training_setting": "On-line",
+                "length_of_training": "12",
+                "training_provider": "Ut iaculis dignissim leo",
+                "cost_of_training": "26000",
+                "level": "Novice",
+                "language": [
+                    {
+                        "term_id": 22,
+                        "name": "EN",
+                        "slug": "en",
+                        "term_group": 0,
+                        "term_taxonomy_id": 22,
+                        "taxonomy": "targetlanguages",
+                        "description": "",
+                        "parent": 0,
+                        "count": 0,
+                        "filter": "raw"
+                    }
+                ],
+                "link": "https:\/\/ec.europa.eu\/",
+                "publish_in_core_platform": false,
+                "is_database": true
+            },
             "_links": {
                 "self": [
                     {
@@ -1446,14 +2558,14 @@ There is no need for authentication.
                 ],
                 "version-history": [
                     {
-                        "count": 1,
+                        "count": 4,
                         "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/training-offer\/44\/revisions"
                     }
                 ],
                 "predecessor-version": [
                     {
-                        "id": 45,
-                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/training-offer\/44\/revisions\/45"
+                        "id": 268,
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/training-offer\/44\/revisions\/268"
                     }
                 ],
                 "wp:attachment": [
@@ -1469,200 +2581,378 @@ There is no need for authentication.
                     }
                 ]
             }
+        },
+        {
+            "id": 42,
+            "date": "2019-06-24T11:55:53",
+            "date_gmt": "2019-06-24T11:55:53",
+            "guid": {
+                "rendered": "http:\/\/domain.com\/wordpress\/?post_type=training-offer&#038;p=42"
+            },
+            "modified": "2019-07-02T11:09:28",
+            "modified_gmt": "2019-07-02T11:09:28",
+            "slug": "cras-et-elit-vehicula",
+            "status": "publish",
+            "type": "training-offer",
+            "link": "http:\/\/domain.com\/wordpress\/training-offer\/cras-et-elit-vehicula\/",
+            "title": {
+                "rendered": "Cras et elit vehicula"
+            },
+            "content": {
+                "rendered": "\n<p>\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sed \nligula molestie tellus luctus pulvinar in sollicitudin mi. Curabitur non\n metus vitae nunc interdum aliquam sed sit amet nibh. Fusce tristique \nquam sit amet lacus vulputate, in sollicitudin diam tincidunt. Maecenas \naliquam tristique arcu, quis sagittis urna aliquet quis. Proin id \ncondimentum mi. Donec ornare nulla accumsan tristique consectetur. Cras \net elit vehicula, gravida sem eget, vehicula massa. Suspendisse a tortor\n arcu. Vestibulum convallis mollis lacus, vitae auctor ex auctor sed. \nEtiam pellentesque ultricies diam ut tincidunt. Nullam tristique id \ntortor et viverra. Nam augue justo, dapibus et maximus ac, aliquet vitae\n ligula. Cras felis metus, consectetur at elit non, suscipit lacinia \nodio.\n\n\n<\/p>\n",
+                "protected": false
+            },
+            "excerpt": {
+                "rendered": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sed ligula molestie tellus luctus pulvinar in sollicitudin mi. Curabitur non metus vitae nunc interdum aliquam sed sit amet nibh. Fusce tristique quam sit amet lacus vulputate, in sollicitudin diam tincidunt. Maecenas aliquam tristique arcu, quis sagittis urna aliquet quis. Proin id condimentum mi. Donec ornare [&hellip;]<\/p>\n",
+                "protected": false
+            },
+            "author": 1,
+            "featured_media": 0,
+            "menu_order": 0,
+            "comment_status": "open",
+            "ping_status": "open",
+            "template": "",
+            "meta": [],
+            "acf": {
+                "target_group": "Etiam pellentesque",
+                "geographical_scope": [
+                    {
+                        "term_id": 7,
+                        "name": "Italy",
+                        "slug": "italy",
+                        "term_group": 0,
+                        "term_taxonomy_id": 7,
+                        "taxonomy": "category",
+                        "description": "",
+                        "parent": 0,
+                        "count": 0,
+                        "filter": "raw"
+                    },
+                    {
+                        "term_id": 8,
+                        "name": "Luxembourg",
+                        "slug": "luxembourg",
+                        "term_group": 0,
+                        "term_taxonomy_id": 8,
+                        "taxonomy": "category",
+                        "description": "",
+                        "parent": 0,
+                        "count": 0,
+                        "filter": "raw"
+                    }
+                ],
+                "topics": [
+                    {
+                        "term_id": 6,
+                        "name": "Commerce",
+                        "slug": "commerce",
+                        "term_group": 0,
+                        "term_taxonomy_id": 6,
+                        "taxonomy": "post_tag",
+                        "description": "",
+                        "parent": 0,
+                        "count": 0,
+                        "filter": "raw"
+                    },
+                    {
+                        "term_id": 4,
+                        "name": "Machine Learning",
+                        "slug": "machine-learning",
+                        "term_group": 0,
+                        "term_taxonomy_id": 4,
+                        "taxonomy": "post_tag",
+                        "description": "",
+                        "parent": 0,
+                        "count": 0,
+                        "filter": "raw"
+                    }
+                ],
+                "typology": "Nam augue justo",
+                "training_setting": "Etiam pellentesque",
+                "length_of_training": "6",
+                "training_provider": "Proin id condimentum m",
+                "cost_of_training": "13000",
+                "level": "Advanced",
+                "language": [
+                    {
+                        "term_id": 23,
+                        "name": "EL",
+                        "slug": "el",
+                        "term_group": 0,
+                        "term_taxonomy_id": 23,
+                        "taxonomy": "targetlanguages",
+                        "description": "",
+                        "parent": 0,
+                        "count": 0,
+                        "filter": "raw"
+                    },
+                    {
+                        "term_id": 25,
+                        "name": "FR",
+                        "slug": "fr",
+                        "term_group": 0,
+                        "term_taxonomy_id": 25,
+                        "taxonomy": "targetlanguages",
+                        "description": "",
+                        "parent": 0,
+                        "count": 0,
+                        "filter": "raw"
+                    }
+                ],
+                "link": "https:\/\/ec.europa.eu\/",
+                "publish_in_core_platform": true,
+                "is_database": true
+            },
+            "_links": {
+                "self": [
+                    {
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/training-offer\/42"
+                    }
+                ],
+                "collection": [
+                    {
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/training-offer"
+                    }
+                ],
+                "about": [
+                    {
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/types\/training-offer"
+                    }
+                ],
+                "author": [
+                    {
+                        "embeddable": true,
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/users\/1"
+                    }
+                ],
+                "replies": [
+                    {
+                        "embeddable": true,
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/comments?post=42"
+                    }
+                ],
+                "version-history": [
+                    {
+                        "count": 3,
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/training-offer\/42\/revisions"
+                    }
+                ],
+                "predecessor-version": [
+                    {
+                        "id": 269,
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/training-offer\/42\/revisions\/269"
+                    }
+                ],
+                "wp:attachment": [
+                    {
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/media?parent=42"
+                    }
+                ],
+                "curies": [
+                    {
+                        "name": "wp",
+                        "href": "https:\/\/api.w.org\/{rel}",
+                        "templated": true
+                    }
+                ]
+            }
         }
+    ]
 
-## Funding opportunities [/wp-json/wp/v2/funding-opportunity]
+## Training offer [/wp-json/wp/v2/training-offers/{id}]
+### Get Training offer [GET]
++ Parameters
+    + id - The id of a record (e.g. 1)
+    
++ Request
+    + Headers
+        Content-Type: application/json
+
++ Response 200 (application/json)
+    {
+        "id": 42,
+        "date": "2019-06-24T11:55:53",
+        "date_gmt": "2019-06-24T11:55:53",
+        "guid": {
+            "rendered": "http:\/\/domain.com\/wordpress\/?post_type=training-offer&#038;p=42"
+        },
+        "modified": "2019-07-02T11:09:28",
+        "modified_gmt": "2019-07-02T11:09:28",
+        "slug": "cras-et-elit-vehicula",
+        "status": "publish",
+        "type": "training-offer",
+        "link": "http:\/\/domain.com\/wordpress\/training-offer\/cras-et-elit-vehicula\/",
+        "title": {
+            "rendered": "Cras et elit vehicula"
+        },
+        "content": {
+            "rendered": "\n<p>\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sed \nligula molestie tellus luctus pulvinar in sollicitudin mi. Curabitur non\n metus vitae nunc interdum aliquam sed sit amet nibh. Fusce tristique \nquam sit amet lacus vulputate, in sollicitudin diam tincidunt. Maecenas \naliquam tristique arcu, quis sagittis urna aliquet quis. Proin id \ncondimentum mi. Donec ornare nulla accumsan tristique consectetur. Cras \net elit vehicula, gravida sem eget, vehicula massa. Suspendisse a tortor\n arcu. Vestibulum convallis mollis lacus, vitae auctor ex auctor sed. \nEtiam pellentesque ultricies diam ut tincidunt. Nullam tristique id \ntortor et viverra. Nam augue justo, dapibus et maximus ac, aliquet vitae\n ligula. Cras felis metus, consectetur at elit non, suscipit lacinia \nodio.\n\n\n<\/p>\n",
+            "protected": false
+        },
+        "excerpt": {
+            "rendered": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sed ligula molestie tellus luctus pulvinar in sollicitudin mi. Curabitur non metus vitae nunc interdum aliquam sed sit amet nibh. Fusce tristique quam sit amet lacus vulputate, in sollicitudin diam tincidunt. Maecenas aliquam tristique arcu, quis sagittis urna aliquet quis. Proin id condimentum mi. Donec ornare [&hellip;]<\/p>\n",
+            "protected": false
+        },
+        "author": 1,
+        "featured_media": 0,
+        "menu_order": 0,
+        "comment_status": "open",
+        "ping_status": "open",
+        "template": "",
+        "meta": [],
+        "acf": {
+            "target_group": "Etiam pellentesque",
+            "geographical_scope": [
+                {
+                    "term_id": 7,
+                    "name": "Italy",
+                    "slug": "italy",
+                    "term_group": 0,
+                    "term_taxonomy_id": 7,
+                    "taxonomy": "category",
+                    "description": "",
+                    "parent": 0,
+                    "count": 0,
+                    "filter": "raw"
+                },
+                {
+                    "term_id": 8,
+                    "name": "Luxembourg",
+                    "slug": "luxembourg",
+                    "term_group": 0,
+                    "term_taxonomy_id": 8,
+                    "taxonomy": "category",
+                    "description": "",
+                    "parent": 0,
+                    "count": 0,
+                    "filter": "raw"
+                }
+            ],
+            "topics": [
+                {
+                    "term_id": 6,
+                    "name": "Commerce",
+                    "slug": "commerce",
+                    "term_group": 0,
+                    "term_taxonomy_id": 6,
+                    "taxonomy": "post_tag",
+                    "description": "",
+                    "parent": 0,
+                    "count": 0,
+                    "filter": "raw"
+                },
+                {
+                    "term_id": 4,
+                    "name": "Machine Learning",
+                    "slug": "machine-learning",
+                    "term_group": 0,
+                    "term_taxonomy_id": 4,
+                    "taxonomy": "post_tag",
+                    "description": "",
+                    "parent": 0,
+                    "count": 0,
+                    "filter": "raw"
+                }
+            ],
+            "typology": "Nam augue justo",
+            "training_setting": "Etiam pellentesque",
+            "length_of_training": "6",
+            "training_provider": "Proin id condimentum m",
+            "cost_of_training": "13000",
+            "level": "Advanced",
+            "language": [
+                {
+                    "term_id": 23,
+                    "name": "EL",
+                    "slug": "el",
+                    "term_group": 0,
+                    "term_taxonomy_id": 23,
+                    "taxonomy": "targetlanguages",
+                    "description": "",
+                    "parent": 0,
+                    "count": 0,
+                    "filter": "raw"
+                },
+                {
+                    "term_id": 25,
+                    "name": "FR",
+                    "slug": "fr",
+                    "term_group": 0,
+                    "term_taxonomy_id": 25,
+                    "taxonomy": "targetlanguages",
+                    "description": "",
+                    "parent": 0,
+                    "count": 0,
+                    "filter": "raw"
+                }
+            ],
+            "link": "https:\/\/ec.europa.eu\/",
+            "publish_in_core_platform": true,
+            "is_database": true
+        },
+        "_links": {
+            "self": [
+                {
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/training-offer\/42"
+                }
+            ],
+            "collection": [
+                {
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/training-offer"
+                }
+            ],
+            "about": [
+                {
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/types\/training-offer"
+                }
+            ],
+            "author": [
+                {
+                    "embeddable": true,
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/users\/1"
+                }
+            ],
+            "replies": [
+                {
+                    "embeddable": true,
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/comments?post=42"
+                }
+            ],
+            "version-history": [
+                {
+                    "count": 3,
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/training-offer\/42\/revisions"
+                }
+            ],
+            "predecessor-version": [
+                {
+                    "id": 269,
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/training-offer\/42\/revisions\/269"
+                }
+            ],
+            "wp:attachment": [
+                {
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/media?parent=42"
+                }
+            ],
+            "curies": [
+                {
+                    "name": "wp",
+                    "href": "https:\/\/api.w.org\/{rel}",
+                    "templated": true
+                }
+            ]
+        }
+    }
+
+## Funding opportunities [/wp-json/wp/v2/funding-opportunities]
 ### Get Funding opportunities [GET]
 + Request
     + Headers
         Content-Type: application/json
 
 + Response 200 (application/json)
-        [
-            {
-                "id": 48,
-                "date": "2019-06-24T11:57:05",
-                "date_gmt": "2019-06-24T11:57:05",
-                "guid": {
-                    "rendered": "http:\/\/domain.com\/wordpress\/?post_type=funding-opportunity&#038;p=48"
-                },
-                "modified": "2019-06-24T11:57:05",
-                "modified_gmt": "2019-06-24T11:57:05",
-                "slug": "quisque-ullamcorper-eu-eros-sed-dignissim",
-                "status": "publish",
-                "type": "funding-opportunity",
-                "link": "http:\/\/domain.com\/wordpress\/funding-opportunity\/quisque-ullamcorper-eu-eros-sed-dignissim\/",
-                "title": {
-                    "rendered": "Quisque ullamcorper eu eros sed dignissim"
-                },
-                "content": {
-                    "rendered": "\n<p>\nAliquam placerat arcu ut lorem viverra, a sollicitudin leo auctor. Etiam\n eleifend tristique faucibus. Phasellus eu nibh tempus, egestas nisi at,\n facilisis quam. Phasellus tempor tellus vel augue vestibulum iaculis. \nNullam sed ullamcorper nibh. Sed consequat enim tortor, sit amet aliquam\n quam dignissim vehicula. Proin ornare et purus vitae consequat. Quisque\n ullamcorper eu eros sed dignissim. Aenean bibendum risus vel magna \npharetra dapibus. Morbi eleifend ultricies placerat. Vestibulum eu velit\n odio. Etiam scelerisque auctor consectetur.\n\n\n<\/p>\n",
-                    "protected": false
-                },
-                "excerpt": {
-                    "rendered": "<p>Aliquam placerat arcu ut lorem viverra, a sollicitudin leo auctor. Etiam eleifend tristique faucibus. Phasellus eu nibh tempus, egestas nisi at, facilisis quam. Phasellus tempor tellus vel augue vestibulum iaculis. Nullam sed ullamcorper nibh. Sed consequat enim tortor, sit amet aliquam quam dignissim vehicula. Proin ornare et purus vitae consequat. Quisque ullamcorper eu eros sed [&hellip;]<\/p>\n",
-                    "protected": false
-                },
-                "author": 1,
-                "featured_media": 0,
-                "menu_order": 0,
-                "comment_status": "open",
-                "ping_status": "open",
-                "template": "",
-                "meta": [],
-                "acf": false,
-                "_links": {
-                    "self": [
-                        {
-                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/funding-opportunity\/48"
-                        }
-                    ],
-                    "collection": [
-                        {
-                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/funding-opportunity"
-                        }
-                    ],
-                    "about": [
-                        {
-                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/types\/funding-opportunity"
-                        }
-                    ],
-                    "author": [
-                        {
-                            "embeddable": true,
-                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/users\/1"
-                        }
-                    ],
-                    "replies": [
-                        {
-                            "embeddable": true,
-                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/comments?post=48"
-                        }
-                    ],
-                    "version-history": [
-                        {
-                            "count": 1,
-                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/funding-opportunity\/48\/revisions"
-                        }
-                    ],
-                    "predecessor-version": [
-                        {
-                            "id": 49,
-                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/funding-opportunity\/48\/revisions\/49"
-                        }
-                    ],
-                    "wp:attachment": [
-                        {
-                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/media?parent=48"
-                        }
-                    ],
-                    "curies": [
-                        {
-                            "name": "wp",
-                            "href": "https:\/\/api.w.org\/{rel}",
-                            "templated": true
-                        }
-                    ]
-                }
-            },
-            {
-                "id": 46,
-                "date": "2019-06-24T11:56:46",
-                "date_gmt": "2019-06-24T11:56:46",
-                "guid": {
-                    "rendered": "http:\/\/domain.com\/wordpress\/?post_type=funding-opportunity&#038;p=46"
-                },
-                "modified": "2019-06-24T11:56:46",
-                "modified_gmt": "2019-06-24T11:56:46",
-                "slug": "proin-fringilla-auctor-magna",
-                "status": "publish",
-                "type": "funding-opportunity",
-                "link": "http:\/\/domain.com\/wordpress\/funding-opportunity\/proin-fringilla-auctor-magna\/",
-                "title": {
-                    "rendered": "Proin fringilla auctor magna"
-                },
-                "content": {
-                    "rendered": "\n<p>\nAenean pharetra sem ut tincidunt vestibulum. Vestibulum tempus nisi \nnisl, non dignissim turpis lobortis accumsan. Mauris posuere quis metus a\n blandit. Donec laoreet nec ex eget varius. Sed pellentesque lacus ut \nmolestie iaculis. Donec a dolor gravida, tristique metus vitae, euismod \nfelis. Proin fringilla auctor magna, sed vehicula mauris fringilla sit \namet.\n\n\n<\/p>\n",
-                    "protected": false
-                },
-                "excerpt": {
-                    "rendered": "<p>Aenean pharetra sem ut tincidunt vestibulum. Vestibulum tempus nisi nisl, non dignissim turpis lobortis accumsan. Mauris posuere quis metus a blandit. Donec laoreet nec ex eget varius. Sed pellentesque lacus ut molestie iaculis. Donec a dolor gravida, tristique metus vitae, euismod felis. Proin fringilla auctor magna, sed vehicula mauris fringilla sit amet.<\/p>\n",
-                    "protected": false
-                },
-                "author": 1,
-                "featured_media": 0,
-                "menu_order": 0,
-                "comment_status": "open",
-                "ping_status": "open",
-                "template": "",
-                "meta": [],
-                "acf": false,
-                "_links": {
-                    "self": [
-                        {
-                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/funding-opportunity\/46"
-                        }
-                    ],
-                    "collection": [
-                        {
-                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/funding-opportunity"
-                        }
-                    ],
-                    "about": [
-                        {
-                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/types\/funding-opportunity"
-                        }
-                    ],
-                    "author": [
-                        {
-                            "embeddable": true,
-                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/users\/1"
-                        }
-                    ],
-                    "replies": [
-                        {
-                            "embeddable": true,
-                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/comments?post=46"
-                        }
-                    ],
-                    "version-history": [
-                        {
-                            "count": 1,
-                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/funding-opportunity\/46\/revisions"
-                        }
-                    ],
-                    "predecessor-version": [
-                        {
-                            "id": 47,
-                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/funding-opportunity\/46\/revisions\/47"
-                        }
-                    ],
-                    "wp:attachment": [
-                        {
-                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/media?parent=46"
-                        }
-                    ],
-                    "curies": [
-                        {
-                            "name": "wp",
-                            "href": "https:\/\/api.w.org\/{rel}",
-                            "templated": true
-                        }
-                    ]
-                }
-            }
-        ]
-
-## Funding opportunity [/wp-json/wp/v2/funding-opportunities/{id}]
-### Get Funding opportunity [GET]
-+ Parameters
-    + id - The id of a record (e.g. 1)
-
-+ Request
-    + Headers
-        Content-Type: application/json
-
-+ Response 200 (application/json)
+    [
         {
             "id": 48,
             "date": "2019-06-24T11:57:05",
@@ -1670,8 +2960,8 @@ There is no need for authentication.
             "guid": {
                 "rendered": "http:\/\/domain.com\/wordpress\/?post_type=funding-opportunity&#038;p=48"
             },
-            "modified": "2019-06-24T11:57:05",
-            "modified_gmt": "2019-06-24T11:57:05",
+            "modified": "2019-07-02T11:14:36",
+            "modified_gmt": "2019-07-02T11:14:36",
             "slug": "quisque-ullamcorper-eu-eros-sed-dignissim",
             "status": "publish",
             "type": "funding-opportunity",
@@ -1694,7 +2984,69 @@ There is no need for authentication.
             "ping_status": "open",
             "template": "",
             "meta": [],
-            "acf": false,
+            "acf": {
+                "target_group": "Quisque ",
+                "geographical_scope": [
+                    {
+                        "term_id": 3,
+                        "name": "Belgium",
+                        "slug": "belgium",
+                        "term_group": 0,
+                        "term_taxonomy_id": 3,
+                        "taxonomy": "category",
+                        "description": "",
+                        "parent": 0,
+                        "count": 0,
+                        "filter": "raw"
+                    },
+                    {
+                        "term_id": 8,
+                        "name": "Luxembourg",
+                        "slug": "luxembourg",
+                        "term_group": 0,
+                        "term_taxonomy_id": 8,
+                        "taxonomy": "category",
+                        "description": "",
+                        "parent": 0,
+                        "count": 0,
+                        "filter": "raw"
+                    }
+                ],
+                "topics": [
+                    {
+                        "term_id": 6,
+                        "name": "Commerce",
+                        "slug": "commerce",
+                        "term_group": 0,
+                        "term_taxonomy_id": 6,
+                        "taxonomy": "post_tag",
+                        "description": "",
+                        "parent": 0,
+                        "count": 0,
+                        "filter": "raw"
+                    },
+                    {
+                        "term_id": 4,
+                        "name": "Machine Learning",
+                        "slug": "machine-learning",
+                        "term_group": 0,
+                        "term_taxonomy_id": 4,
+                        "taxonomy": "post_tag",
+                        "description": "",
+                        "parent": 0,
+                        "count": 0,
+                        "filter": "raw"
+                    }
+                ],
+                "form_of_funding": "Financial instrument",
+                "loans": "Etiam scelerisque",
+                "type_of_loan": "Student Bank Loan",
+                "financing_intermediary": "Proin ornare et purus",
+                "beneficiaries": "Phasellus eu",
+                "financing_conditions": "Sed consequat enim",
+                "link": "https:\/\/ec.europa.eu\/",
+                "publish_in_core_platform": true
+            },
             "_links": {
                 "self": [
                     {
@@ -1725,14 +3077,14 @@ There is no need for authentication.
                 ],
                 "version-history": [
                     {
-                        "count": 1,
+                        "count": 2,
                         "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/funding-opportunity\/48\/revisions"
                     }
                 ],
                 "predecessor-version": [
                     {
-                        "id": 49,
-                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/funding-opportunity\/48\/revisions\/49"
+                        "id": 270,
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/funding-opportunity\/48\/revisions\/270"
                     }
                 ],
                 "wp:attachment": [
@@ -1748,202 +3100,287 @@ There is no need for authentication.
                     }
                 ]
             }
+        },
+        {
+            "id": 46,
+            "date": "2019-06-24T11:56:46",
+            "date_gmt": "2019-06-24T11:56:46",
+            "guid": {
+                "rendered": "http:\/\/domain.com\/wordpress\/?post_type=funding-opportunity&#038;p=46"
+            },
+            "modified": "2019-07-02T11:15:51",
+            "modified_gmt": "2019-07-02T11:15:51",
+            "slug": "proin-fringilla-auctor-magna",
+            "status": "publish",
+            "type": "funding-opportunity",
+            "link": "http:\/\/domain.com\/wordpress\/funding-opportunity\/proin-fringilla-auctor-magna\/",
+            "title": {
+                "rendered": "Proin fringilla auctor magna"
+            },
+            "content": {
+                "rendered": "\n<p>\nAenean pharetra sem ut tincidunt vestibulum. Vestibulum tempus nisi \nnisl, non dignissim turpis lobortis accumsan. Mauris posuere quis metus a\n blandit. Donec laoreet nec ex eget varius. Sed pellentesque lacus ut \nmolestie iaculis. Donec a dolor gravida, tristique metus vitae, euismod \nfelis. Proin fringilla auctor magna, sed vehicula mauris fringilla sit \namet.\n\n\n<\/p>\n",
+                "protected": false
+            },
+            "excerpt": {
+                "rendered": "<p>Aenean pharetra sem ut tincidunt vestibulum. Vestibulum tempus nisi nisl, non dignissim turpis lobortis accumsan. Mauris posuere quis metus a blandit. Donec laoreet nec ex eget varius. Sed pellentesque lacus ut molestie iaculis. Donec a dolor gravida, tristique metus vitae, euismod felis. Proin fringilla auctor magna, sed vehicula mauris fringilla sit amet.<\/p>\n",
+                "protected": false
+            },
+            "author": 1,
+            "featured_media": 0,
+            "menu_order": 0,
+            "comment_status": "open",
+            "ping_status": "open",
+            "template": "",
+            "meta": [],
+            "acf": {
+                "target_group": "Mauris posuere",
+                "geographical_scope": [
+                    {
+                        "term_id": 3,
+                        "name": "Belgium",
+                        "slug": "belgium",
+                        "term_group": 0,
+                        "term_taxonomy_id": 3,
+                        "taxonomy": "category",
+                        "description": "",
+                        "parent": 0,
+                        "count": 0,
+                        "filter": "raw"
+                    }
+                ],
+                "topics": false,
+                "form_of_funding": "Financial instrument",
+                "loans": "Proin fringilla",
+                "type_of_loan": "Financing Solution for training based on Income-sharing",
+                "financing_intermediary": "Vestibulum tempus",
+                "beneficiaries": "Proin fringilla",
+                "financing_conditions": "Aenean pharetra sem",
+                "link": "https:\/\/ec.europa.eu\/",
+                "publish_in_core_platform": false
+            },
+            "_links": {
+                "self": [
+                    {
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/funding-opportunity\/46"
+                    }
+                ],
+                "collection": [
+                    {
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/funding-opportunity"
+                    }
+                ],
+                "about": [
+                    {
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/types\/funding-opportunity"
+                    }
+                ],
+                "author": [
+                    {
+                        "embeddable": true,
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/users\/1"
+                    }
+                ],
+                "replies": [
+                    {
+                        "embeddable": true,
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/comments?post=46"
+                    }
+                ],
+                "version-history": [
+                    {
+                        "count": 2,
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/funding-opportunity\/46\/revisions"
+                    }
+                ],
+                "predecessor-version": [
+                    {
+                        "id": 271,
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/funding-opportunity\/46\/revisions\/271"
+                    }
+                ],
+                "wp:attachment": [
+                    {
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/media?parent=46"
+                    }
+                ],
+                "curies": [
+                    {
+                        "name": "wp",
+                        "href": "https:\/\/api.w.org\/{rel}",
+                        "templated": true
+                    }
+                ]
+            }
         }
+    ]
 
+## Funding opportunity [/wp-json/wp/v2/funding-opportunities/{id}]
+### Get Funding opportunity [GET]
++ Parameters
+    + id - The id of a record (e.g. 1)
+    
++ Request
+    + Headers
+        Content-Type: application/json
 
-## Events [/wp-json/wp/v2/event]
++ Response 200 (application/json)
+    {
+        "id": 48,
+        "date": "2019-06-24T11:57:05",
+        "date_gmt": "2019-06-24T11:57:05",
+        "guid": {
+            "rendered": "http:\/\/domain.com\/wordpress\/?post_type=funding-opportunity&#038;p=48"
+        },
+        "modified": "2019-07-02T11:14:36",
+        "modified_gmt": "2019-07-02T11:14:36",
+        "slug": "quisque-ullamcorper-eu-eros-sed-dignissim",
+        "status": "publish",
+        "type": "funding-opportunity",
+        "link": "http:\/\/domain.com\/wordpress\/funding-opportunity\/quisque-ullamcorper-eu-eros-sed-dignissim\/",
+        "title": {
+            "rendered": "Quisque ullamcorper eu eros sed dignissim"
+        },
+        "content": {
+            "rendered": "\n<p>\nAliquam placerat arcu ut lorem viverra, a sollicitudin leo auctor. Etiam\n eleifend tristique faucibus. Phasellus eu nibh tempus, egestas nisi at,\n facilisis quam. Phasellus tempor tellus vel augue vestibulum iaculis. \nNullam sed ullamcorper nibh. Sed consequat enim tortor, sit amet aliquam\n quam dignissim vehicula. Proin ornare et purus vitae consequat. Quisque\n ullamcorper eu eros sed dignissim. Aenean bibendum risus vel magna \npharetra dapibus. Morbi eleifend ultricies placerat. Vestibulum eu velit\n odio. Etiam scelerisque auctor consectetur.\n\n\n<\/p>\n",
+            "protected": false
+        },
+        "excerpt": {
+            "rendered": "<p>Aliquam placerat arcu ut lorem viverra, a sollicitudin leo auctor. Etiam eleifend tristique faucibus. Phasellus eu nibh tempus, egestas nisi at, facilisis quam. Phasellus tempor tellus vel augue vestibulum iaculis. Nullam sed ullamcorper nibh. Sed consequat enim tortor, sit amet aliquam quam dignissim vehicula. Proin ornare et purus vitae consequat. Quisque ullamcorper eu eros sed [&hellip;]<\/p>\n",
+            "protected": false
+        },
+        "author": 1,
+        "featured_media": 0,
+        "menu_order": 0,
+        "comment_status": "open",
+        "ping_status": "open",
+        "template": "",
+        "meta": [],
+        "acf": {
+            "target_group": "Quisque ",
+            "geographical_scope": [
+                {
+                    "term_id": 3,
+                    "name": "Belgium",
+                    "slug": "belgium",
+                    "term_group": 0,
+                    "term_taxonomy_id": 3,
+                    "taxonomy": "category",
+                    "description": "",
+                    "parent": 0,
+                    "count": 0,
+                    "filter": "raw"
+                },
+                {
+                    "term_id": 8,
+                    "name": "Luxembourg",
+                    "slug": "luxembourg",
+                    "term_group": 0,
+                    "term_taxonomy_id": 8,
+                    "taxonomy": "category",
+                    "description": "",
+                    "parent": 0,
+                    "count": 0,
+                    "filter": "raw"
+                }
+            ],
+            "topics": [
+                {
+                    "term_id": 6,
+                    "name": "Commerce",
+                    "slug": "commerce",
+                    "term_group": 0,
+                    "term_taxonomy_id": 6,
+                    "taxonomy": "post_tag",
+                    "description": "",
+                    "parent": 0,
+                    "count": 0,
+                    "filter": "raw"
+                },
+                {
+                    "term_id": 4,
+                    "name": "Machine Learning",
+                    "slug": "machine-learning",
+                    "term_group": 0,
+                    "term_taxonomy_id": 4,
+                    "taxonomy": "post_tag",
+                    "description": "",
+                    "parent": 0,
+                    "count": 0,
+                    "filter": "raw"
+                }
+            ],
+            "form_of_funding": "Financial instrument",
+            "loans": "Etiam scelerisque",
+            "type_of_loan": "Student Bank Loan",
+            "financing_intermediary": "Proin ornare et purus",
+            "beneficiaries": "Phasellus eu",
+            "financing_conditions": "Sed consequat enim",
+            "link": "https:\/\/ec.europa.eu\/",
+            "publish_in_core_platform": true
+        },
+        "_links": {
+            "self": [
+                {
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/funding-opportunity\/48"
+                }
+            ],
+            "collection": [
+                {
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/funding-opportunity"
+                }
+            ],
+            "about": [
+                {
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/types\/funding-opportunity"
+                }
+            ],
+            "author": [
+                {
+                    "embeddable": true,
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/users\/1"
+                }
+            ],
+            "replies": [
+                {
+                    "embeddable": true,
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/comments?post=48"
+                }
+            ],
+            "version-history": [
+                {
+                    "count": 2,
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/funding-opportunity\/48\/revisions"
+                }
+            ],
+            "predecessor-version": [
+                {
+                    "id": 270,
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/funding-opportunity\/48\/revisions\/270"
+                }
+            ],
+            "wp:attachment": [
+                {
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/media?parent=48"
+                }
+            ],
+            "curies": [
+                {
+                    "name": "wp",
+                    "href": "https:\/\/api.w.org\/{rel}",
+                    "templated": true
+                }
+            ]
+        }
+    }
+
+## Events [/wp-json/wp/v2/events]
 ### Get Events [GET]
 + Request
     + Headers
         Content-Type: application/json
 
 + Response 200 (application/json)
-        [
-            {
-                "id": 52,
-                "date": "2019-06-24T11:58:00",
-                "date_gmt": "2019-06-24T11:58:00",
-                "guid": {
-                    "rendered": "http:\/\/domain.com\/wordpress\/?post_type=event&#038;p=52"
-                },
-                "modified": "2019-06-24T11:58:00",
-                "modified_gmt": "2019-06-24T11:58:00",
-                "slug": "sed-purus-diam-sodales-sit-amet-porttitor-id",
-                "status": "publish",
-                "type": "event",
-                "link": "http:\/\/domain.com\/wordpress\/event\/sed-purus-diam-sodales-sit-amet-porttitor-id\/",
-                "title": {
-                    "rendered": "Sed purus diam, sodales sit amet porttitor id"
-                },
-                "content": {
-                    "rendered": "\n<p>\nVestibulum elementum, neque ac tincidunt vulputate, felis metus viverra \neros, sed fermentum tellus ex vitae dui. Fusce non ligula consequat, \nsollicitudin nibh vitae, tempor neque. Vestibulum egestas et augue eu \naccumsan. Mauris id efficitur urna. Maecenas tristique eros erat. Sed \npurus diam, sodales sit amet porttitor id, sagittis ac felis. Praesent \naliquam blandit eros. Praesent sit amet mauris semper, bibendum nisl in,\n venenatis odio. Curabitur bibendum accumsan nulla eu elementum. \nCurabitur ultricies nulla ut varius sagittis. Pellentesque non sapien a \nante aliquet blandit. Proin tempor viverra condimentum. Ut eu nisl eros.\n\n\n<\/p>\n",
-                    "protected": false
-                },
-                "excerpt": {
-                    "rendered": "<p>Vestibulum elementum, neque ac tincidunt vulputate, felis metus viverra eros, sed fermentum tellus ex vitae dui. Fusce non ligula consequat, sollicitudin nibh vitae, tempor neque. Vestibulum egestas et augue eu accumsan. Mauris id efficitur urna. Maecenas tristique eros erat. Sed purus diam, sodales sit amet porttitor id, sagittis ac felis. Praesent aliquam blandit eros. Praesent [&hellip;]<\/p>\n",
-                    "protected": false
-                },
-                "author": 1,
-                "featured_media": 0,
-                "menu_order": 0,
-                "comment_status": "open",
-                "ping_status": "open",
-                "template": "",
-                "meta": [],
-                "acf": false,
-                "_links": {
-                    "self": [
-                        {
-                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/event\/52"
-                        }
-                    ],
-                    "collection": [
-                        {
-                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/event"
-                        }
-                    ],
-                    "about": [
-                        {
-                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/types\/event"
-                        }
-                    ],
-                    "author": [
-                        {
-                            "embeddable": true,
-                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/users\/1"
-                        }
-                    ],
-                    "replies": [
-                        {
-                            "embeddable": true,
-                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/comments?post=52"
-                        }
-                    ],
-                    "version-history": [
-                        {
-                            "count": 1,
-                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/event\/52\/revisions"
-                        }
-                    ],
-                    "predecessor-version": [
-                        {
-                            "id": 53,
-                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/event\/52\/revisions\/53"
-                        }
-                    ],
-                    "wp:attachment": [
-                        {
-                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/media?parent=52"
-                        }
-                    ],
-                    "curies": [
-                        {
-                            "name": "wp",
-                            "href": "https:\/\/api.w.org\/{rel}",
-                            "templated": true
-                        }
-                    ]
-                }
-            },
-            {
-                "id": 50,
-                "date": "2019-06-24T11:57:29",
-                "date_gmt": "2019-06-24T11:57:29",
-                "guid": {
-                    "rendered": "http:\/\/domain.com\/wordpress\/?post_type=event&#038;p=50"
-                },
-                "modified": "2019-06-24T11:57:29",
-                "modified_gmt": "2019-06-24T11:57:29",
-                "slug": "mauris-cursus-elit-vel-ultricies-pretium",
-                "status": "publish",
-                "type": "event",
-                "link": "http:\/\/domain.com\/wordpress\/event\/mauris-cursus-elit-vel-ultricies-pretium\/",
-                "title": {
-                    "rendered": "Mauris cursus, elit vel ultricies pretium"
-                },
-                "content": {
-                    "rendered": "\n<p>\nDuis non libero eget urna bibendum gravida. Suspendisse potenti. In \nmagna augue, scelerisque at nunc sit amet, finibus dignissim dolor. Cras\n in risus in sem imperdiet tincidunt vitae id neque. Suspendisse \npotenti. Curabitur iaculis vel felis ac mollis. Nullam scelerisque nibh \nlibero, ut commodo augue dictum id. Mauris pellentesque placerat nisi, \nid mattis nibh maximus vitae. Mauris cursus, elit vel ultricies pretium,\n sem nunc fringilla nulla, in sodales sem turpis nec quam. Vestibulum \nante ipsum primis in faucibus orci luctus et ultrices posuere cubilia \nCurae; Quisque non ligula eu mauris dapibus vulputate id eget dui. \nPraesent auctor posuere tristique.\n\n\n<\/p>\n",
-                    "protected": false
-                },
-                "excerpt": {
-                    "rendered": "<p>Duis non libero eget urna bibendum gravida. Suspendisse potenti. In magna augue, scelerisque at nunc sit amet, finibus dignissim dolor. Cras in risus in sem imperdiet tincidunt vitae id neque. Suspendisse potenti. Curabitur iaculis vel felis ac mollis. Nullam scelerisque nibh libero, ut commodo augue dictum id. Mauris pellentesque placerat nisi, id mattis nibh maximus [&hellip;]<\/p>\n",
-                    "protected": false
-                },
-                "author": 1,
-                "featured_media": 0,
-                "menu_order": 0,
-                "comment_status": "open",
-                "ping_status": "open",
-                "template": "",
-                "meta": [],
-                "acf": false,
-                "_links": {
-                    "self": [
-                        {
-                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/event\/50"
-                        }
-                    ],
-                    "collection": [
-                        {
-                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/event"
-                        }
-                    ],
-                    "about": [
-                        {
-                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/types\/event"
-                        }
-                    ],
-                    "author": [
-                        {
-                            "embeddable": true,
-                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/users\/1"
-                        }
-                    ],
-                    "replies": [
-                        {
-                            "embeddable": true,
-                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/comments?post=50"
-                        }
-                    ],
-                    "version-history": [
-                        {
-                            "count": 1,
-                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/event\/50\/revisions"
-                        }
-                    ],
-                    "predecessor-version": [
-                        {
-                            "id": 51,
-                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/event\/50\/revisions\/51"
-                        }
-                    ],
-                    "wp:attachment": [
-                        {
-                            "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/media?parent=50"
-                        }
-                    ],
-                    "curies": [
-                        {
-                            "name": "wp",
-                            "href": "https:\/\/api.w.org\/{rel}",
-                            "templated": true
-                        }
-                    ]
-                }
-            }
-        ]
-
-
-## Event [/wp-json/wp/v2/event/{id}]
-### Get Event [GET]
-+ Parameters
-    + id - The id of a record (e.g. 1)
-
-+ Request
-    + Headers
-        Content-Type: application/json
-
-+ Response 200 (application/json)
+    [
         {
             "id": 52,
             "date": "2019-06-24T11:58:00",
@@ -1951,8 +3388,8 @@ There is no need for authentication.
             "guid": {
                 "rendered": "http:\/\/domain.com\/wordpress\/?post_type=event&#038;p=52"
             },
-            "modified": "2019-06-24T11:58:00",
-            "modified_gmt": "2019-06-24T11:58:00",
+            "modified": "2019-07-02T11:20:38",
+            "modified_gmt": "2019-07-02T11:20:38",
             "slug": "sed-purus-diam-sodales-sit-amet-porttitor-id",
             "status": "publish",
             "type": "event",
@@ -1975,7 +3412,16 @@ There is no need for authentication.
             "ping_status": "open",
             "template": "",
             "meta": [],
-            "acf": false,
+            "acf": {
+                "target_group": " Praesent aliquam",
+                "topics": [
+                    5
+                ],
+                "start_date": "06\/07\/2019",
+                "end_date": "08\/07\/2019",
+                "link": "https:\/\/ec.europa.eu\/",
+                "publish_in_core_platform": true
+            },
             "_links": {
                 "self": [
                     {
@@ -2006,14 +3452,14 @@ There is no need for authentication.
                 ],
                 "version-history": [
                     {
-                        "count": 1,
+                        "count": 2,
                         "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/event\/52\/revisions"
                     }
                 ],
                 "predecessor-version": [
                     {
-                        "id": 53,
-                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/event\/52\/revisions\/53"
+                        "id": 272,
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/event\/52\/revisions\/272"
                     }
                 ],
                 "wp:attachment": [
@@ -2029,4 +3475,455 @@ There is no need for authentication.
                     }
                 ]
             }
+        },
+        {
+            "id": 50,
+            "date": "2019-06-24T11:57:29",
+            "date_gmt": "2019-06-24T11:57:29",
+            "guid": {
+                "rendered": "http:\/\/domain.com\/wordpress\/?post_type=event&#038;p=50"
+            },
+            "modified": "2019-07-02T11:21:27",
+            "modified_gmt": "2019-07-02T11:21:27",
+            "slug": "mauris-cursus-elit-vel-ultricies-pretium",
+            "status": "publish",
+            "type": "event",
+            "link": "http:\/\/domain.com\/wordpress\/event\/mauris-cursus-elit-vel-ultricies-pretium\/",
+            "title": {
+                "rendered": "Mauris cursus, elit vel ultricies pretium"
+            },
+            "content": {
+                "rendered": "\n<p>\nDuis non libero eget urna bibendum gravida. Suspendisse potenti. In \nmagna augue, scelerisque at nunc sit amet, finibus dignissim dolor. Cras\n in risus in sem imperdiet tincidunt vitae id neque. Suspendisse \npotenti. Curabitur iaculis vel felis ac mollis. Nullam scelerisque nibh \nlibero, ut commodo augue dictum id. Mauris pellentesque placerat nisi, \nid mattis nibh maximus vitae. Mauris cursus, elit vel ultricies pretium,\n sem nunc fringilla nulla, in sodales sem turpis nec quam. Vestibulum \nante ipsum primis in faucibus orci luctus et ultrices posuere cubilia \nCurae; Quisque non ligula eu mauris dapibus vulputate id eget dui. \nPraesent auctor posuere tristique.\n\n\n<\/p>\n",
+                "protected": false
+            },
+            "excerpt": {
+                "rendered": "<p>Duis non libero eget urna bibendum gravida. Suspendisse potenti. In magna augue, scelerisque at nunc sit amet, finibus dignissim dolor. Cras in risus in sem imperdiet tincidunt vitae id neque. Suspendisse potenti. Curabitur iaculis vel felis ac mollis. Nullam scelerisque nibh libero, ut commodo augue dictum id. Mauris pellentesque placerat nisi, id mattis nibh maximus [&hellip;]<\/p>\n",
+                "protected": false
+            },
+            "author": 1,
+            "featured_media": 0,
+            "menu_order": 0,
+            "comment_status": "open",
+            "ping_status": "open",
+            "template": "",
+            "meta": [],
+            "acf": {
+                "target_group": "Vestibulum ",
+                "topics": [
+                    4
+                ],
+                "start_date": "16\/08\/2019",
+                "end_date": "18\/08\/2019",
+                "link": "https:\/\/ec.europa.eu\/",
+                "publish_in_core_platform": true
+            },
+            "_links": {
+                "self": [
+                    {
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/event\/50"
+                    }
+                ],
+                "collection": [
+                    {
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/event"
+                    }
+                ],
+                "about": [
+                    {
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/types\/event"
+                    }
+                ],
+                "author": [
+                    {
+                        "embeddable": true,
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/users\/1"
+                    }
+                ],
+                "replies": [
+                    {
+                        "embeddable": true,
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/comments?post=50"
+                    }
+                ],
+                "version-history": [
+                    {
+                        "count": 3,
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/event\/50\/revisions"
+                    }
+                ],
+                "predecessor-version": [
+                    {
+                        "id": 274,
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/event\/50\/revisions\/274"
+                    }
+                ],
+                "wp:attachment": [
+                    {
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/media?parent=50"
+                    }
+                ],
+                "curies": [
+                    {
+                        "name": "wp",
+                        "href": "https:\/\/api.w.org\/{rel}",
+                        "templated": true
+                    }
+                ]
+            }
         }
+    ]
+
+## Event [/wp-json/wp/v2/events/{id}]
+### Get Event [GET]
++ Parameters
+    + id - The id of a record (e.g. 1)
+    
++ Request
+    + Headers
+        Content-Type: application/json
+
++ Response 200 (application/json)
+    {
+        "id": 52,
+        "date": "2019-06-24T11:58:00",
+        "date_gmt": "2019-06-24T11:58:00",
+        "guid": {
+            "rendered": "http:\/\/domain.com\/wordpress\/?post_type=event&#038;p=52"
+        },
+        "modified": "2019-07-02T11:20:38",
+        "modified_gmt": "2019-07-02T11:20:38",
+        "slug": "sed-purus-diam-sodales-sit-amet-porttitor-id",
+        "status": "publish",
+        "type": "event",
+        "link": "http:\/\/domain.com\/wordpress\/event\/sed-purus-diam-sodales-sit-amet-porttitor-id\/",
+        "title": {
+            "rendered": "Sed purus diam, sodales sit amet porttitor id"
+        },
+        "content": {
+            "rendered": "\n<p>\nVestibulum elementum, neque ac tincidunt vulputate, felis metus viverra \neros, sed fermentum tellus ex vitae dui. Fusce non ligula consequat, \nsollicitudin nibh vitae, tempor neque. Vestibulum egestas et augue eu \naccumsan. Mauris id efficitur urna. Maecenas tristique eros erat. Sed \npurus diam, sodales sit amet porttitor id, sagittis ac felis. Praesent \naliquam blandit eros. Praesent sit amet mauris semper, bibendum nisl in,\n venenatis odio. Curabitur bibendum accumsan nulla eu elementum. \nCurabitur ultricies nulla ut varius sagittis. Pellentesque non sapien a \nante aliquet blandit. Proin tempor viverra condimentum. Ut eu nisl eros.\n\n\n<\/p>\n",
+            "protected": false
+        },
+        "excerpt": {
+            "rendered": "<p>Vestibulum elementum, neque ac tincidunt vulputate, felis metus viverra eros, sed fermentum tellus ex vitae dui. Fusce non ligula consequat, sollicitudin nibh vitae, tempor neque. Vestibulum egestas et augue eu accumsan. Mauris id efficitur urna. Maecenas tristique eros erat. Sed purus diam, sodales sit amet porttitor id, sagittis ac felis. Praesent aliquam blandit eros. Praesent [&hellip;]<\/p>\n",
+            "protected": false
+        },
+        "author": 1,
+        "featured_media": 0,
+        "menu_order": 0,
+        "comment_status": "open",
+        "ping_status": "open",
+        "template": "",
+        "meta": [],
+        "acf": {
+            "target_group": " Praesent aliquam",
+            "topics": [
+                5
+            ],
+            "start_date": "06\/07\/2019",
+            "end_date": "08\/07\/2019",
+            "link": "https:\/\/ec.europa.eu\/",
+            "publish_in_core_platform": true
+        },
+        "_links": {
+            "self": [
+                {
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/event\/52"
+                }
+            ],
+            "collection": [
+                {
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/event"
+                }
+            ],
+            "about": [
+                {
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/types\/event"
+                }
+            ],
+            "author": [
+                {
+                    "embeddable": true,
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/users\/1"
+                }
+            ],
+            "replies": [
+                {
+                    "embeddable": true,
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/comments?post=52"
+                }
+            ],
+            "version-history": [
+                {
+                    "count": 2,
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/event\/52\/revisions"
+                }
+            ],
+            "predecessor-version": [
+                {
+                    "id": 272,
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/event\/52\/revisions\/272"
+                }
+            ],
+            "wp:attachment": [
+                {
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/media?parent=52"
+                }
+            ],
+            "curies": [
+                {
+                    "name": "wp",
+                    "href": "https:\/\/api.w.org\/{rel}",
+                    "templated": true
+                }
+            ]
+        }
+    }
+
+## Articles [/wp-json/wp/v2/articles]
+### Get Articles [GET]
++ Request
+    + Headers
+        Content-Type: application/json
+
++ Response 200 (application/json)
+    [
+        {
+            "id": 275,
+            "date": "2019-07-02T11:24:44",
+            "date_gmt": "2019-07-02T11:24:44",
+            "guid": {
+                "rendered": "http:\/\/domain.com\/wordpress\/?post_type=article&#038;p=275"
+            },
+            "modified": "2019-07-02T11:26:28",
+            "modified_gmt": "2019-07-02T11:26:28",
+            "slug": "phasellus-pharetra",
+            "status": "publish",
+            "type": "article",
+            "link": "http:\/\/domain.com\/wordpress\/article\/phasellus-pharetra\/",
+            "title": {
+                "rendered": "Phasellus pharetra"
+            },
+            "content": {
+                "rendered": "\n<p>\nNullam ligula ex, elementum vel scelerisque nec, interdum sit amet urna.\n Class aptent taciti sociosqu ad litora torquent per conubia nostra, per\n inceptos himenaeos. Nunc suscipit imperdiet faucibus. In pulvinar, \nligula ac ultricies ultrices, libero lorem volutpat augue, quis \ndignissim sapien lorem sit amet metus. Phasellus pharetra sem sed congue\n sagittis. Nullam eget nisl ut diam mollis suscipit a sed velit. Fusce \nfinibus felis at dolor tincidunt pretium. Nunc convallis orci porttitor \nimperdiet dictum. Nullam quis nunc in arcu dapibus dictum. Mauris mollis\n vitae diam sed finibus. Etiam eget dolor at elit scelerisque \nvestibulum. Suspendisse eu sem vitae nulla fermentum posuere. Donec ut \nmi quis nulla feugiat efficitur. Nullam sed congue est. Nam vitae magna \nmalesuada, facilisis massa nec, facilisis libero. Suspendisse rutrum ex \nin blandit bibendum.\n\n\n<\/p>\n",
+                "protected": false
+            },
+            "excerpt": {
+                "rendered": "<p>Nullam ligula ex, elementum vel scelerisque nec, interdum sit amet urna. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nunc suscipit imperdiet faucibus. In pulvinar, ligula ac ultricies ultrices, libero lorem volutpat augue, quis dignissim sapien lorem sit amet metus. Phasellus pharetra sem sed congue sagittis. Nullam eget nisl ut [&hellip;]<\/p>\n",
+                "protected": false
+            },
+            "author": 1,
+            "featured_media": 0,
+            "menu_order": 0,
+            "comment_status": "open",
+            "ping_status": "open",
+            "template": "",
+            "meta": [],
+            "acf": {
+                "publish_in_core_platform": true,
+                "topics": [
+                    {
+                        "term_id": 6,
+                        "name": "Commerce",
+                        "slug": "commerce",
+                        "term_group": 0,
+                        "term_taxonomy_id": 6,
+                        "taxonomy": "post_tag",
+                        "description": "",
+                        "parent": 0,
+                        "count": 0,
+                        "filter": "raw"
+                    },
+                    {
+                        "term_id": 4,
+                        "name": "Machine Learning",
+                        "slug": "machine-learning",
+                        "term_group": 0,
+                        "term_taxonomy_id": 4,
+                        "taxonomy": "post_tag",
+                        "description": "",
+                        "parent": 0,
+                        "count": 0,
+                        "filter": "raw"
+                    }
+                ]
+            },
+            "_links": {
+                "self": [
+                    {
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/article\/275"
+                    }
+                ],
+                "collection": [
+                    {
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/article"
+                    }
+                ],
+                "about": [
+                    {
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/types\/article"
+                    }
+                ],
+                "author": [
+                    {
+                        "embeddable": true,
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/users\/1"
+                    }
+                ],
+                "replies": [
+                    {
+                        "embeddable": true,
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/comments?post=275"
+                    }
+                ],
+                "version-history": [
+                    {
+                        "count": 3,
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/article\/275\/revisions"
+                    }
+                ],
+                "predecessor-version": [
+                    {
+                        "id": 281,
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/article\/275\/revisions\/281"
+                    }
+                ],
+                "wp:attachment": [
+                    {
+                        "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/media?parent=275"
+                    }
+                ],
+                "curies": [
+                    {
+                        "name": "wp",
+                        "href": "https:\/\/api.w.org\/{rel}",
+                        "templated": true
+                    }
+                ]
+            }
+        }
+    ]
+
+## Article [/wp-json/wp/v2/articles/{id}]
+### Get Event [GET]
++ Parameters
+    + id - The id of a record (e.g. 1)
+    
++ Request
+    + Headers
+        Content-Type: application/json
+
++ Response 200 (application/json)
+    {
+        "id": 275,
+        "date": "2019-07-02T11:24:44",
+        "date_gmt": "2019-07-02T11:24:44",
+        "guid": {
+            "rendered": "http:\/\/domain.com\/wordpress\/?post_type=article&#038;p=275"
+        },
+        "modified": "2019-07-02T11:26:28",
+        "modified_gmt": "2019-07-02T11:26:28",
+        "slug": "phasellus-pharetra",
+        "status": "publish",
+        "type": "article",
+        "link": "http:\/\/domain.com\/wordpress\/article\/phasellus-pharetra\/",
+        "title": {
+            "rendered": "Phasellus pharetra"
+        },
+        "content": {
+            "rendered": "\n<p>\nNullam ligula ex, elementum vel scelerisque nec, interdum sit amet urna.\n Class aptent taciti sociosqu ad litora torquent per conubia nostra, per\n inceptos himenaeos. Nunc suscipit imperdiet faucibus. In pulvinar, \nligula ac ultricies ultrices, libero lorem volutpat augue, quis \ndignissim sapien lorem sit amet metus. Phasellus pharetra sem sed congue\n sagittis. Nullam eget nisl ut diam mollis suscipit a sed velit. Fusce \nfinibus felis at dolor tincidunt pretium. Nunc convallis orci porttitor \nimperdiet dictum. Nullam quis nunc in arcu dapibus dictum. Mauris mollis\n vitae diam sed finibus. Etiam eget dolor at elit scelerisque \nvestibulum. Suspendisse eu sem vitae nulla fermentum posuere. Donec ut \nmi quis nulla feugiat efficitur. Nullam sed congue est. Nam vitae magna \nmalesuada, facilisis massa nec, facilisis libero. Suspendisse rutrum ex \nin blandit bibendum.\n\n\n<\/p>\n",
+            "protected": false
+        },
+        "excerpt": {
+            "rendered": "<p>Nullam ligula ex, elementum vel scelerisque nec, interdum sit amet urna. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nunc suscipit imperdiet faucibus. In pulvinar, ligula ac ultricies ultrices, libero lorem volutpat augue, quis dignissim sapien lorem sit amet metus. Phasellus pharetra sem sed congue sagittis. Nullam eget nisl ut [&hellip;]<\/p>\n",
+            "protected": false
+        },
+        "author": 1,
+        "featured_media": 0,
+        "menu_order": 0,
+        "comment_status": "open",
+        "ping_status": "open",
+        "template": "",
+        "meta": [],
+        "acf": {
+            "publish_in_core_platform": true,
+            "topics": [
+                {
+                    "term_id": 6,
+                    "name": "Commerce",
+                    "slug": "commerce",
+                    "term_group": 0,
+                    "term_taxonomy_id": 6,
+                    "taxonomy": "post_tag",
+                    "description": "",
+                    "parent": 0,
+                    "count": 0,
+                    "filter": "raw"
+                },
+                {
+                    "term_id": 4,
+                    "name": "Machine Learning",
+                    "slug": "machine-learning",
+                    "term_group": 0,
+                    "term_taxonomy_id": 4,
+                    "taxonomy": "post_tag",
+                    "description": "",
+                    "parent": 0,
+                    "count": 0,
+                    "filter": "raw"
+                }
+            ]
+        },
+        "_links": {
+            "self": [
+                {
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/article\/275"
+                }
+            ],
+            "collection": [
+                {
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/article"
+                }
+            ],
+            "about": [
+                {
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/types\/article"
+                }
+            ],
+            "author": [
+                {
+                    "embeddable": true,
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/users\/1"
+                }
+            ],
+            "replies": [
+                {
+                    "embeddable": true,
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/comments?post=275"
+                }
+            ],
+            "version-history": [
+                {
+                    "count": 3,
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/article\/275\/revisions"
+                }
+            ],
+            "predecessor-version": [
+                {
+                    "id": 281,
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/article\/275\/revisions\/281"
+                }
+            ],
+            "wp:attachment": [
+                {
+                    "href": "http:\/\/domain.com\/wordpress\/wp-json\/wp\/v2\/media?parent=275"
+                }
+            ],
+            "curies": [
+                {
+                    "name": "wp",
+                    "href": "https:\/\/api.w.org\/{rel}",
+                    "templated": true
+                }
+            ]
+        }
+    }
