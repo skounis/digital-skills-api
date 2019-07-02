@@ -12,5 +12,5 @@ docprint -p ./wp.apib -d ./docs/wp
 ```
 
 ## API Documentation
-- [Wordpress](/dsi-api/wp/curl/)
-- [Drupal](/dsi-api/d8/curl/)
+- [Wordpress](https://skounis.github.io/dsi-api/wp/curl/)
+- [Drupal](/https://skounis.github.io/dsi-api/d8/curl/)
